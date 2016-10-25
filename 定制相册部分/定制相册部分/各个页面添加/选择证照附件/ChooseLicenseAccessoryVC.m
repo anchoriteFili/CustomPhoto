@@ -84,7 +84,7 @@
     } else {
         
         // 这只各个item的状态
-        [cell updateCellWithImageUrl:[self.imageUrlArray objectAtIndex:indexPath.row-1] andCellImageType:CertificateCellImageDeselect];
+        [cell updateCellWithImageUrl:[self.imageUrlArray objectAtIndex:indexPath.row-1] andCellImageType:CertificateCellImageEmpty];
     }
     
     return cell;

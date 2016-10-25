@@ -22,12 +22,11 @@ static  NSString * identifierCell = @"certificateCollectionViewCell";
 
 @property (nonatomic,assign) CertificateCellImageType cellImageType; // 本cell显示类型
 
-
-
 @property (weak, nonatomic) IBOutlet UIImageView *certificateBackImageView; // 背景大图片
 
-
 @property (weak, nonatomic) IBOutlet UIImageView *certificateImageView; // 右上角小图片
+
+@property (nonatomic,assign) BOOL isEverLongPress; // 判断上次是否是长手势点击，限制长手势事件多次触发
 
 - (void)updateCellWithImageUrl:(NSString *)imageUrl andCellImageType:(CertificateCellImageType)cellImageType;
 

@@ -19,7 +19,7 @@
                         <gestureRecognizers/>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="ui6-Eo-ez3" appends="YES" id="MAQ-lq-d5y"/>
-                            <outletCollection property="gestureRecognizers" destination="vAg-W9-iCr" appends="YES" id="XOB-t4-tfd"/>
+                            <outletCollection property="gestureRecognizers" destination="fvs-AF-W2r" appends="YES" id="YL8-oL-Las"/>
                         </connections>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGr-j3-7LG">
@@ -28,6 +28,7 @@
                     </imageView>
                 </subviews>
             </view>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="03s-P6-YXe" secondAttribute="bottom" id="DsB-6V-TjX"/>
                 <constraint firstAttribute="trailing" secondItem="03s-P6-YXe" secondAttribute="trailing" id="VUf-Cb-vd8"/>
@@ -46,9 +47,9 @@
                 <action selector="backImageViewTapClick:" destination="gTV-IL-0wX" id="zDH-Zt-fQh"/>
             </connections>
         </tapGestureRecognizer>
-        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="vAg-W9-iCr">
+        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="fvs-AF-W2r">
             <connections>
-                <action selector="backImageViewLongPressClick:" destination="gTV-IL-0wX" id="Tmc-7L-97n"/>
+                <action selector="backImageViewLongPressClick:" destination="gTV-IL-0wX" id="7r4-d9-9tz"/>
             </connections>
         </pongPressGestureRecognizer>
     </objects>
