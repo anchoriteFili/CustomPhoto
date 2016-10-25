@@ -214,9 +214,31 @@
     if (!_bottomSaveView) {
         _bottomSaveView = [[UIView alloc] initWithFrame:CGRectMake(0, HEIGHT-65, WIDTH, 65)];
         
+        UIButton *saveBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15.5, GETWIDTH(_bottomSaveView)-30, 45)];
+        saveBtn.center = CGPointMake(GETWIDTH(_bottomSaveView)/2, GETHEIGHT(_bottomSaveView)/2);
+        saveBtn.layer.cornerRadius = 4;
+        saveBtn.layer.masksToBounds = YES;
+        [saveBtn setBackgroundImage:[UIImage imageNamed:@"blue_bg"] forState:UIControlStateNormal];
+        [saveBtn setBackgroundImage:[UIImage imageNamed:@"blue_bg_Highlighted"] forState:UIControlStateHighlighted];
+        [saveBtn setTitleColor:RGBA_COLOR(255, 255, 255, 0.4) forState:UIControlStateHighlighted];
+        [saveBtn setTitle:@"保存" forState:UIControlStateNormal];
+        saveBtn.titleLabel.font = [UIFont systemFontOfSize:18];
+        [saveBtn addTarget:self action:@selector(saveButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [_bottomSaveView addSubview:saveBtn];
+        
         _bottomSaveView.backgroundColor = [UIColor whiteColor];
     }
     return _bottomSaveView;
+}
+
+- (void)saveButtonClick:(UIButton *)sender {
+    NSLog(@"保存按钮点击事件");
+    
+    /**
+     保存按钮中可以进行添加操作
+     */
+    
 }
 
 - (void)didReceiveMemoryWarning {
