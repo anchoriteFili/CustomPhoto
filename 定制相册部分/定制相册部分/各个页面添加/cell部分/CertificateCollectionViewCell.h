@@ -13,7 +13,7 @@
 @protocol CertificateCollectionViewCellDelegate <NSObject>
 
 #pragma mark 传出各种点击类型
-- (void)certificateCollectionViewCellDelegateEventType:(TouchEventType)touchEventType;
+- (void)certificateCollectionViewCellDelegateEventType:(TouchEventType)touchEventType atIndex:(NSInteger)index;
 
 @end
 
@@ -32,7 +32,7 @@ static  NSString * identifierCell = @"certificateCollectionViewCell";
 
 @property (nonatomic,assign) id<CertificateCollectionViewCellDelegate,NSObject> delegate; // 各种代理方法
 
-@property (nonatomic,retain) CertificateCellModel *model;
+@property (nonatomic,retain) CertificateCellModel *model; // 数据传输model
 
 - (void)updateCellWithModel:(CertificateCellModel *)model;
 

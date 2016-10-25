@@ -9,7 +9,7 @@
 #import "ChooseLicenseAccessoryVC.h"
 #import "CertificateCollectionViewCell.h"
 
-@interface ChooseLicenseAccessoryVC ()<UICollectionViewDataSource,UICollectionViewDelegate>
+@interface ChooseLicenseAccessoryVC ()<UICollectionViewDataSource,UICollectionViewDelegate,CertificateCollectionViewCellDelegate>
 
 @property (nonatomic,retain) UICollectionView *collectionView; // 创建collectionView
 
@@ -94,6 +94,8 @@
     
     CertificateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierCell forIndexPath:indexPath];
     
+    cell.delegate = self;
+    
     if (indexPath.row == 0) {
         
         cell.certificateBackImageView.image = [UIImage imageNamed:@"CertificateCell_photo"];
@@ -107,6 +109,49 @@
     }
     
     return cell;
+}
+
+#pragma mark item中各触发事件的代理方法
+- (void)certificateCollectionViewCellDelegateEventType:(TouchEventType)touchEventType atIndex:(NSInteger)index {
+    
+    /**
+     在其中对modelArray中的数据进行处理，处理完后刷新页面
+     */
+    
+    switch (touchEventType) {
+        case TouchEventTypeEdit: // 进入编辑状态
+            
+            break;
+            
+        case TouchEventTypeCancalEdit: // 取消编辑状态
+            
+            break;
+            
+        case TouchEventTypeBrowse: // 进入浏览页面
+            
+            break;
+            
+        case TouchEventTypeDelete: // 删除触发事件
+            
+            break;
+            
+        case TouchEventTypeSelect: // 选中状态
+            
+            break;
+            
+        case TouchEventTypeDeselect: // 不选中状态
+            
+            break;
+            
+        
+            
+        default:
+            break;
+    }
+    
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {

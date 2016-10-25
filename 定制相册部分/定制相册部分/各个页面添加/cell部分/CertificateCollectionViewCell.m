@@ -102,18 +102,32 @@
 - (IBAction)backImageViewLongPressClick:(UILongPressGestureRecognizer *)sender {
     
     /**
+     
+     只要不是相册时才有长按手势
+     
      基本逻辑，如果不是长按手势状态，点击进入长按手势状态，如果是长按手势状态，则不做任何处理
      */
     
-    if (!self.isEverLongPress) {
-        // 启用进入编辑状态点击代理方法
-        NSLog(@"长按");
-        self.isEverLongPress = YES;
-        self.certificateImageView.image = [UIImage imageNamed:@"CertificateCell_delete"];
+    if (!self.model.isAlbum) {
         
-    } else {
-        // 不做任何处理
+        if (!self.isEverLongPress) {
+            // 启用进入编辑状态点击代理方法
+            NSLog(@"长按");
+            self.isEverLongPress = YES;
+            
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(certificateCollectionViewCellDelegateEventType:atIndex:)]) {
+                
+                // 进入编辑状态
+                [_delegate certificateCollectionViewCellDelegateEventType:TouchEventTypeEdit atIndex:self.model.index];
+            }
+            
+        } else {
+            // 不做任何处理
+        }
     }
+    
+    
     
     
     
