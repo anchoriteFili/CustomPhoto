@@ -14,6 +14,9 @@
 
 #endif /* PrefixHeader_pch */
 
+#import "DACircularProgressView.h"
+#import "UIImageView+WebCache.h"
+
 #pragma mark 颜色转换宏
 #define RGBA_COLOR(R, G, B, A) [UIColor colorWithRed:((R)/255.0f) green:((G)/255.0f) blue:((B)/255.0f) alpha:A]
 #define RGB_COLOR(R, G, B) [UIColor colorWithRed:((R)/255.0f) green:((G)/255.0f) blue:((B)/255.0f) alpha:1.0f]
