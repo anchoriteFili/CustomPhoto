@@ -101,7 +101,9 @@
     } else {
         
         // 这只各个item的状态
-        [cell updateCellWithModel:[self.modelArray objectAtIndex:indexPath.row-1]];
+        CertificateCellModel *model = [self.modelArray objectAtIndex:indexPath.row-1];
+        model.index = indexPath.row;
+        [cell updateCellWithModel:model];
     }
     
     return cell;

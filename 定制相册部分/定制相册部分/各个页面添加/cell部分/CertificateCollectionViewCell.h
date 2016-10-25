@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "CertificateCellModel.h"
 
+#pragma mark 添加两个代理方法
+@protocol CertificateCollectionViewCellDelegate <NSObject>
+
+#pragma mark 传出各种点击类型
+- (void)certificateCollectionViewCellDelegateEventType:(TouchEventType)touchEventType;
+
+@end
+
 static  NSString * identifierCell = @"certificateCollectionViewCell";
 
 @interface CertificateCollectionViewCell : UICollectionViewCell
@@ -21,6 +29,8 @@ static  NSString * identifierCell = @"certificateCollectionViewCell";
 
 @property (nonatomic,assign) BOOL isEverLongPress; // 判断上次是否是长手势点击，限制长手势事件多次触发
 @property (nonatomic,assign) BOOL isAlbum; // 判断是否是相册形式
+
+@property (nonatomic,assign) id<CertificateCollectionViewCellDelegate,NSObject> delegate; // 各种代理方法
 
 @property (nonatomic,retain) CertificateCellModel *model;
 

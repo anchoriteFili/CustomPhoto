@@ -8,6 +8,30 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, TouchEventType) {
+    
+    /**
+     创建点击时触发的各个事件的判断
+     大图
+     1. 长按手势，长按大图进入编辑状态
+     2. 点击手势，点击撤销编辑状态
+     3. 点击手势，点击进入浏览状态
+     
+     小图
+     1. 进入选择状态
+     2. 解除选择状态
+     3. 编辑删除相关item事件
+     总共有六种触发事件
+     */
+    TouchEventTypeEdit, // 进入编辑状态
+    TouchEventTypeCancalEdit, // 取消编辑状态
+    TouchEventTypeBrowse, // 进入浏览页
+    TouchEventTypeSelect, // 进入选择状态
+    TouchEventTypeDeselect, // 解除选择状态
+    TouchEventTypeDelete // 编辑删除item事件
+};
+
+
 // cell右上角小图片显示类型
 typedef NS_ENUM(NSInteger, CertificateCellImageType) {
     CertificateCellImageEmpty, // 没有任何图片
@@ -30,6 +54,7 @@ typedef NS_ENUM(NSInteger, CertificateCellType) {
 
 @property (nonatomic,assign) CertificateCellImageType cellImageType; // 本cell右上角显示类型
 
+@property (nonatomic,assign) NSInteger index; // 判断是collectionView的第几个item
 
 
 @end
