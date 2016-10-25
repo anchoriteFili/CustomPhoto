@@ -132,7 +132,7 @@
         
         // 这只各个item的状态
         CertificateCellModel *model = [self.modelArray objectAtIndex:indexPath.row-1];
-        model.index = indexPath.row;
+        model.index = indexPath.row-1; // 数据在数组中的位置
         [cell updateCellWithModel:model];
     }
     
@@ -176,24 +176,36 @@
         }
             
         case TouchEventTypeBrowse: // 进入浏览页面
+            NSLog(@"进入浏览页面");
             
             break;
             
-        case TouchEventTypeDelete: // 删除触发事件
+        case TouchEventTypeDelete: { // 删除触发事件
             
+            [self.modelArray removeObjectAtIndex:index];
+            [self.collectionView reloadData];
             break;
+        }
             
-        case TouchEventTypeSelect: // 选中状态
+        case TouchEventTypeSelect: { // 选中状态
             
+            CertificateCellModel *model = [self.modelArray objectAtIndex:index];
+            model.cellImageType = CertificateCellImageSelect;
+            [self.collectionView reloadData];
             break;
+        }
             
-        case TouchEventTypeDeselect: // 不选中状态
-            
+        case TouchEventTypeDeselect: {// 不选中状态
+            CertificateCellModel *model = [self.modelArray objectAtIndex:index];
+            model.cellImageType = CertificateCellImageDeselect;
+            [self.collectionView reloadData];
             break;
+        }
             
-        case TouchEventTypePhoto: // 进入拍照
+        case TouchEventTypePhoto: { // 进入拍照
             NSLog(@"拍照状态");
             break;
+        }
             
         default:
             break;

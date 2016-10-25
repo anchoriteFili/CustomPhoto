@@ -56,7 +56,7 @@ typedef NS_ENUM(NSInteger, CertificateCellType) {
 
 @property (nonatomic,assign) CertificateCellImageType cellImageType; // 本cell右上角显示类型
 
-@property (nonatomic,assign) NSInteger index; // 判断是collectionView的第几个item
+@property (nonatomic,assign) NSInteger index; // 显示model在数据中的位置
 
 
 @end

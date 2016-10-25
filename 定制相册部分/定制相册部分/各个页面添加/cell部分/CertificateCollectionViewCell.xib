@@ -22,9 +22,13 @@
                             <outletCollection property="gestureRecognizers" destination="fvs-AF-W2r" appends="YES" id="YL8-oL-Las"/>
                         </connections>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGr-j3-7LG">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGr-j3-7LG">
                         <frame key="frameInset" minY="10" width="20" height="20" maxX="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="YBv-Ss-MlV" appends="YES" id="XUb-oe-U5e"/>
+                        </connections>
                     </imageView>
                 </subviews>
             </view>
@@ -52,5 +56,10 @@
                 <action selector="backImageViewLongPressClick:" destination="gTV-IL-0wX" id="7r4-d9-9tz"/>
             </connections>
         </pongPressGestureRecognizer>
+        <tapGestureRecognizer id="YBv-Ss-MlV">
+            <connections>
+                <action selector="certificateImageViewTapClick:" destination="gTV-IL-0wX" id="apJ-Zd-6z0"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
 </document>

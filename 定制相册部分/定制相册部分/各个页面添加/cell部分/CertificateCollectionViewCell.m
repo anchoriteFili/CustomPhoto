@@ -143,4 +143,59 @@
 
 }
 
+#pragma mark 右上角小图片的点击事件
+- (IBAction)certificateImageViewTapClick:(UITapGestureRecognizer *)sender {
+    
+    /**
+     右上角点击事件总共有三个
+     1. 编辑时删除事件
+     2. 选中状态
+     3. 非选中状态
+     */
+    
+    switch (self.model.cellImageType) {
+        case CertificateCellImageDelete: {
+            // 如果删除按钮状态的时候，直接进行删除
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(certificateCollectionViewCellDelegateEventType:atIndex:)]) {
+                
+                // 进入编辑状态
+                [_delegate certificateCollectionViewCellDelegateEventType:TouchEventTypeDelete atIndex:self.model.index];
+            }
+            break;
+        }
+            
+        case CertificateCellImageSelect: {
+            // 如果是选中状态，点击进入非选中状态
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(certificateCollectionViewCellDelegateEventType:atIndex:)]) {
+                
+                // 进入编辑状态
+                [_delegate certificateCollectionViewCellDelegateEventType:TouchEventTypeDeselect atIndex:self.model.index];
+            }
+            break;
+        }
+            
+        case CertificateCellImageDeselect: {
+            // 如果是空圈儿非选中状态，点击进入选中状态
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(certificateCollectionViewCellDelegateEventType:atIndex:)]) {
+                
+                // 进入编辑状态
+                [_delegate certificateCollectionViewCellDelegateEventType:TouchEventTypeSelect atIndex:self.model.index];
+            }
+            break;
+        }
+            
+        default:
+            break;
+    }
+    
+    
+    
+    
+}
+
+
+
 @end
