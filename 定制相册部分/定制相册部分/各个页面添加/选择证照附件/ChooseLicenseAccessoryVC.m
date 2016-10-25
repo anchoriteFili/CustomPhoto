@@ -86,7 +86,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return self.modelArray.count+1;
+    return self.modelArray.count;
     
 }
 
@@ -96,17 +96,27 @@
     
     cell.delegate = self;
     
-    if (indexPath.row == 0) {
-        
-        cell.certificateBackImageView.image = [UIImage imageNamed:@"CertificateCell_photo"];
-        
-    } else {
-        
-        // 这只各个item的状态
-        CertificateCellModel *model = [self.modelArray objectAtIndex:indexPath.row-1];
-        model.index = indexPath.row;
-        [cell updateCellWithModel:model];
-    }
+//    if (indexPath.row == 0) {
+//        
+//        CertificateCellModel *model = [[CertificateCellModel alloc] init];
+//        model.isAlbum = NO;
+//        model.cellImageType = CertificateCellImageEmpty;
+//        model.imageUrl = @"";
+//        
+//        [cell updateCellWithModel:model];
+//        
+//        cell.certificateBackImageView.userInteractionEnabled = YES;
+//        cell.certificateImageView.userInteractionEnabled = YES;
+//        
+////        cell.certificateBackImageView.image = [UIImage imageNamed:@"CertificateCell_photo"];
+//    } else {
+//        
+//    }
+    
+    // 这只各个item的状态
+    CertificateCellModel *model = [self.modelArray objectAtIndex:indexPath.row];
+    model.index = indexPath.row;
+    [cell updateCellWithModel:model];
     
     return cell;
 }
@@ -119,13 +129,30 @@
      */
     
     switch (touchEventType) {
-        case TouchEventTypeEdit: // 进入编辑状态
+        case TouchEventTypeEdit: { // 进入编辑状态
+            
+            for (int i = 0; i < self.modelArray.count; i ++) {
+                
+                CertificateCellModel *model = [self.modelArray objectAtIndex:i];
+                model.cellImageType = CertificateCellImageDelete;
+            }
+            [self.collectionView reloadData];
+            
+            break;
+        }
+
+        case TouchEventTypeCancalEdit: { // 取消编辑状态
+            
+            for (int i = 0; i < self.modelArray.count; i ++) {
+                
+                CertificateCellModel *model = [self.modelArray objectAtIndex:i];
+                model.cellImageType = CertificateCellImageEmpty;
+            }
+            [self.collectionView reloadData];
             
             break;
             
-        case TouchEventTypeCancalEdit: // 取消编辑状态
-            
-            break;
+        }
             
         case TouchEventTypeBrowse: // 进入浏览页面
             

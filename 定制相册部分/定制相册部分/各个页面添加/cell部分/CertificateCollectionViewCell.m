@@ -33,6 +33,7 @@
 - (void)updateCellWithModel:(CertificateCellModel *)model {
     
     self.model = model;
+    self.isEverLongPress = NO;
     
     // 大背景图片的赋值
     [self.certificateBackImageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
@@ -66,6 +67,10 @@
 #pragma mark 大背景图片的点击事件
 - (IBAction)backImageViewTapClick:(UITapGestureRecognizer *)sender {
     
+    NSLog(@"self.isEverLongPress ==== %d",self.isEverLongPress);
+    
+    self.isEverLongPress = !self.isEverLongPress; // 普通点击手势
+    
     /**
      非相册状态
      基本逻辑，如果是长按手势状态，点击解除长按手势状态，如果不是长按手势状态，直接进入预览页面
@@ -83,23 +88,30 @@
         // 如果是非相册状态
         
         if (self.isEverLongPress) {
-            self.isEverLongPress = NO; // 普通点击手势
+            
             // 启动取消编辑状态代理
-            self.certificateImageView.image = [UIImage imageNamed:@""];
-            
-            
+            if (_delegate && [_delegate respondsToSelector:@selector(certificateCollectionViewCellDelegateEventType:atIndex:)]) {
+                
+                // 进入编辑状态
+                [_delegate certificateCollectionViewCellDelegateEventType:TouchEventTypeCancalEdit atIndex:self.model.index];
+            }
+            NSLog(@"点击1");
         } else {
             // 启用进入预览页面代理方法
+            
+            NSLog(@"点击2");
         }
     }
     
     
     
-    NSLog(@"点击");
+    
 }
 
 #pragma mark 大背景图片的长按手势
 - (IBAction)backImageViewLongPressClick:(UILongPressGestureRecognizer *)sender {
+    
+    NSLog(@"self.isEverLongPress ==== %d",self.isEverLongPress);
     
     /**
      
@@ -113,7 +125,6 @@
         if (!self.isEverLongPress) {
             // 启用进入编辑状态点击代理方法
             NSLog(@"长按");
-            self.isEverLongPress = YES;
             
             
             if (_delegate && [_delegate respondsToSelector:@selector(certificateCollectionViewCellDelegateEventType:atIndex:)]) {
@@ -122,21 +133,12 @@
                 [_delegate certificateCollectionViewCellDelegateEventType:TouchEventTypeEdit atIndex:self.model.index];
             }
             
+            self.isEverLongPress = !self.isEverLongPress;
         } else {
             // 不做任何处理
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
 }
-
-
-
 
 @end
