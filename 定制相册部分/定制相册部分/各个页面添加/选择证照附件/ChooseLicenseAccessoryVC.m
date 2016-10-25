@@ -7,7 +7,8 @@
 //
 
 #import "ChooseLicenseAccessoryVC.h"
-#import "CertificateCollectionViewCell.h"
+#import "CertificateCollectionViewCell.h" // 自定义cell
+#import "CustomPhotoAlbum.h" // 自定义相册
 
 @interface ChooseLicenseAccessoryVC ()<UICollectionViewDataSource,UICollectionViewDelegate,CertificateCollectionViewCellDelegate>
 
@@ -76,13 +77,6 @@
     
 }
 
-#pragma mark modelArray的懒加载
-- (NSMutableArray *)modelArray {
-    if (!_modelArray) {
-        _modelArray = [NSMutableArray array];
-    }
-    return _modelArray;
-}
 
 
 #pragma mark ****************** collectionView代理部分 begin ******************
@@ -200,12 +194,22 @@
             
         case TouchEventTypePhoto: { // 进入拍照
             NSLog(@"拍照状态");
+            CustomPhotoAlbum *customPhotoAlbum = [[CustomPhotoAlbum alloc] init];
+            [self presentViewController:customPhotoAlbum animated:YES completion:nil];
             break;
         }
             
         default:
             break;
     }
+}
+
+#pragma mark modelArray的懒加载
+- (NSMutableArray *)modelArray {
+    if (!_modelArray) {
+        _modelArray = [NSMutableArray array];
+    }
+    return _modelArray;
 }
 
 
@@ -238,6 +242,8 @@
     /**
      保存按钮中可以进行添加操作
      */
+    
+    
     
 }
 
