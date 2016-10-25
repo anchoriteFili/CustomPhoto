@@ -47,7 +47,7 @@
                 <action selector="backImageViewTapClick:" destination="gTV-IL-0wX" id="zDH-Zt-fQh"/>
             </connections>
         </tapGestureRecognizer>
-        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="fvs-AF-W2r">
+        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="fvs-AF-W2r">
             <connections>
                 <action selector="backImageViewLongPressClick:" destination="gTV-IL-0wX" id="7r4-d9-9tz"/>
             </connections>

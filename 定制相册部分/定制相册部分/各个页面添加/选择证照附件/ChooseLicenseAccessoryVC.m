@@ -13,7 +13,7 @@
 
 @property (nonatomic,retain) UICollectionView *collectionView; // 创建collectionView
 
-@property (nonatomic,retain) NSMutableArray *imageUrlArray; // 用于存储所有图片链接的数组
+@property (nonatomic,retain) NSMutableArray *modelArray; // model数据数组
 
 @end
 
@@ -57,10 +57,27 @@
     [self.view addSubview:self.collectionView];
     
     
-#pragma mark 对所有链接进行赋值
-    self.imageUrlArray = [NSMutableArray arrayWithObjects:@"http://img.ivsky.com/img/bizhi/slides/201511/11/december.jpg",@"http://h.hiphotos.baidu.com/image/pic/item/267f9e2f0708283890f56e02bb99a9014c08f128.jpg",@"http://a.hiphotos.baidu.com/image/pic/item/b219ebc4b74543a9fa0c4bc11c178a82b90114a3.jpg",@"http://c.hiphotos.baidu.com/image/pic/item/024f78f0f736afc33b1dbe65b119ebc4b7451298.jpg",@"http://d.hiphotos.baidu.com/image/pic/item/77094b36acaf2edd481ef6e78f1001e9380193d5.jpg", nil];
+    NSArray *imageUrlArray = @[@"http://img.ivsky.com/img/bizhi/slides/201511/11/december.jpg",@"http://h.hiphotos.baidu.com/image/pic/item/267f9e2f0708283890f56e02bb99a9014c08f128.jpg",@"http://a.hiphotos.baidu.com/image/pic/item/b219ebc4b74543a9fa0c4bc11c178a82b90114a3.jpg",@"http://c.hiphotos.baidu.com/image/pic/item/024f78f0f736afc33b1dbe65b119ebc4b7451298.jpg",@"http://d.hiphotos.baidu.com/image/pic/item/77094b36acaf2edd481ef6e78f1001e9380193d5.jpg"];
     
-   
+    
+#pragma mark 初始化数据
+    for (int i = 0; i < imageUrlArray.count; i ++) {
+        
+        CertificateCellModel *model = [[CertificateCellModel alloc] init];
+        model.isAlbum = NO;
+        model.cellImageType = CertificateCellImageEmpty;
+        model.imageUrl = [imageUrlArray objectAtIndex:i];
+        [self.modelArray addObject:model];
+    }
+    
+}
+
+#pragma mark modelArray的懒加载
+- (NSMutableArray *)modelArray {
+    if (!_modelArray) {
+        _modelArray = [NSMutableArray array];
+    }
+    return _modelArray;
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -69,7 +86,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return self.imageUrlArray.count+1;
+    return self.modelArray.count+1;
     
 }
 
@@ -84,7 +101,7 @@
     } else {
         
         // 这只各个item的状态
-        [cell updateCellWithImageUrl:[self.imageUrlArray objectAtIndex:indexPath.row-1] andCellImageType:CertificateCellImageEmpty];
+        [cell updateCellWithModel:[self.modelArray objectAtIndex:indexPath.row-1]];
     }
     
     return cell;

@@ -7,14 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-// cell右上角小图片显示类型
-typedef NS_ENUM(NSInteger, CertificateCellImageType) {
-    CertificateCellImageEmpty, // 没有任何图片
-    CertificateCellImageDeselect, // 显示正常的空圈儿未选择图片
-    CertificateCellImageSelect, // 显示对号小图片
-    CertificateCellImageDelete // 显示删除红杠小图片
-};
+#import "CertificateCellModel.h"
 
 static  NSString * identifierCell = @"certificateCollectionViewCell";
 
@@ -27,8 +20,11 @@ static  NSString * identifierCell = @"certificateCollectionViewCell";
 @property (weak, nonatomic) IBOutlet UIImageView *certificateImageView; // 右上角小图片
 
 @property (nonatomic,assign) BOOL isEverLongPress; // 判断上次是否是长手势点击，限制长手势事件多次触发
+@property (nonatomic,assign) BOOL isAlbum; // 判断是否是相册形式
 
-- (void)updateCellWithImageUrl:(NSString *)imageUrl andCellImageType:(CertificateCellImageType)cellImageType;
+@property (nonatomic,retain) CertificateCellModel *model;
+
+- (void)updateCellWithModel:(CertificateCellModel *)model;
 
 
 @end

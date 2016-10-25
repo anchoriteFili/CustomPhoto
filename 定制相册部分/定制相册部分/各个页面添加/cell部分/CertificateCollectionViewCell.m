@@ -29,62 +29,69 @@
     return self;
 }
 
-- (void)updateCellWithImageUrl:(NSString *)imageUrl andCellImageType:(CertificateCellImageType)cellImageType {
+#pragma mark 更新cell中所有的数据
+- (void)updateCellWithModel:(CertificateCellModel *)model {
     
-    // button图片赋值
-    [self.certificateBackImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-        
-        
+    self.model = model;
+    
+    // 大背景图片的赋值
+    [self.certificateBackImageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
     }];
     
     // 状态图片赋值
-    switch (cellImageType) {
-        case CertificateCellImageEmpty:
+    switch (model.cellImageType) {
+        case CertificateCellImageEmpty: // 没有图片状态
             self.certificateImageView.image = [UIImage imageNamed:@""];
             break;
             
-        case CertificateCellImageDeselect:
+        case CertificateCellImageDelete: // 编辑时的删除图片状态
+            self.certificateImageView.image = [UIImage imageNamed:@"CertificateCell_delete"];
+            break;
+            
+        case CertificateCellImageDeselect: // 空圆圈没有选择状态
             self.certificateImageView.image = [UIImage imageNamed:@"CertificateCell_deselect"];
             break;
             
-        case CertificateCellImageSelect:
+        case CertificateCellImageSelect: // 打对号的选择状态
             self.certificateImageView.image = [UIImage imageNamed:@"CertificateCell_select"];
-            break;
-            
-        case CertificateCellImageDelete:
-            self.certificateImageView.image = [UIImage imageNamed:@"CertificateCell_delete"];
             break;
             
         default:
             break;
     }
+    
 }
+
 
 #pragma mark 大背景图片的点击事件
 - (IBAction)backImageViewTapClick:(UITapGestureRecognizer *)sender {
     
     /**
+     非相册状态
      基本逻辑，如果是长按手势状态，点击解除长按手势状态，如果不是长按手势状态，直接进入预览页面
+     
+     相册状态
+     点击一次进入选择状态，再次点击进入非选择状态，但是，这个有相应的代理
      */
     
-    if (self.isEverLongPress) {
-        self.isEverLongPress = NO; // 普通点击手势
-        // 启动取消编辑状态代理
-        self.certificateImageView.image = [UIImage imageNamed:@""];
+    if (self.model.isAlbum) {
+        // 如果是相册状态，那么，需要做的东西是什么？
         
         
     } else {
-        // 启用进入预览页面代理方法
         
+        // 如果是非相册状态
         
+        if (self.isEverLongPress) {
+            self.isEverLongPress = NO; // 普通点击手势
+            // 启动取消编辑状态代理
+            self.certificateImageView.image = [UIImage imageNamed:@""];
+            
+            
+        } else {
+            // 启用进入预览页面代理方法
+        }
     }
-    
-    
-    
-    
-    
-    
-    
     
     
     

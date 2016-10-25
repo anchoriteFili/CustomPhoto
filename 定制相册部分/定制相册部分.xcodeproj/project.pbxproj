@@ -22,6 +22,7 @@
 		FA39FFEF1DBF058B00493569 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFDE1DBF058B00493569 /* UIImageView+HighlightedWebCache.m */; };
 		FA39FFF01DBF058B00493569 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFE01DBF058B00493569 /* UIImageView+WebCache.m */; };
 		FA39FFF11DBF058B00493569 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFE21DBF058B00493569 /* UIView+WebCacheOperation.m */; };
+		FA39FFF41DBF343200493569 /* CertificateCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFF31DBF343200493569 /* CertificateCellModel.m */; };
 		FAC107EA1DBDFA2A00680017 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107E91DBDFA2A00680017 /* main.m */; };
 		FAC107ED1DBDFA2A00680017 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EC1DBDFA2A00680017 /* AppDelegate.m */; };
 		FAC107F01DBDFA2A00680017 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EF1DBDFA2A00680017 /* ViewController.m */; };
@@ -84,6 +85,8 @@
 		FA39FFE01DBF058B00493569 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		FA39FFE11DBF058B00493569 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		FA39FFE21DBF058B00493569 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
+		FA39FFF21DBF343200493569 /* CertificateCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateCellModel.h; sourceTree = "<group>"; };
+		FA39FFF31DBF343200493569 /* CertificateCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateCellModel.m; sourceTree = "<group>"; };
 		FAC107E51DBDFA2A00680017 /* 定制相册部分.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "定制相册部分.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC107E91DBDFA2A00680017 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAC107EB1DBDFA2A00680017 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -210,6 +213,8 @@
 		FAC107E71DBDFA2A00680017 /* 定制相册部分 */ = {
 			isa = PBXGroup;
 			children = (
+				FA39FFF21DBF343200493569 /* CertificateCellModel.h */,
+				FA39FFF31DBF343200493569 /* CertificateCellModel.m */,
 				FA39FFC11DBF058A00493569 /* Third */,
 				FAC108231DBE026300680017 /* 各个页面添加 */,
 				FAC107EB1DBDFA2A00680017 /* AppDelegate.h */,
@@ -468,6 +473,7 @@
 				FA39FFE41DBF058B00493569 /* NSData+ImageContentType.m in Sources */,
 				FAC1082B1DBE027700680017 /* ChooseLicenseAccessoryVC.m in Sources */,
 				FAC107EA1DBDFA2A00680017 /* main.m in Sources */,
+				FA39FFF41DBF343200493569 /* CertificateCellModel.m in Sources */,
 				FA39FFE51DBF058B00493569 /* SDImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
