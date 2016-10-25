@@ -52,7 +52,7 @@
     
      [self.collectionView registerClass:[CertificateCollectionViewCell class] forCellWithReuseIdentifier:identifierCell];
     
-    self.collectionView.backgroundColor  = [UIColor whiteColor];
+    self.collectionView.backgroundColor  = RGB_COLOR(241, 241, 246);
     
     [self.view addSubview:self.collectionView];
     
@@ -69,7 +69,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 20;
+    return self.imageUrlArray.count+1;
     
 }
 
@@ -77,8 +77,18 @@
     
     CertificateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierCell forIndexPath:indexPath];
     
+    if (indexPath.row == 0) {
+        [cell.certificateCellButton setImage:[UIImage imageNamed:@"CertificateCell_photo"] forState:UIControlStateNormal];
+        
+        
+        
+    } else {
+        
+        // 这只各个item的状态
+        [cell updateCellWithImageUrl:[self.imageUrlArray objectAtIndex:indexPath.row-1] andCellImageType:CertificateCellImageDeselect];
+        
+    }
     
-
     return cell;
 }
 

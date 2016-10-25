@@ -31,4 +31,38 @@
     return self;
 }
 
+- (void)updateCellWithImageUrl:(NSString *)imageUrl andCellImageType:(CertificateCellImageType)cellImageType {
+    
+    // button图片赋值
+    [self.certificateCellButton.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        
+        [self.certificateCellButton setImage:image forState:UIControlStateNormal];
+        
+    }];
+    
+    // 状态图片赋值
+    switch (cellImageType) {
+        case CertificateCellImageEmpty:
+            self.certificateImageView.image = [UIImage imageNamed:@""];
+            break;
+            
+        case CertificateCellImageDeselect:
+            self.certificateImageView.image = [UIImage imageNamed:@"CertificateCell_deselect"];
+            break;
+            
+        case CertificateCellImageSelect:
+            self.certificateImageView.image = [UIImage imageNamed:@"CertificateCell_select"];
+            break;
+            
+        case CertificateCellImageDelete:
+            self.certificateImageView.image = [UIImage imageNamed:@"CertificateCell_delete"];
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+}
+
 @end
