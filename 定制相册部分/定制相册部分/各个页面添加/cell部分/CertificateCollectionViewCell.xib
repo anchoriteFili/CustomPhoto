@@ -23,7 +23,7 @@
                         </connections>
                     </imageView>
                     <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGr-j3-7LG">
-                        <frame key="frameInset" minY="10" width="20" height="20" maxX="5"/>
+                        <frame key="frameInset" minY="5.5" width="21" height="21" maxX="3.5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <gestureRecognizers/>
                         <connections>

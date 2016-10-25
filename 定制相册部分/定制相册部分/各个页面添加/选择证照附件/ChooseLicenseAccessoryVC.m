@@ -13,6 +13,8 @@
 
 @property (nonatomic,retain) UICollectionView *collectionView; // 创建collectionView
 
+@property (nonatomic,strong) UIView *bottomSaveView; // 承载底部保存按钮的view
+
 @property (nonatomic,retain) NSMutableArray *modelArray; // model数据数组
 
 @end
@@ -22,7 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
     
 #pragma mark 初始化collectionView
     //    1.创建布局管理类---flowLayout:流式布局
@@ -41,25 +42,25 @@
     //    1.5设置整个section的上下左右的距离
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 10);
     //    1.6
-//    layout.headerReferenceSize = CGSizeMake(320, 10);
     layout.footerReferenceSize = CGSizeMake(WIDTH, 23);
     
     //    2.根据布局管理类创建collectionView
-    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-GETHEIGHT(self.bottomSaveView)) collectionViewLayout:layout];
     
     //    3.设置数据源，代理
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-     [self.collectionView registerClass:[CertificateCollectionViewCell class] forCellWithReuseIdentifier:identifierCell];
-    
     self.collectionView.backgroundColor  = RGB_COLOR(241, 241, 246);
-    
-    [self.view addSubview:self.collectionView];
     
     //    创建自定义头view--ReusableView
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"reuserFooter"];
+    // 重用cell部分
+    [self.collectionView registerClass:[CertificateCollectionViewCell class] forCellWithReuseIdentifier:identifierCell];
     
+    [self.view addSubview:self.collectionView]; // 添加collectionView
+    
+    [self.view addSubview:self.bottomSaveView]; // 添加底部保存按钮的view
     
 #pragma mark 初始化数据
     NSArray *imageUrlArray = @[@"http://img.ivsky.com/img/bizhi/slides/201511/11/december.jpg",@"http://h.hiphotos.baidu.com/image/pic/item/267f9e2f0708283890f56e02bb99a9014c08f128.jpg",@"http://a.hiphotos.baidu.com/image/pic/item/b219ebc4b74543a9fa0c4bc11c178a82b90114a3.jpg",@"http://c.hiphotos.baidu.com/image/pic/item/024f78f0f736afc33b1dbe65b119ebc4b7451298.jpg",@"http://d.hiphotos.baidu.com/image/pic/item/77094b36acaf2edd481ef6e78f1001e9380193d5.jpg"];
@@ -86,8 +87,7 @@
 
 #pragma mark ****************** collectionView代理部分 begin ******************
 
-// 设置headerView和footerView的
-
+// 设置footerView
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     UICollectionReusableView *reuserableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"reuserFooter" forIndexPath:indexPath];
     
@@ -100,7 +100,6 @@
 
     return reuserableView;
 }
-
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
@@ -207,6 +206,17 @@
         default:
             break;
     }
+}
+
+
+#pragma mark 底部保存按钮view懒加载
+- (UIView *)bottomSaveView {
+    if (!_bottomSaveView) {
+        _bottomSaveView = [[UIView alloc] initWithFrame:CGRectMake(0, HEIGHT-65, WIDTH, 65)];
+        
+        _bottomSaveView.backgroundColor = [UIColor whiteColor];
+    }
+    return _bottomSaveView;
 }
 
 - (void)didReceiveMemoryWarning {
