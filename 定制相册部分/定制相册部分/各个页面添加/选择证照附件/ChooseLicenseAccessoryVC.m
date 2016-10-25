@@ -69,7 +69,7 @@
         
         CertificateCellModel *model = [[CertificateCellModel alloc] init];
         model.isAlbum = NO;
-        model.cellImageType = CertificateCellImageDeselect;
+        model.cellImageType = CertificateCellImageEmpty;
         model.imageUrl = [imageUrlArray objectAtIndex:i];
         [self.modelArray addObject:model];
     }

@@ -23,6 +23,8 @@
 		FA39FFF01DBF058B00493569 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFE01DBF058B00493569 /* UIImageView+WebCache.m */; };
 		FA39FFF11DBF058B00493569 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFE21DBF058B00493569 /* UIView+WebCacheOperation.m */; };
 		FA39FFF41DBF343200493569 /* CertificateCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFF31DBF343200493569 /* CertificateCellModel.m */; };
+		FA39FFF81DBF795200493569 /* CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFF61DBF795100493569 /* CustomPhotoAlbum.m */; };
+		FA39FFF91DBF795200493569 /* CustomPhotoAlbum.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA39FFF71DBF795100493569 /* CustomPhotoAlbum.xib */; };
 		FAC107EA1DBDFA2A00680017 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107E91DBDFA2A00680017 /* main.m */; };
 		FAC107ED1DBDFA2A00680017 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EC1DBDFA2A00680017 /* AppDelegate.m */; };
 		FAC107F01DBDFA2A00680017 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EF1DBDFA2A00680017 /* ViewController.m */; };
@@ -87,6 +89,9 @@
 		FA39FFE21DBF058B00493569 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		FA39FFF21DBF343200493569 /* CertificateCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateCellModel.h; sourceTree = "<group>"; };
 		FA39FFF31DBF343200493569 /* CertificateCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateCellModel.m; sourceTree = "<group>"; };
+		FA39FFF51DBF795100493569 /* CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPhotoAlbum.h; sourceTree = "<group>"; };
+		FA39FFF61DBF795100493569 /* CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPhotoAlbum.m; sourceTree = "<group>"; };
+		FA39FFF71DBF795100493569 /* CustomPhotoAlbum.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPhotoAlbum.xib; sourceTree = "<group>"; };
 		FAC107E51DBDFA2A00680017 /* 定制相册部分.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "定制相册部分.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC107E91DBDFA2A00680017 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAC107EB1DBDFA2A00680017 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -287,6 +292,9 @@
 		FAC108261DBE026300680017 /* 相机胶卷 */ = {
 			isa = PBXGroup;
 			children = (
+				FA39FFF51DBF795100493569 /* CustomPhotoAlbum.h */,
+				FA39FFF61DBF795100493569 /* CustomPhotoAlbum.m */,
+				FA39FFF71DBF795100493569 /* CustomPhotoAlbum.xib */,
 			);
 			path = "相机胶卷";
 			sourceTree = "<group>";
@@ -430,6 +438,7 @@
 				FAC107F81DBDFA2A00680017 /* LaunchScreen.storyboard in Resources */,
 				FAC107F51DBDFA2A00680017 /* Assets.xcassets in Resources */,
 				FAC107F31DBDFA2A00680017 /* Main.storyboard in Resources */,
+				FA39FFF91DBF795200493569 /* CustomPhotoAlbum.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA39FFEF1DBF058B00493569 /* UIImageView+HighlightedWebCache.m in Sources */,
+				FA39FFF81DBF795200493569 /* CustomPhotoAlbum.m in Sources */,
 				FAC108361DBE0F7900680017 /* CertificateCollectionViewCell.m in Sources */,
 				FA39FFEB1DBF058B00493569 /* SDWebImagePrefetcher.m in Sources */,
 				FA39FFE31DBF058B00493569 /* DACircularProgressView.m in Sources */,
