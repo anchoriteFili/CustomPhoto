@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     // Initialization code
     [super awakeFromNib];
+    
+    self.certificateCellButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 - (id)initWithFrame:(CGRect)frame

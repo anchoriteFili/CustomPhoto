@@ -15,8 +15,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDx-kl-tjg">
-                        <state key="normal" backgroundImage="cellBackImage"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDx-kl-tjg">
+                        <state key="normal" image="CertificateCell_delete"/>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGr-j3-7LG">
                         <frame key="frameInset" minY="10" width="20" height="20" maxX="5"/>
@@ -31,10 +31,14 @@
                 <constraint firstItem="kDx-kl-tjg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="soc-ts-goY"/>
             </constraints>
             <size key="customSize" width="156" height="121"/>
+            <connections>
+                <outlet property="certificateCellButton" destination="kDx-kl-tjg" id="cQR-Gx-zJ1"/>
+                <outlet property="certificateImageView" destination="KGr-j3-7LG" id="uPM-xW-dbZ"/>
+            </connections>
             <point key="canvasLocation" x="-30" y="42.5"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="cellBackImage" width="107" height="105"/>
+        <image name="CertificateCell_delete" width="42" height="42"/>
     </resources>
 </document>

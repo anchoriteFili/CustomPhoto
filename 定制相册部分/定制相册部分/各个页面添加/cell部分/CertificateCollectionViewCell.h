@@ -21,4 +21,9 @@ static  NSString * identifierCell = @"certificateCollectionViewCell";
 
 @property (nonatomic,assign) CertificateCellImageType cellImageType; // 本cell显示类型
 
+@property (weak, nonatomic) IBOutlet UIButton *certificateCellButton; // 背景大button
+
+@property (weak, nonatomic) IBOutlet UIImageView *certificateImageView; // 右上角小图片
+
+
 @end

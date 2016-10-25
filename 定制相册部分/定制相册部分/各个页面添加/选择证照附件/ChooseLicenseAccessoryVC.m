@@ -13,6 +13,8 @@
 
 @property (nonatomic,retain) UICollectionView *collectionView; // 创建collectionView
 
+@property (nonatomic,retain) NSMutableArray *imageUrlArray; // 用于存储所有图片链接的数组
+
 @end
 
 @implementation ChooseLicenseAccessoryVC
@@ -21,6 +23,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    
+#pragma mark 初始化collectionView
     //    1.创建布局管理类---flowLayout:流式布局
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     
@@ -51,6 +55,10 @@
     self.collectionView.backgroundColor  = [UIColor whiteColor];
     
     [self.view addSubview:self.collectionView];
+    
+    
+#pragma mark 对所有链接进行赋值
+    self.imageUrlArray = [NSMutableArray arrayWithObjects:@"http://img.ivsky.com/img/bizhi/slides/201511/11/december.jpg",@"http://h.hiphotos.baidu.com/image/pic/item/267f9e2f0708283890f56e02bb99a9014c08f128.jpg",@"http://a.hiphotos.baidu.com/image/pic/item/b219ebc4b74543a9fa0c4bc11c178a82b90114a3.jpg",@"http://c.hiphotos.baidu.com/image/pic/item/024f78f0f736afc33b1dbe65b119ebc4b7451298.jpg",@"http://d.hiphotos.baidu.com/image/pic/item/77094b36acaf2edd481ef6e78f1001e9380193d5.jpg", nil];
     
    
 }

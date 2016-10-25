@@ -23,7 +23,11 @@
 
 - (IBAction)ChooseLicenseAccessoryVCPush:(UIButton *)sender {
     
-    [self.navigationController pushViewController:[[ChooseLicenseAccessoryVC alloc] init] animated:YES];
+    
+    ChooseLicenseAccessoryVC *chooseLicenseAccessoryVC = [[ChooseLicenseAccessoryVC alloc] init];
+    chooseLicenseAccessoryVC.title = @"选择证照附件";
+    
+    [self.navigationController pushViewController:chooseLicenseAccessoryVC animated:YES];
 }
 
 
