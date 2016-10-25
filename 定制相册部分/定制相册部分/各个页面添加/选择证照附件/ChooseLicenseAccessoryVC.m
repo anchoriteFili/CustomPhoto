@@ -86,7 +86,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return self.modelArray.count;
+    return self.modelArray.count+1;
     
 }
 
@@ -106,7 +106,7 @@
     } else {
         
         // 这只各个item的状态
-        CertificateCellModel *model = [self.modelArray objectAtIndex:indexPath.row];
+        CertificateCellModel *model = [self.modelArray objectAtIndex:indexPath.row-1];
         model.index = indexPath.row;
         [cell updateCellWithModel:model];
     }

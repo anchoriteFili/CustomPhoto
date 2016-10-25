@@ -43,8 +43,6 @@
         }];
     }
     
-    
-    
     // 状态图片赋值
     switch (model.cellImageType) {
         case CertificateCellImageEmpty: // 没有图片状态
@@ -67,7 +65,6 @@
             self.certificateImageView.image = [UIImage imageNamed:@""];
             break;
     }
-    
 }
 
 
