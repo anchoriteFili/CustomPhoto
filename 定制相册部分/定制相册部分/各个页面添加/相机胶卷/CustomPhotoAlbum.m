@@ -187,6 +187,34 @@
 }
 
 
+#pragma mark *************** 页面中自定义按钮点击事件 begin ***************
+#pragma mark 取消按钮点击事件
+- (IBAction)cancalButtonClick:(UIButton *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark 相机胶卷点击事件
+- (IBAction)photoAlbumTypeClick:(UIButton *)sender {
+    
+    
+    
+    
+}
+
+#pragma mark 确定按钮点击事件
+- (IBAction)ensureButtonClick:(UIButton *)sender {
+}
+
+#pragma mark 预览按钮点击事件
+- (IBAction)previewButtonClick:(UIButton *)sender {
+}
+
+
+
+#pragma mark *************** 页面中自定义按钮点击事件 end ***************
+
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
