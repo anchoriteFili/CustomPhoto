@@ -39,9 +39,10 @@
     //    1.4设置cell的大小
     layout.itemSize = CGSizeMake((WIDTH-40)/3, (WIDTH-40)/3);
     //    1.5设置整个section的上下左右的距离
-    layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    layout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 10);
     //    1.6
 //    layout.headerReferenceSize = CGSizeMake(320, 10);
+    layout.footerReferenceSize = CGSizeMake(WIDTH, 23);
     
     //    2.根据布局管理类创建collectionView
     self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
@@ -56,11 +57,16 @@
     
     [self.view addSubview:self.collectionView];
     
+    //    创建自定义头view--ReusableView
+    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"reuserFooter"];
     
-    NSArray *imageUrlArray = @[@"http://img.ivsky.com/img/bizhi/slides/201511/11/december.jpg",@"http://h.hiphotos.baidu.com/image/pic/item/267f9e2f0708283890f56e02bb99a9014c08f128.jpg",@"http://a.hiphotos.baidu.com/image/pic/item/b219ebc4b74543a9fa0c4bc11c178a82b90114a3.jpg",@"http://c.hiphotos.baidu.com/image/pic/item/024f78f0f736afc33b1dbe65b119ebc4b7451298.jpg",@"http://d.hiphotos.baidu.com/image/pic/item/77094b36acaf2edd481ef6e78f1001e9380193d5.jpg"];
+    
+    
     
     
 #pragma mark 初始化数据
+    NSArray *imageUrlArray = @[@"http://img.ivsky.com/img/bizhi/slides/201511/11/december.jpg",@"http://h.hiphotos.baidu.com/image/pic/item/267f9e2f0708283890f56e02bb99a9014c08f128.jpg",@"http://a.hiphotos.baidu.com/image/pic/item/b219ebc4b74543a9fa0c4bc11c178a82b90114a3.jpg",@"http://c.hiphotos.baidu.com/image/pic/item/024f78f0f736afc33b1dbe65b119ebc4b7451298.jpg",@"http://d.hiphotos.baidu.com/image/pic/item/77094b36acaf2edd481ef6e78f1001e9380193d5.jpg"];
+
     for (int i = 0; i < imageUrlArray.count; i ++) {
         
         CertificateCellModel *model = [[CertificateCellModel alloc] init];
@@ -79,6 +85,25 @@
     }
     return _modelArray;
 }
+
+
+#pragma mark ****************** collectionView代理部分 begin ******************
+
+// 设置headerView和footerView的
+
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    UICollectionReusableView *reuserableView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"reuserFooter" forIndexPath:indexPath];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 5.5, GETWIDTH(reuserableView), 12)];
+    label.text = @"长按图片可进行删除";
+    label.textColor = RGB_COLOR(194, 194, 208);
+    label.font = [UIFont systemFontOfSize:12];
+    label.textAlignment = NSTextAlignmentCenter;
+    [reuserableView addSubview:label];
+
+    return reuserableView;
+}
+
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
@@ -111,10 +136,10 @@
         [cell updateCellWithModel:model];
     }
     
-    
-    
     return cell;
 }
+
+#pragma mark ****************** collectionView代理部分 end ******************
 
 #pragma mark item中各触发事件的代理方法
 - (void)certificateCollectionViewCellDelegateEventType:(TouchEventType)touchEventType atIndex:(NSInteger)index {
@@ -173,10 +198,6 @@
         default:
             break;
     }
-    
-    
-    
-    
 }
 
 - (void)didReceiveMemoryWarning {
