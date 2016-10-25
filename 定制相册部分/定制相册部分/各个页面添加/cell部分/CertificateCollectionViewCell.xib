@@ -15,9 +15,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="110" height="110"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kDx-kl-tjg">
-                        <state key="normal" image="CertificateCell_delete"/>
-                    </button>
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="03s-P6-YXe">
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="ui6-Eo-ez3" appends="YES" id="MAQ-lq-d5y"/>
+                            <outletCollection property="gestureRecognizers" destination="vAg-W9-iCr" appends="YES" id="XOB-t4-tfd"/>
+                        </connections>
+                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KGr-j3-7LG">
                         <frame key="frameInset" minY="10" width="20" height="20" maxX="5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
@@ -25,20 +29,27 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="kDx-kl-tjg" secondAttribute="trailing" id="7bw-vG-1Cq"/>
-                <constraint firstItem="kDx-kl-tjg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="bF3-K6-x79"/>
-                <constraint firstAttribute="bottom" secondItem="kDx-kl-tjg" secondAttribute="bottom" id="sf8-gg-uWu"/>
-                <constraint firstItem="kDx-kl-tjg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="soc-ts-goY"/>
+                <constraint firstAttribute="bottom" secondItem="03s-P6-YXe" secondAttribute="bottom" id="DsB-6V-TjX"/>
+                <constraint firstAttribute="trailing" secondItem="03s-P6-YXe" secondAttribute="trailing" id="VUf-Cb-vd8"/>
+                <constraint firstItem="03s-P6-YXe" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="p1e-h4-2Db"/>
+                <constraint firstItem="03s-P6-YXe" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="uq0-NJ-YyX"/>
             </constraints>
             <size key="customSize" width="156" height="121"/>
             <connections>
-                <outlet property="certificateCellButton" destination="kDx-kl-tjg" id="cQR-Gx-zJ1"/>
+                <outlet property="certificateBackImageView" destination="03s-P6-YXe" id="uCg-YF-Igm"/>
                 <outlet property="certificateImageView" destination="KGr-j3-7LG" id="uPM-xW-dbZ"/>
             </connections>
             <point key="canvasLocation" x="-30" y="42.5"/>
         </collectionViewCell>
+        <tapGestureRecognizer id="ui6-Eo-ez3">
+            <connections>
+                <action selector="backImageViewTapClick:" destination="gTV-IL-0wX" id="zDH-Zt-fQh"/>
+            </connections>
+        </tapGestureRecognizer>
+        <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="vAg-W9-iCr">
+            <connections>
+                <action selector="backImageViewLongPressClick:" destination="gTV-IL-0wX" id="Tmc-7L-97n"/>
+            </connections>
+        </pongPressGestureRecognizer>
     </objects>
-    <resources>
-        <image name="CertificateCell_delete" width="42" height="42"/>
-    </resources>
 </document>

@@ -78,15 +78,13 @@
     CertificateCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierCell forIndexPath:indexPath];
     
     if (indexPath.row == 0) {
-        [cell.certificateCellButton setImage:[UIImage imageNamed:@"CertificateCell_photo"] forState:UIControlStateNormal];
         
-        
+        cell.certificateBackImageView.image = [UIImage imageNamed:@"CertificateCell_photo"];
         
     } else {
         
         // 这只各个item的状态
         [cell updateCellWithImageUrl:[self.imageUrlArray objectAtIndex:indexPath.row-1] andCellImageType:CertificateCellImageDeselect];
-        
     }
     
     return cell;

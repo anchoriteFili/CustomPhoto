@@ -13,8 +13,6 @@
 - (void)awakeFromNib {
     // Initialization code
     [super awakeFromNib];
-    
-    self.certificateCellButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -34,9 +32,8 @@
 - (void)updateCellWithImageUrl:(NSString *)imageUrl andCellImageType:(CertificateCellImageType)cellImageType {
     
     // button图片赋值
-    [self.certificateCellButton.imageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+    [self.certificateBackImageView sd_setImageWithURL:[NSURL URLWithString:imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         
-        [self.certificateCellButton setImage:image forState:UIControlStateNormal];
         
     }];
     
@@ -61,8 +58,21 @@
         default:
             break;
     }
-    
-    
 }
+
+#pragma mark 大背景图片的点击事件
+- (IBAction)backImageViewTapClick:(UITapGestureRecognizer *)sender {
+    
+    NSLog(@"点击");
+}
+
+#pragma mark 大背景图片的长按手势
+- (IBAction)backImageViewLongPressClick:(UILongPressGestureRecognizer *)sender {
+    
+    NSLog(@"长按");
+}
+
+
+
 
 @end
