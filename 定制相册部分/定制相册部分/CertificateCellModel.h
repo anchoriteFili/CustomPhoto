@@ -28,16 +28,18 @@ typedef NS_ENUM(NSInteger, TouchEventType) {
     TouchEventTypeBrowse, // 进入浏览页
     TouchEventTypeSelect, // 进入选择状态
     TouchEventTypeDeselect, // 解除选择状态
-    TouchEventTypeDelete // 编辑删除item事件
+    TouchEventTypeDelete, // 编辑删除item事件
+    TouchEventTypePhoto // 点击进行拍照
 };
 
 
-// cell右上角小图片显示类型
+// cell右上角小图片显示类型和照相图片判断
 typedef NS_ENUM(NSInteger, CertificateCellImageType) {
     CertificateCellImageEmpty, // 没有任何图片
     CertificateCellImageDeselect, // 显示正常的空圈儿未选择图片
     CertificateCellImageSelect, // 显示对号小图片
-    CertificateCellImageDelete // 显示删除红杠小图片
+    CertificateCellImageDelete, // 显示删除红杠小图片
+    CertificateCellImagePhoto, // 此时为第一个item，为一个相机图片，点击进入相机
 };
 
 // cell右上角小图片显示类型

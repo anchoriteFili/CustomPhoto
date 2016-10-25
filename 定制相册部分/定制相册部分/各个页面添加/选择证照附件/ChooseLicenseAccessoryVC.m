@@ -96,27 +96,22 @@
     
     cell.delegate = self;
     
-//    if (indexPath.row == 0) {
-//        
-//        CertificateCellModel *model = [[CertificateCellModel alloc] init];
-//        model.isAlbum = NO;
-//        model.cellImageType = CertificateCellImageEmpty;
-//        model.imageUrl = @"";
-//        
-//        [cell updateCellWithModel:model];
-//        
-//        cell.certificateBackImageView.userInteractionEnabled = YES;
-//        cell.certificateImageView.userInteractionEnabled = YES;
-//        
-////        cell.certificateBackImageView.image = [UIImage imageNamed:@"CertificateCell_photo"];
-//    } else {
-//        
-//    }
+    if (indexPath.row == 0) {
+        
+        CertificateCellModel *model = [[CertificateCellModel alloc] init];
+        model.isAlbum = NO;
+        model.cellImageType = CertificateCellImagePhoto;
+        
+        [cell updateCellWithModel:model];
+    } else {
+        
+        // 这只各个item的状态
+        CertificateCellModel *model = [self.modelArray objectAtIndex:indexPath.row];
+        model.index = indexPath.row;
+        [cell updateCellWithModel:model];
+    }
     
-    // 这只各个item的状态
-    CertificateCellModel *model = [self.modelArray objectAtIndex:indexPath.row];
-    model.index = indexPath.row;
-    [cell updateCellWithModel:model];
+    
     
     return cell;
 }
@@ -148,6 +143,7 @@
                 CertificateCellModel *model = [self.modelArray objectAtIndex:i];
                 model.cellImageType = CertificateCellImageEmpty;
             }
+            
             [self.collectionView reloadData];
             
             break;
@@ -170,7 +166,9 @@
             
             break;
             
-        
+        case TouchEventTypePhoto: // 进入拍照
+            NSLog(@"拍照状态");
+            break;
             
         default:
             break;

@@ -33,11 +33,17 @@
 - (void)updateCellWithModel:(CertificateCellModel *)model {
     
     self.model = model;
-    self.isEverLongPress = NO;
     
-    // 大背景图片的赋值
-    [self.certificateBackImageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
-    }];
+    if (model.cellImageType == CertificateCellImagePhoto) {
+        
+        self.certificateBackImageView.image = [UIImage imageNamed:@"CertificateCell_photo"];
+    } else {
+        // 大背景图片的赋值
+        [self.certificateBackImageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        }];
+    }
+    
+    
     
     // 状态图片赋值
     switch (model.cellImageType) {
@@ -58,6 +64,7 @@
             break;
             
         default:
+            self.certificateImageView.image = [UIImage imageNamed:@""];
             break;
     }
     
@@ -67,76 +74,74 @@
 #pragma mark 大背景图片的点击事件
 - (IBAction)backImageViewTapClick:(UITapGestureRecognizer *)sender {
     
-    NSLog(@"self.isEverLongPress ==== %d",self.isEverLongPress);
-    
-    self.isEverLongPress = !self.isEverLongPress; // 普通点击手势
-    
     /**
-     非相册状态
-     基本逻辑，如果是长按手势状态，点击解除长按手势状态，如果不是长按手势状态，直接进入预览页面
-     
-     相册状态
-     点击一次进入选择状态，再次点击进入非选择状态，但是，这个有相应的代理
+     点击事件基本逻辑：
+     1. 在编辑状态的时候点击解除编辑状态
+     2. 在正常状态的时候进入浏览页面
+    只有这两个
      */
     
-    if (self.model.isAlbum) {
-        // 如果是相册状态，那么，需要做的东西是什么？
-        
-        
-    } else {
-        
-        // 如果是非相册状态
-        
-        if (self.isEverLongPress) {
+    switch (self.model.cellImageType) {
+        case CertificateCellImageEmpty: {
+            // 点击进入浏览页面
             
-            // 启动取消编辑状态代理
+            if (_delegate && [_delegate respondsToSelector:@selector(certificateCollectionViewCellDelegateEventType:atIndex:)]) {
+                
+                // 进入编辑状态
+                [_delegate certificateCollectionViewCellDelegateEventType:TouchEventTypeBrowse atIndex:self.model.index];
+            }
+            break;
+        }
+            
+        case CertificateCellImageDelete: {
+            // 显示编辑状态，点击进入非编辑状态
+            
             if (_delegate && [_delegate respondsToSelector:@selector(certificateCollectionViewCellDelegateEventType:atIndex:)]) {
                 
                 // 进入编辑状态
                 [_delegate certificateCollectionViewCellDelegateEventType:TouchEventTypeCancalEdit atIndex:self.model.index];
             }
-            NSLog(@"点击1");
-        } else {
-            // 启用进入预览页面代理方法
-            
-            NSLog(@"点击2");
+            break;
         }
+            
+        case CertificateCellImagePhoto: {
+            // 如果点击大图片为第一个item，点击直接进入拍照
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(certificateCollectionViewCellDelegateEventType:atIndex:)]) {
+                
+                // 进入编辑状态
+                [_delegate certificateCollectionViewCellDelegateEventType:TouchEventTypePhoto atIndex:self.model.index];
+            }
+            break;
+        }
+            
+        default:
+            break;
     }
-    
-    
-    
     
 }
 
 #pragma mark 大背景图片的长按手势
 - (IBAction)backImageViewLongPressClick:(UILongPressGestureRecognizer *)sender {
-    
-    NSLog(@"self.isEverLongPress ==== %d",self.isEverLongPress);
-    
     /**
-     
-     只要不是相册时才有长按手势
-     
-     基本逻辑，如果不是长按手势状态，点击进入长按手势状态，如果是长按手势状态，则不做任何处理
+     长按手势：
+     只有在为空的时候可以进入编辑状态，其他一切都不做处理
      */
     
-    if (!self.model.isAlbum) {
-        
-        if (!self.isEverLongPress) {
-            // 启用进入编辑状态点击代理方法
-            NSLog(@"长按");
-            
+    switch (self.model.cellImageType) {
+        case CertificateCellImageEmpty: {
+            // 点击长按进入编辑状态
             
             if (_delegate && [_delegate respondsToSelector:@selector(certificateCollectionViewCellDelegateEventType:atIndex:)]) {
                 
                 // 进入编辑状态
                 [_delegate certificateCollectionViewCellDelegateEventType:TouchEventTypeEdit atIndex:self.model.index];
             }
-            
-            self.isEverLongPress = !self.isEverLongPress;
-        } else {
-            // 不做任何处理
+            break;
         }
+            
+        default:
+            break;
     }
 
 }
