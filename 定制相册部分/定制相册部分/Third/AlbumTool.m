@@ -26,6 +26,8 @@
         [array addObject:assetCollection];
     }
     
+    NSLog(@"cameraRoll ====== %@",cameraRoll);
+    
     return array;
     
 }
@@ -38,6 +40,7 @@
 #pragma mark 缩略图的获取
 + (NSMutableArray *)enumerateAssetsInAssetCollection:(PHAssetCollection *)assetCollection original:(BOOL)original {
     NSLog(@"相簿名:%@", assetCollection.localizedTitle);
+    NSLog(@"endDate == %@",assetCollection.localIdentifier);
     
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     // 同步获得图片, 只会返回1张图片
@@ -46,7 +49,7 @@
     // 获得某个相簿中的所有PHAsset对象
     PHFetchResult<PHAsset *> *assets = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
     
-    NSLog(@"assets.count ========== %lu",(unsigned long)assets.count);
+//    NSLog(@"assets.count ========== %lu",(unsigned long)assets.count);
     
     NSMutableArray *imagesArray = [NSMutableArray array];
     
@@ -56,7 +59,7 @@
         
         // 从asset中获得图片
         [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-            NSLog(@"%@", result);
+            
             [imagesArray addObject:result];
         }];
     }
