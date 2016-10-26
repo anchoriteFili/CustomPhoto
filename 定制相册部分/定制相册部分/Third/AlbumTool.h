@@ -21,7 +21,4 @@
 + (UIImage *)photoWithAssetCollection:(PHAssetCollection *)assetCollection atIndex:(NSInteger)index;
 
 
-
-
-
 @end

@@ -71,20 +71,10 @@
         [self.modelArray addObject:model];
     }
     
-    [self.collectionView reloadData];
-    
-    
-    
-    
+    [self.collectionView reloadData];    
 }
 
-#pragma mark 相册数组懒加载
-- (NSMutableArray *)albumsArray {
-    if (!_albumsArray) {
-        _albumsArray = [AlbumTool getAlbumObjects];
-    }
-    return _albumsArray;
-}
+
 
 #pragma mark ****************** collectionView代理部分 begin ******************
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
@@ -294,6 +284,20 @@
 }
 
 #pragma mark ************ 相册获取部分 end ****************
+
+#pragma mark ************ 相册处理部分 begin ************
+#pragma mark 相册数组懒加载
+- (NSMutableArray *)albumsArray {
+    if (!_albumsArray) {
+        _albumsArray = [AlbumTool getAlbumObjects];
+    }
+    return _albumsArray;
+}
+
+
+
+
+#pragma mark ************ 相册处理部分 end ************
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
