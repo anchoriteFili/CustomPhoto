@@ -34,8 +34,6 @@
     
 }
 
-
-
 #pragma mark ****************** collectionView部分 begin ******************
 #pragma mark collectionView初始化
 - (void)initializeCollectionView {
@@ -138,6 +136,10 @@
     //去掉空白cell
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     [self.tableViewBackView addSubview:self.tableView];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"CertificateTableViewCell" bundle:nil] forCellReuseIdentifier:identifierTableViewCell];
+    
+    
 }
 
 #pragma mark 设置每行的高度
@@ -159,15 +161,9 @@
 #pragma mark cellForRow方法
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *cellIdentifier = @"cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
-    }
-    //    设置选择时的状态
-    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
-    //    设置cell背景色为透明色
-    cell.backgroundColor = [UIColor clearColor];
+    CertificateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierTableViewCell forIndexPath:indexPath];
+    
+    
     
     return cell;
 }
