@@ -25,6 +25,7 @@
 		FA39FFF41DBF343200493569 /* CertificateCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFF31DBF343200493569 /* CertificateCellModel.m */; };
 		FA39FFF81DBF795200493569 /* CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFF61DBF795100493569 /* CustomPhotoAlbum.m */; };
 		FA39FFF91DBF795200493569 /* CustomPhotoAlbum.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA39FFF71DBF795100493569 /* CustomPhotoAlbum.xib */; };
+		FA68F1B81DC077CB0023D604 /* AlbumTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FA68F1B71DC077CB0023D604 /* AlbumTool.m */; };
 		FAC107EA1DBDFA2A00680017 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107E91DBDFA2A00680017 /* main.m */; };
 		FAC107ED1DBDFA2A00680017 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EC1DBDFA2A00680017 /* AppDelegate.m */; };
 		FAC107F01DBDFA2A00680017 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EF1DBDFA2A00680017 /* ViewController.m */; };
@@ -92,6 +93,8 @@
 		FA39FFF51DBF795100493569 /* CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPhotoAlbum.h; sourceTree = "<group>"; };
 		FA39FFF61DBF795100493569 /* CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPhotoAlbum.m; sourceTree = "<group>"; };
 		FA39FFF71DBF795100493569 /* CustomPhotoAlbum.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPhotoAlbum.xib; sourceTree = "<group>"; };
+		FA68F1B61DC077CB0023D604 /* AlbumTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTool.h; sourceTree = "<group>"; };
+		FA68F1B71DC077CB0023D604 /* AlbumTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTool.m; sourceTree = "<group>"; };
 		FAC107E51DBDFA2A00680017 /* 定制相册部分.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "定制相册部分.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC107E91DBDFA2A00680017 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAC107EB1DBDFA2A00680017 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -146,6 +149,8 @@
 			children = (
 				FA39FFC21DBF058A00493569 /* DACircularProgress */,
 				FA39FFC51DBF058A00493569 /* SDWebImage */,
+				FA68F1B61DC077CB0023D604 /* AlbumTool.h */,
+				FA68F1B71DC077CB0023D604 /* AlbumTool.m */,
 			);
 			path = Third;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 				FAC107F01DBDFA2A00680017 /* ViewController.m in Sources */,
 				FA39FFEA1DBF058B00493569 /* SDWebImageManager.m in Sources */,
 				FA39FFEC1DBF058B00493569 /* UIButton+WebCache.m in Sources */,
+				FA68F1B81DC077CB0023D604 /* AlbumTool.m in Sources */,
 				FA39FFEE1DBF058B00493569 /* UIImage+MultiFormat.m in Sources */,
 				FA39FFF01DBF058B00493569 /* UIImageView+WebCache.m in Sources */,
 				FAC107ED1DBDFA2A00680017 /* AppDelegate.m in Sources */,
