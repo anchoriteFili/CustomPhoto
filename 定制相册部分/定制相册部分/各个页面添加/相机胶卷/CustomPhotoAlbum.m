@@ -9,12 +9,14 @@
 #import "CustomPhotoAlbum.h"
 #import "CertificateCollectionViewCell.h"
 #import <Photos/Photos.h>
+#import "AlbumTool.h"
 
 @interface CustomPhotoAlbum ()<UICollectionViewDataSource,UICollectionViewDelegate,CertificateCollectionViewCellDelegate>
 
 @property (nonatomic,retain) UICollectionView *collectionView; // 创建collectionView
 
 @property (nonatomic,retain) NSMutableArray *modelArray; // model数据数组
+@property (nonatomic,strong) NSMutableArray *albumsArray; // 相册的数组
 
 @end
 
@@ -58,8 +60,30 @@
     
     [self.view addSubview:self.collectionView]; // 添加collectionView
     
-    [self getThumbnailImages]; // 获取相册中的缩略图
+//    [self getThumbnailImages]; // 获取相册中的缩略图
     
+    NSMutableArray *imagesArray = [AlbumTool getAlbumThumbnailWithAssetCollection:[self.albumsArray firstObject]];
+    
+    for (UIImage *image in imagesArray) {
+        CertificateCellModel *model = [[CertificateCellModel alloc] init];
+        model.itemImage = image;
+        model.cellImageType = CertificateCellImageDeselect;
+        [self.modelArray addObject:model];
+    }
+    
+    [self.collectionView reloadData];
+    
+    
+    
+    
+}
+
+#pragma mark 相册数组懒加载
+- (NSMutableArray *)albumsArray {
+    if (!_albumsArray) {
+        _albumsArray = [AlbumTool getAlbumObjects];
+    }
+    return _albumsArray;
 }
 
 #pragma mark ****************** collectionView代理部分 begin ******************
