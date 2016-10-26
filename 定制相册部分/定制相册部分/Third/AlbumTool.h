@@ -20,5 +20,8 @@
 #pragma mark 获取指定某张图片的原图
 + (UIImage *)photoWithAssetCollection:(PHAssetCollection *)assetCollection atIndex:(NSInteger)index;
 
+#pragma mark 获取指定胶卷儿的照片的数量
++ (NSUInteger)getAlbumCountWith:(PHAssetCollection *)assetCollection;
+
 
 @end

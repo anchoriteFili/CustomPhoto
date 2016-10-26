@@ -38,6 +38,10 @@
                     <constraint firstItem="hyw-TE-FO7" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="uW6-Nn-kzR"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="contentLabel" destination="1Ke-xW-PEC" id="hnK-47-ZPs"/>
+                <outlet property="headImageView" destination="hyw-TE-FO7" id="jdd-f5-64o"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

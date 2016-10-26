@@ -15,16 +15,16 @@
     
     NSMutableArray *array = [NSMutableArray array];
     
+    // 获得相机胶卷
+    PHAssetCollection *cameraRoll = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil].lastObject;
+    [array addObject:cameraRoll];
+    
     // 获得所有的自定义相簿
     PHFetchResult<PHAssetCollection *> *assetCollections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
     
     for (PHAssetCollection *assetCollection in assetCollections) {
         [array addObject:assetCollection];
     }
-    
-    // 获得相机胶卷
-    PHAssetCollection *cameraRoll = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil].lastObject;
-    [array addObject:cameraRoll];
     
     return array;
     
@@ -92,6 +92,14 @@
     }];
     
     return image;
+}
+
+#pragma mark 获取某胶卷儿的照片数量
++ (NSUInteger)getAlbumCountWith:(PHAssetCollection *)assetCollection {
+    // 获得某个相簿中的所有PHAsset对象
+    PHFetchResult<PHAsset *> *assets = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
+    
+    return assets.count;
 }
 
 @end

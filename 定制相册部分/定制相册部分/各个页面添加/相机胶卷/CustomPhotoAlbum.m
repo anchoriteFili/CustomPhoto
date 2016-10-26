@@ -163,6 +163,16 @@
 {
     CertificateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifierTableViewCell forIndexPath:indexPath];
     
+    PHAssetCollection *assetCollection = [self.albumsArray objectAtIndex:indexPath.row];
+    
+    
+    NSLog(@"localizedTitle ===== %@",assetCollection.localizedTitle);
+    
+    if ([assetCollection.localizedTitle isEqualToString:@"All Photos"]) {
+        cell.contentLabel.text = [NSString stringWithFormat:@"所有相册 %lu",(unsigned long)[AlbumTool getAlbumCountWith:assetCollection]];
+    } else {
+        cell.contentLabel.text = [NSString stringWithFormat:@"%@ %lu",assetCollection.localizedTitle, (unsigned long)[AlbumTool getAlbumCountWith:assetCollection]];
+    }
     
     
     return cell;

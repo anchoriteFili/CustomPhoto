@@ -12,4 +12,7 @@ static  NSString * identifierTableViewCell = @"certificateTableViewCell";
 
 @interface CertificateTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *headImageView; // 显示的头图
+@property (weak, nonatomic) IBOutlet UILabel *contentLabel; // 存放内容
+
 @end
