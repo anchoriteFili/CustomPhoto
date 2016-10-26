@@ -393,7 +393,7 @@
 					FAC107E41DBDFA2A00680017 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = GM2EX5ALF4;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					FAC107FD1DBDFA2A00680017 = {
 						CreatedOnToolsVersion = 8.0;
@@ -637,8 +637,10 @@
 				GCC_PREFIX_HEADER = "$(SRCROOT)/定制相册部分/PrefixHeader.pch";
 				INFOPLIST_FILE = "定制相册部分/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lvyouquan.------";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lvyouquan.dingzhi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "3acf2b42-6f0f-4444-8fe4-29da3a2b7e1f";
+				PROVISIONING_PROFILE_SPECIFIER = wanNengXingTest;
 			};
 			name = Debug;
 		};
@@ -646,11 +648,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = GM2EX5ALF4;
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/定制相册部分/PrefixHeader.pch";
 				INFOPLIST_FILE = "定制相册部分/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lvyouquan.------";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lvyouquan.dingzhi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

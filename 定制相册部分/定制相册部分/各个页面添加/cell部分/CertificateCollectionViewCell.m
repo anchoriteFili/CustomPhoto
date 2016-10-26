@@ -37,11 +37,22 @@
     if (model.cellImageType == CertificateCellImagePhoto) {
         
         self.certificateBackImageView.image = [UIImage imageNamed:@"CertificateCell_photo"];
-    } else {
+    } else if (model.imageUrl.length) {
         // 大背景图片的赋值
         [self.certificateBackImageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
         }];
+    } else {
+        self.certificateBackImageView.image = model.itemImage;
     }
+    
+    
+//    if (model.imageUrl.length) { // 有链接赋值
+//        
+//        
+//    } else { // 无连接直接赋值图片
+//        
+//        
+//    }
     
     // 状态图片赋值
     switch (model.cellImageType) {

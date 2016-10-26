@@ -58,5 +58,7 @@ typedef NS_ENUM(NSInteger, CertificateCellType) {
 
 @property (nonatomic,assign) NSInteger index; // 显示model在数据中的位置
 
+@property (nonatomic,retain) UIImage *itemImage; // 相册中的图片数据
+
 
 @end
