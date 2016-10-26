@@ -8,11 +8,14 @@
 
 #import "CustomPhotoAlbum.h"
 #import "CertificateCollectionViewCell.h"
+#import "CertificateTableViewCell.h"
 #import "AlbumTool.h"
 
-@interface CustomPhotoAlbum ()<UICollectionViewDataSource,UICollectionViewDelegate,CertificateCollectionViewCellDelegate>
+@interface CustomPhotoAlbum ()<UICollectionViewDataSource,UICollectionViewDelegate,CertificateCollectionViewCellDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,retain) UICollectionView *collectionView; // 创建collectionView
+@property (nonatomic,strong) UIView *tableViewBackView; // 承载tableView的背景view
+@property (nonatomic,retain) UITableView *tableView; // 用于显示相册名的tableView
 
 @property (nonatomic,retain) NSMutableArray *modelArray; // model数据数组
 @property (nonatomic,strong) NSMutableArray *albumsArray; // 相册的数组
@@ -25,8 +28,19 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    [self initializeCollectionView]; // 创建collectionView
+    [self initializeTableView]; // tableView的初始化
+    [self selectAlbumWithIndex:0]; // 默认显示第一个相册
     
-#pragma mark 初始化collectionView
+}
+
+
+
+#pragma mark ****************** collectionView部分 begin ******************
+#pragma mark collectionView初始化
+- (void)initializeCollectionView {
+    
+#pragma mark collectionView
     //    1.创建布局管理类---flowLayout:流式布局
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     
@@ -58,14 +72,8 @@
     [self.collectionView registerClass:[CertificateCollectionViewCell class] forCellWithReuseIdentifier:identifierCell];
     
     [self.view addSubview:self.collectionView]; // 添加collectionView
-    
-    [self selectAlbumWithIndex:0]; // 默认显示第一个相册
-    
 }
 
-
-
-#pragma mark ****************** collectionView代理部分 begin ******************
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     return 1;
 }
@@ -101,13 +109,85 @@
 }
 
 #pragma mark ****************** collectionView代理部分 end ******************
+#pragma mark =========================================================
+#pragma mark ****************** tableView部分 begin ******************
+#pragma mark tableView初始化
+- (void)initializeTableView {
+    
+    // 添加承载背景view
+    self.tableViewBackView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, WIDTH, HEIGHT-64)];
+    self.tableViewBackView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.tableViewBackView];
+    
+    // 添加灰背景view
+    UIView *grayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, GETWIDTH(self.tableViewBackView), GETHEIGHT(self.tableViewBackView))];
+    
+    grayView.backgroundColor = [UIColor blackColor];
+    grayView.alpha = 0.5;
+    [self.tableViewBackView addSubview:grayView];
+    
+#pragma mark 创建tableView
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, GETWIDTH(self.tableViewBackView), GETHEIGHT(self.tableViewBackView)) style:UITableViewStylePlain];
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    //    设置tableView背景色为透明色
+    self.tableView.backgroundColor = [UIColor clearColor];
+    //    分割线样式
+    //     self.tabelView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    //去掉空白cell
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    [self.tableViewBackView addSubview:self.tableView];
+}
+
+#pragma mark 设置每行的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 62;
+}
+
+#pragma mark 设置section的个数
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 1;
+}
+
+#pragma mark 设置每个section的行数
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
+{
+    return self.albumsArray.count;
+}
+
+#pragma mark cellForRow方法
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *cellIdentifier = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+    }
+    //    设置选择时的状态
+    cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+    //    设置cell背景色为透明色
+    cell.backgroundColor = [UIColor clearColor];
+    
+    return cell;
+}
+
+#pragma mark 添加点击cell的方法
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    //点击以后直接恢复正常状态
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+
+#pragma mark ****************** tableView部分 end ******************
+
 #pragma mark item中各触发事件的代理方法
 - (void)certificateCollectionViewCellDelegateEventType:(TouchEventType)touchEventType atIndex:(NSInteger)index {
     
     /**
      在其中对modelArray中的数据进行处理，处理完后刷新页面
      */
-    
     switch (touchEventType) {
         case TouchEventTypeEdit: { // 进入编辑状态
             

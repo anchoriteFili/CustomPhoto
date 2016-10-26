@@ -26,6 +26,8 @@
 		FA39FFF81DBF795200493569 /* CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFF61DBF795100493569 /* CustomPhotoAlbum.m */; };
 		FA39FFF91DBF795200493569 /* CustomPhotoAlbum.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA39FFF71DBF795100493569 /* CustomPhotoAlbum.xib */; };
 		FAB9A85B1DC0854C0062050F /* AlbumTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A85A1DC0854C0062050F /* AlbumTool.m */; };
+		FAB9A85F1DC08F3C0062050F /* CertificateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A85D1DC08F3C0062050F /* CertificateTableViewCell.m */; };
+		FAB9A8601DC08F3C0062050F /* CertificateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9A85E1DC08F3C0062050F /* CertificateTableViewCell.xib */; };
 		FAC107EA1DBDFA2A00680017 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107E91DBDFA2A00680017 /* main.m */; };
 		FAC107ED1DBDFA2A00680017 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EC1DBDFA2A00680017 /* AppDelegate.m */; };
 		FAC107F01DBDFA2A00680017 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EF1DBDFA2A00680017 /* ViewController.m */; };
@@ -95,6 +97,9 @@
 		FA39FFF71DBF795100493569 /* CustomPhotoAlbum.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPhotoAlbum.xib; sourceTree = "<group>"; };
 		FAB9A8591DC0854C0062050F /* AlbumTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTool.h; sourceTree = "<group>"; };
 		FAB9A85A1DC0854C0062050F /* AlbumTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTool.m; sourceTree = "<group>"; };
+		FAB9A85C1DC08F3C0062050F /* CertificateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateTableViewCell.h; sourceTree = "<group>"; };
+		FAB9A85D1DC08F3C0062050F /* CertificateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateTableViewCell.m; sourceTree = "<group>"; };
+		FAB9A85E1DC08F3C0062050F /* CertificateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CertificateTableViewCell.xib; sourceTree = "<group>"; };
 		FAC107E51DBDFA2A00680017 /* 定制相册部分.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "定制相册部分.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC107E91DBDFA2A00680017 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAC107EB1DBDFA2A00680017 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -326,6 +331,9 @@
 				FAC108331DBE0F7900680017 /* CertificateCollectionViewCell.h */,
 				FAC108341DBE0F7900680017 /* CertificateCollectionViewCell.m */,
 				FAC108351DBE0F7900680017 /* CertificateCollectionViewCell.xib */,
+				FAB9A85C1DC08F3C0062050F /* CertificateTableViewCell.h */,
+				FAB9A85D1DC08F3C0062050F /* CertificateTableViewCell.m */,
+				FAB9A85E1DC08F3C0062050F /* CertificateTableViewCell.xib */,
 			);
 			path = "cell部分";
 			sourceTree = "<group>";
@@ -440,6 +448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAC108371DBE0F7900680017 /* CertificateCollectionViewCell.xib in Resources */,
+				FAB9A8601DC08F3C0062050F /* CertificateTableViewCell.xib in Resources */,
 				FAC107F81DBDFA2A00680017 /* LaunchScreen.storyboard in Resources */,
 				FAC107F51DBDFA2A00680017 /* Assets.xcassets in Resources */,
 				FAC107F31DBDFA2A00680017 /* Main.storyboard in Resources */,
@@ -479,6 +488,7 @@
 				FA39FFEA1DBF058B00493569 /* SDWebImageManager.m in Sources */,
 				FA39FFEC1DBF058B00493569 /* UIButton+WebCache.m in Sources */,
 				FAB9A85B1DC0854C0062050F /* AlbumTool.m in Sources */,
+				FAB9A85F1DC08F3C0062050F /* CertificateTableViewCell.m in Sources */,
 				FA39FFEE1DBF058B00493569 /* UIImage+MultiFormat.m in Sources */,
 				FA39FFF01DBF058B00493569 /* UIImageView+WebCache.m in Sources */,
 				FAC107ED1DBDFA2A00680017 /* AppDelegate.m in Sources */,
