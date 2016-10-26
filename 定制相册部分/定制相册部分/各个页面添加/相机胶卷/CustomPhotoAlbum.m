@@ -20,6 +20,9 @@
 @property (nonatomic,retain) NSMutableArray *modelArray; // model数据数组
 @property (nonatomic,strong) NSMutableArray *albumsArray; // 相册的数组
 
+@property (weak, nonatomic) IBOutlet UIButton *middleHeaderButton; // 相册胶卷Button
+
+
 @end
 
 @implementation CustomPhotoAlbum
@@ -31,9 +34,6 @@
     [self initializeCollectionView]; // 创建collectionView
     [self initializeTableView]; // tableView的初始化
     [self selectAlbumWithIndex:0]; // 默认显示第一个相册
-    
-    
-    
     
 }
 
@@ -54,7 +54,7 @@
     //    1.3设置行方向cell之间距离
     layout.minimumLineSpacing = 10;
     //    1.4设置cell的大小
-    layout.itemSize = CGSizeMake((WIDTH-40)/3, (WIDTH-40)/3);
+    layout.itemSize = CGSizeMake((WIDTH-41)/3, (WIDTH-41)/3);
     //    1.5设置整个section的上下左右的距离
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 10);
     //    1.6
@@ -67,7 +67,7 @@
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     
-    self.collectionView.backgroundColor  = RGB_COLOR(241, 241, 246);
+    self.collectionView.backgroundColor = RGB_COLOR(241, 241, 246);
     
     // 重用cell部分
     [self.collectionView registerClass:[CertificateCollectionViewCell class] forCellWithReuseIdentifier:identifierCell];
@@ -82,7 +82,6 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     return self.modelArray.count+1;
-    
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -179,24 +178,15 @@
         cell.headImageView.image = image;
     }];
     
-    
-    
-    
-//    __block UIImage *image = [[UIImage alloc] init];
-//    
-//    PHFetchResult *assetResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
-//    [[PHImageManager defaultManager] requestImageForAsset:assetResult.firstObject targetSize:CGSizeZero contentMode:PHImageContentModeDefault options:[PHImageRequestOptions new] resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-//        
-//        image = result;
-//    }];
-    
-//    cell.headImageView.image = image;
-    
     return cell;
 }
 
 #pragma mark 添加点击cell的方法
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self selectAlbumWithIndex:indexPath.row];
+    
+    
     
     //点击以后直接恢复正常状态
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -294,6 +284,8 @@
 #pragma mark 相机胶卷点击事件
 - (IBAction)photoAlbumTypeClick:(UIButton *)sender {
     
+    self.tableViewBackView.hidden = NO;
+    
 }
 
 #pragma mark 确定按钮点击事件
@@ -317,6 +309,17 @@
 
 #pragma mark 加载相册显示数据
 - (void)selectAlbumWithIndex:(NSInteger)index {
+    
+    [self.modelArray removeAllObjects];
+    self.tableViewBackView.hidden = YES; // 隐藏tableView
+    
+    PHAssetCollection *assetCollection = [self.albumsArray objectAtIndex:index];
+    
+    if ([assetCollection.localizedTitle isEqualToString:@"All Photos"]) {
+        [self.middleHeaderButton setTitle:@"所有相册" forState:UIControlStateNormal];
+    } else {
+        [self.middleHeaderButton setTitle:assetCollection.localizedTitle forState:UIControlStateNormal];
+    }
     
     // 获取单个相册中的图片
     NSMutableArray *imagesArray = [AlbumTool getAlbumThumbnailWithAssetCollection:[self.albumsArray objectAtIndex:index]];

@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomPhotoAlbum">
             <connections>
+                <outlet property="middleHeaderButton" destination="LSK-lY-YQD" id="d7Y-pT-xYO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -33,7 +34,7 @@
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSK-lY-YQD">
                             <constraints>
-                                <constraint firstAttribute="width" constant="85" id="84P-8K-edj"/>
+                                <constraint firstAttribute="width" constant="200" id="84P-8K-edj"/>
                                 <constraint firstAttribute="height" constant="18" id="SOW-Wi-tSC"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="18"/>

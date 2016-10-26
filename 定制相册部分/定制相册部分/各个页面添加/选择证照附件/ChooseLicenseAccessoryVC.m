@@ -39,7 +39,7 @@
     //    1.3设置行方向cell之间距离
     layout.minimumLineSpacing = 10;
     //    1.4设置cell的大小
-    layout.itemSize = CGSizeMake((WIDTH-40)/3, (WIDTH-40)/3);
+    layout.itemSize = CGSizeMake((WIDTH-41)/3, (WIDTH-41)/3);
     //    1.5设置整个section的上下左右的距离
     layout.sectionInset = UIEdgeInsetsMake(10, 10, 0, 10);
     //    1.6
