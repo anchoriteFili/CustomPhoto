@@ -8,7 +8,6 @@
 
 #import "CustomPhotoAlbum.h"
 #import "CertificateCollectionViewCell.h"
-#import <Photos/Photos.h>
 #import "AlbumTool.h"
 
 @interface CustomPhotoAlbum ()<UICollectionViewDataSource,UICollectionViewDelegate,CertificateCollectionViewCellDelegate>
@@ -60,18 +59,8 @@
     
     [self.view addSubview:self.collectionView]; // 添加collectionView
     
-//    [self getThumbnailImages]; // 获取相册中的缩略图
+    [self selectAlbumWithIndex:0]; // 默认显示第一个相册
     
-    NSMutableArray *imagesArray = [AlbumTool getAlbumThumbnailWithAssetCollection:[self.albumsArray firstObject]];
-    
-    for (UIImage *image in imagesArray) {
-        CertificateCellModel *model = [[CertificateCellModel alloc] init];
-        model.itemImage = image;
-        model.cellImageType = CertificateCellImageDeselect;
-        [self.modelArray addObject:model];
-    }
-    
-    [self.collectionView reloadData];    
 }
 
 
@@ -214,77 +203,6 @@
 
 #pragma mark *************** 页面中自定义按钮点击事件 end ***************
 
-
-
-#pragma mark ************ 相册获取部分 begin ****************
-#pragma mark 获取所有的原图
-- (void)getOriginalImages {
-    // 获得所有的自定义相簿
-    PHFetchResult<PHAssetCollection *> *assetCollections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
-    // 遍历所有的自定义相簿
-    for (PHAssetCollection *assetCollection in assetCollections) {
-        [self enumerateAssetsInAssetCollection:assetCollection original:YES];
-    }
-    
-    // 获得相机胶卷
-    PHAssetCollection *cameraRoll = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil].lastObject;
-    // 遍历相机胶卷,获取大图
-    [self enumerateAssetsInAssetCollection:cameraRoll original:YES];
-}
-
-#pragma mark 获取所有的缩略图
-- (void)getThumbnailImages {
-    // 获得所有的自定义相簿
-    PHFetchResult<PHAssetCollection *> *assetCollections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
-    // 遍历所有的自定义相簿
-    for (PHAssetCollection *assetCollection in assetCollections) {
-        [self enumerateAssetsInAssetCollection:assetCollection original:NO];
-    }
-    // 获得相机胶卷
-    PHAssetCollection *cameraRoll = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil].lastObject;
-    [self enumerateAssetsInAssetCollection:cameraRoll original:NO];
-}
-
-/**
- *  遍历相簿中的所有图片
- *  @param assetCollection 相簿
- *  @param original        是否要原图
- */
-- (void)enumerateAssetsInAssetCollection:(PHAssetCollection *)assetCollection original:(BOOL)original
-{
-    NSLog(@"相簿名:%@", assetCollection.localizedTitle);
-    
-    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-    // 同步获得图片, 只会返回1张图片
-    options.synchronous = YES;
-    
-    // 获得某个相簿中的所有PHAsset对象
-    PHFetchResult<PHAsset *> *assets = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
-    
-    NSLog(@"assets.count ========== %lu",(unsigned long)assets.count);
-    
-    for (PHAsset *asset in assets) {
-        // 是否要原图
-        CGSize size = original ? CGSizeMake(asset.pixelWidth, asset.pixelHeight) : CGSizeZero;
-        
-        // 从asset中获得图片
-        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-            NSLog(@"%@", result);
-
-#pragma mark 初始化数据
-            CertificateCellModel *model = [[CertificateCellModel alloc] init];
-            model.isAlbum = NO;
-            model.itemImage = result;
-            model.cellImageType = CertificateCellImageEmpty;
-            [self.modelArray addObject:model];
-
-        }];
-        NSLog(@"添加结束");
-    }
-}
-
-#pragma mark ************ 相册获取部分 end ****************
-
 #pragma mark ************ 相册处理部分 begin ************
 #pragma mark 相册数组懒加载
 - (NSMutableArray *)albumsArray {
@@ -294,8 +212,23 @@
     return _albumsArray;
 }
 
-
-
+#pragma mark 加载相册显示数据
+- (void)selectAlbumWithIndex:(NSInteger)index {
+    
+    // 获取单个相册中的图片
+    NSMutableArray *imagesArray = [AlbumTool getAlbumThumbnailWithAssetCollection:[self.albumsArray objectAtIndex:index]];
+    
+    // 将图片添加到数据源
+    for (UIImage *image in imagesArray) {
+        CertificateCellModel *model = [[CertificateCellModel alloc] init];
+        model.itemImage = image;
+        model.cellImageType = CertificateCellImageDeselect;
+        [self.modelArray addObject:model];
+    }
+    
+    // 刷新数据
+    [self.collectionView reloadData];
+}
 
 #pragma mark ************ 相册处理部分 end ************
 
