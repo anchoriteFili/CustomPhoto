@@ -263,15 +263,9 @@
             model.itemImage = result;
             model.cellImageType = CertificateCellImageEmpty;
             [self.modelArray addObject:model];
-            
-            
+
         }];
-        
-        
-        
         NSLog(@"添加结束");
-        
-        
     }
 }
 

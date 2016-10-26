@@ -11,7 +11,7 @@
 @implementation AlbumTool
 
 #pragma mark 获取胶卷的名字相关数据
-+ (NSMutableArray *)getAlbumNames {
++ (NSMutableArray *)getAlbumObjects {
     
     NSMutableArray *array = [NSMutableArray array];
     
