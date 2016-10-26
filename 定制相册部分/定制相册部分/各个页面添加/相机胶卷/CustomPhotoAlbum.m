@@ -32,6 +32,9 @@
     [self initializeTableView]; // tableView的初始化
     [self selectAlbumWithIndex:0]; // 默认显示第一个相册
     
+    
+    
+    
 }
 
 #pragma mark ****************** collectionView部分 begin ******************
@@ -165,15 +168,29 @@
     
     PHAssetCollection *assetCollection = [self.albumsArray objectAtIndex:indexPath.row];
     
-    
-    NSLog(@"localizedTitle ===== %lu",(unsigned long)assetCollection.estimatedAssetCount);
-    
     if ([assetCollection.localizedTitle isEqualToString:@"All Photos"]) {
         cell.contentLabel.text = [NSString stringWithFormat:@"所有相册 %lu",(unsigned long)[AlbumTool getAlbumCountWith:assetCollection]];
     } else {
         cell.contentLabel.text = [NSString stringWithFormat:@"%@ %lu",assetCollection.localizedTitle, (unsigned long)[AlbumTool getAlbumCountWith:assetCollection]];
     }
     
+    
+    [AlbumTool getCoverImageWith:assetCollection withBlcok:^(UIImage *image) {
+        cell.headImageView.image = image;
+    }];
+    
+    
+    
+    
+//    __block UIImage *image = [[UIImage alloc] init];
+//    
+//    PHFetchResult *assetResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
+//    [[PHImageManager defaultManager] requestImageForAsset:assetResult.firstObject targetSize:CGSizeZero contentMode:PHImageContentModeDefault options:[PHImageRequestOptions new] resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+//        
+//        image = result;
+//    }];
+    
+//    cell.headImageView.image = image;
     
     return cell;
 }

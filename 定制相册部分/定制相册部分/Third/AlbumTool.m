@@ -72,7 +72,7 @@
  基本逻辑：
  首先知道相册，然后再知道相册中的第几个，那么
  */
-+ (UIImage *)photoWithAssetCollection:(PHAssetCollection *)assetCollection atIndex:(NSInteger)index {
++ (void)photoWithAssetCollection:(PHAssetCollection *)assetCollection atIndex:(NSInteger)index withBlcok:(void(^)(UIImage *image))image {
     
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     // 同步获得图片, 只会返回1张图片
@@ -86,23 +86,29 @@
     // 是否要原图
     CGSize size =  CGSizeMake(asset.pixelWidth, asset.pixelHeight);
     
-    __block UIImage *image = [[UIImage alloc] init];
-    
     // 从asset中获得图片
     [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         NSLog(@"%@", result);
-        image = result;
+        image(result);
     }];
-    
-    return image;
 }
 
 #pragma mark 获取某胶卷儿的照片数量
 + (NSUInteger)getAlbumCountWith:(PHAssetCollection *)assetCollection {
     // 获得某个相簿中的所有PHAsset对象
     PHFetchResult<PHAsset *> *assets = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
-    
     return assets.count;
+}
+
+#pragma mark 获取封面图片方法
++ (void)getCoverImageWith:(PHAssetCollection *)assetCollection withBlcok:(void(^)(UIImage *image))image {
+    
+    
+    PHFetchResult *assetResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
+    [[PHImageManager defaultManager] requestImageForAsset:assetResult.firstObject targetSize:CGSizeZero contentMode:PHImageContentModeDefault options:[PHImageRequestOptions new] resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+        image(result);
+    }];
+
 }
 
 @end

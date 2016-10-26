@@ -18,10 +18,13 @@
 + (NSMutableArray *)getAlbumThumbnailWithAssetCollection:(PHAssetCollection *)assetCollection;
 
 #pragma mark 获取指定某张图片的原图
-+ (UIImage *)photoWithAssetCollection:(PHAssetCollection *)assetCollection atIndex:(NSInteger)index;
++ (void)photoWithAssetCollection:(PHAssetCollection *)assetCollection atIndex:(NSInteger)index withBlcok:(void(^)(UIImage *image))image;
 
 #pragma mark 获取指定胶卷儿的照片的数量
 + (NSUInteger)getAlbumCountWith:(PHAssetCollection *)assetCollection;
+
+#pragma mark 获取封面图片方法
++ (void)getCoverImageWith:(PHAssetCollection *)assetCollection withBlcok:(void(^)(UIImage *image))image;
 
 
 @end
