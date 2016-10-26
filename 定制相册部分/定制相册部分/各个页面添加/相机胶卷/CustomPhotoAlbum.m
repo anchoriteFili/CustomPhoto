@@ -9,6 +9,7 @@
 #import "CustomPhotoAlbum.h"
 #import "CertificateCollectionViewCell.h"
 #import "CertificateTableViewCell.h"
+#import "CustomCameraVC.h" // 拍照页面
 #import "AlbumTool.h"
 
 @interface CustomPhotoAlbum ()<UICollectionViewDataSource,UICollectionViewDelegate,CertificateCollectionViewCellDelegate,UITableViewDataSource,UITableViewDelegate>
@@ -256,7 +257,7 @@
         }
             
         case TouchEventTypePhoto: { // 进入拍照
-            NSLog(@"拍照状态");
+            [self presentViewController:[[CustomCameraVC alloc] init] animated:YES completion:nil];
             break;
         }
             
