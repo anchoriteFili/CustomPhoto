@@ -9,10 +9,19 @@
 #import "CustomCameraVC.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "CustomCameraCVCell.h"
+#import "CertificateCellModel.h"
+
 typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
-@interface CustomCameraVC ()
+@interface CustomCameraVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
+#pragma mark ******* collectionView部分 ********
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView; // 用于存放拍过照片
+@property (nonatomic,retain) NSMutableArray *modelArray; // model数据数组
+
+
+#pragma mark ******* 相机部分 *******
 @property (strong,nonatomic) AVCaptureSession *captureSession;//负责输入和输出设备之间的数据传递
 @property (strong,nonatomic) AVCaptureDeviceInput *captureDeviceInput;//负责从AVCaptureDevice获得输入数据
 @property (strong,nonatomic) AVCaptureStillImageOutput *captureStillImageOutput;//照片输出流
@@ -113,6 +122,13 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
             //            ALAssetsLibrary *assetsLibrary=[[ALAssetsLibrary alloc]init];
             //            [assetsLibrary writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
+            
+            CertificateCellModel *model = [[CertificateCellModel alloc] init];
+            model.isNewImage = YES;
+            model.itemImage = image;
+            [self.modelArray addObject:model];
+            
+            [self.collectionView reloadData];
         }
         
     }];
@@ -386,6 +402,46 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         
     }];
 }
+
+#pragma mark modelArray的懒加载
+- (NSMutableArray *)modelArray {
+    if (!_modelArray) {
+        _modelArray = [NSMutableArray array];
+    }
+    return _modelArray;
+}
+
+#pragma mark *************** collectionView部分 begin ***************
+- (void)collectionViewInitialization {
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+    [self.collectionView registerClass:[CustomCameraCVCell class] forCellWithReuseIdentifier:identifierCustomCameraCVCell];
+    
+}
+
+- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    
+    return self.modelArray.count;
+    
+}
+
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    CustomCameraCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierCustomCameraCVCell forIndexPath:indexPath];
+    
+    CertificateCellModel *model = [self.modelArray objectAtIndex:indexPath.row];
+    
+    cell.contentImageView.image = model.itemImage;
+    
+    
+    return cell;
+}
+
+#pragma mark *************** collectionView部分 end ***************
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

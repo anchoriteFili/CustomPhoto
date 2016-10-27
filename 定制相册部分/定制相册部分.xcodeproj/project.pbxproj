@@ -28,6 +28,10 @@
 		FAB9A85B1DC0854C0062050F /* AlbumTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A85A1DC0854C0062050F /* AlbumTool.m */; };
 		FAB9A85F1DC08F3C0062050F /* CertificateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A85D1DC08F3C0062050F /* CertificateTableViewCell.m */; };
 		FAB9A8601DC08F3C0062050F /* CertificateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9A85E1DC08F3C0062050F /* CertificateTableViewCell.xib */; };
+		FAB9A87D1DC0D45C0062050F /* CustomCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A87B1DC0D45C0062050F /* CustomCameraVC.m */; };
+		FAB9A87E1DC0D45C0062050F /* CustomCameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9A87C1DC0D45C0062050F /* CustomCameraVC.xib */; };
+		FAB9A8871DC19E790062050F /* CustomCameraCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A8851DC19E790062050F /* CustomCameraCVCell.m */; };
+		FAB9A8881DC19E790062050F /* CustomCameraCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9A8861DC19E790062050F /* CustomCameraCVCell.xib */; };
 		FAC107EA1DBDFA2A00680017 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107E91DBDFA2A00680017 /* main.m */; };
 		FAC107ED1DBDFA2A00680017 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EC1DBDFA2A00680017 /* AppDelegate.m */; };
 		FAC107F01DBDFA2A00680017 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EF1DBDFA2A00680017 /* ViewController.m */; };
@@ -100,6 +104,12 @@
 		FAB9A85C1DC08F3C0062050F /* CertificateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateTableViewCell.h; sourceTree = "<group>"; };
 		FAB9A85D1DC08F3C0062050F /* CertificateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateTableViewCell.m; sourceTree = "<group>"; };
 		FAB9A85E1DC08F3C0062050F /* CertificateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CertificateTableViewCell.xib; sourceTree = "<group>"; };
+		FAB9A87A1DC0D45C0062050F /* CustomCameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCameraVC.h; sourceTree = "<group>"; };
+		FAB9A87B1DC0D45C0062050F /* CustomCameraVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCameraVC.m; sourceTree = "<group>"; };
+		FAB9A87C1DC0D45C0062050F /* CustomCameraVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCameraVC.xib; sourceTree = "<group>"; };
+		FAB9A8841DC19E790062050F /* CustomCameraCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCameraCVCell.h; sourceTree = "<group>"; };
+		FAB9A8851DC19E790062050F /* CustomCameraCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCameraCVCell.m; sourceTree = "<group>"; };
+		FAB9A8861DC19E790062050F /* CustomCameraCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCameraCVCell.xib; sourceTree = "<group>"; };
 		FAC107E51DBDFA2A00680017 /* 定制相册部分.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "定制相册部分.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC107E91DBDFA2A00680017 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAC107EB1DBDFA2A00680017 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -295,6 +305,12 @@
 		FAC108251DBE026300680017 /* 照相模块 */ = {
 			isa = PBXGroup;
 			children = (
+				FAB9A87A1DC0D45C0062050F /* CustomCameraVC.h */,
+				FAB9A87B1DC0D45C0062050F /* CustomCameraVC.m */,
+				FAB9A87C1DC0D45C0062050F /* CustomCameraVC.xib */,
+				FAB9A8841DC19E790062050F /* CustomCameraCVCell.h */,
+				FAB9A8851DC19E790062050F /* CustomCameraCVCell.m */,
+				FAB9A8861DC19E790062050F /* CustomCameraCVCell.xib */,
 			);
 			path = "照相模块";
 			sourceTree = "<group>";
@@ -447,9 +463,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB9A87E1DC0D45C0062050F /* CustomCameraVC.xib in Resources */,
 				FAC108371DBE0F7900680017 /* CertificateCollectionViewCell.xib in Resources */,
 				FAB9A8601DC08F3C0062050F /* CertificateTableViewCell.xib in Resources */,
 				FAC107F81DBDFA2A00680017 /* LaunchScreen.storyboard in Resources */,
+				FAB9A8881DC19E790062050F /* CustomCameraCVCell.xib in Resources */,
 				FAC107F51DBDFA2A00680017 /* Assets.xcassets in Resources */,
 				FAC107F31DBDFA2A00680017 /* Main.storyboard in Resources */,
 				FA39FFF91DBF795200493569 /* CustomPhotoAlbum.xib in Resources */,
@@ -489,6 +507,7 @@
 				FA39FFEC1DBF058B00493569 /* UIButton+WebCache.m in Sources */,
 				FAB9A85B1DC0854C0062050F /* AlbumTool.m in Sources */,
 				FAB9A85F1DC08F3C0062050F /* CertificateTableViewCell.m in Sources */,
+				FAB9A87D1DC0D45C0062050F /* CustomCameraVC.m in Sources */,
 				FA39FFEE1DBF058B00493569 /* UIImage+MultiFormat.m in Sources */,
 				FA39FFF01DBF058B00493569 /* UIImageView+WebCache.m in Sources */,
 				FAC107ED1DBDFA2A00680017 /* AppDelegate.m in Sources */,
@@ -498,6 +517,7 @@
 				FA39FFE61DBF058B00493569 /* SDWebImageCompat.m in Sources */,
 				FA39FFE41DBF058B00493569 /* NSData+ImageContentType.m in Sources */,
 				FAC1082B1DBE027700680017 /* ChooseLicenseAccessoryVC.m in Sources */,
+				FAB9A8871DC19E790062050F /* CustomCameraCVCell.m in Sources */,
 				FAC107EA1DBDFA2A00680017 /* main.m in Sources */,
 				FA39FFF41DBF343200493569 /* CertificateCellModel.m in Sources */,
 				FA39FFE51DBF058B00493569 /* SDImageCache.m in Sources */,
