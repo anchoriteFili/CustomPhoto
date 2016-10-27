@@ -14,7 +14,7 @@
 
 typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
-@interface CustomCameraVC ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface CustomCameraVC ()<UICollectionViewDelegate,UICollectionViewDataSource,CustomCameraCVCellDelegate>
 
 #pragma mark ******* collectionView部分 ********
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView; // 用于存放拍过照片
@@ -447,14 +447,37 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
     CustomCameraCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierCustomCameraCVCell forIndexPath:indexPath];
-    
+    cell.delegate = self;
     CertificateCellModel *model = [self.modelAdditionArray objectAtIndex:indexPath.row];
-    cell.contentImageView.image = model.itemImage;
+    model.index = indexPath.row;
+    [cell updateCellWithModel:model];
     
     return cell;
 }
 
 #pragma mark *************** collectionView部分 end ***************
+
+#pragma mark cell代理部分
+- (void)customCameraCVCellClickEventType:(CustomCameraCVCellClickType)touchEventType atIndex:(NSInteger)index {
+    
+    switch (touchEventType) {
+        case CustomCameraCVCellClickTypeBigImage: { // 点击大图片，进入浏览页
+            
+            break;
+        }
+            
+        case CustomCameraCVCellClickTypeSmallImage: { // 点击小图片，删除相关数据
+            
+            [self.modelAdditionArray removeObjectAtIndex:index];
+            [self.collectionView reloadData];
+            break;
+        }
+
+        default:
+            break;
+    }
+    
+}
 
 #pragma mark *************** 自定义按钮方法部分 begin ***************
 #pragma mark 取消按钮点击事件

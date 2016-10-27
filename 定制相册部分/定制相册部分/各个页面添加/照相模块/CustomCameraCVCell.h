@@ -28,8 +28,11 @@ static  NSString * identifierCustomCameraCVCell = @"customCameraCVCell";
 @interface CustomCameraCVCell : UICollectionViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *contentImageView; // 内部图片
+@property (nonatomic,retain) CertificateCellModel *model; // 创建
 
 @property (nonatomic,assign) id<CustomCameraCVCellDelegate,NSObject> delegate; // 创建代理
+
+- (void)updateCellWithModel:(CertificateCellModel *)model;
 
 
 

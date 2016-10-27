@@ -15,20 +15,25 @@
                 <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lbk-h2-haB">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lbk-h2-haB">
                         <constraints>
                             <constraint firstAttribute="width" constant="44" id="NOr-Ib-PvH"/>
                             <constraint firstAttribute="height" constant="44" id="uYQ-nT-2gW"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CustomCameraCVCell_delete" translatesAutoresizingMaskIntoConstraints="NO" id="XAF-Ac-yHV">
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CustomCameraCVCell_delete" translatesAutoresizingMaskIntoConstraints="NO" id="XAF-Ac-yHV">
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="width" constant="14" id="eAg-6L-m0X"/>
                             <constraint firstAttribute="height" constant="14" id="sTJ-Wz-CKW"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="7pd-BA-Hcv" appends="YES" id="CqQ-RP-YC2"/>
+                        </connections>
                     </imageView>
                 </subviews>
             </view>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="Lbk-h2-haB" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="1aQ-qP-lv0"/>
                 <constraint firstAttribute="trailing" secondItem="XAF-Ac-yHV" secondAttribute="trailing" id="8oT-u0-j4b"/>
@@ -38,9 +43,20 @@
             <size key="customSize" width="97" height="86"/>
             <connections>
                 <outlet property="contentImageView" destination="Lbk-h2-haB" id="5nY-OY-xVw"/>
+                <outletCollection property="gestureRecognizers" destination="On0-ha-af0" appends="YES" id="MfK-bR-XKb"/>
             </connections>
             <point key="canvasLocation" x="57" y="121"/>
         </collectionViewCell>
+        <tapGestureRecognizer id="On0-ha-af0">
+            <connections>
+                <action selector="bigImageClick:" destination="gTV-IL-0wX" id="C8h-8I-YJZ"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="7pd-BA-Hcv">
+            <connections>
+                <action selector="smallImageClick:" destination="gTV-IL-0wX" id="RqP-Hs-p2I"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="CustomCameraCVCell_delete" width="15" height="15"/>

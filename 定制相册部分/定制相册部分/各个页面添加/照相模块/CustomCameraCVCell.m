@@ -29,4 +29,35 @@
     return self;
 }
 
+#pragma mark 更新cell
+- (void)updateCellWithModel:(CertificateCellModel *)model {
+    
+    self.model = model;
+    self.contentImageView.image = model.itemImage;
+}
+
+#pragma mark 大图片的点击事件
+- (IBAction)bigImageClick:(UITapGestureRecognizer *)sender {
+    // 直接进入预览页面
+
+    NSLog(@"点击了大图片");
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(customCameraCVCellClickEventType:atIndex:)]) {
+        [_delegate customCameraCVCellClickEventType:CustomCameraCVCellClickTypeBigImage atIndex:self.model.index];
+    }
+    
+}
+
+#pragma mark 小图片的点击事件
+- (IBAction)smallImageClick:(UITapGestureRecognizer *)sender {
+    
+    // 删除相关图片
+    if (_delegate && [_delegate respondsToSelector:@selector(customCameraCVCellClickEventType:atIndex:)]) {
+        [_delegate customCameraCVCellClickEventType:CustomCameraCVCellClickTypeSmallImage atIndex:self.model.index];
+    }
+    
+    NSLog(@"点击了小图片");
+}
+
+
 @end
