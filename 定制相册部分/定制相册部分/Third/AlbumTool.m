@@ -26,7 +26,7 @@
         [array addObject:assetCollection];
     }
     
-    NSLog(@"cameraRoll ====== %@",cameraRoll);
+//    NSLog(@"cameraRoll ====== %@",cameraRoll);
     
     return array;
     
@@ -59,6 +59,7 @@
         
         // 从asset中获得图片
         [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+
             
             [imagesArray addObject:result];
         }];
@@ -111,20 +112,23 @@
 
 }
 
+#pragma mark 保存图片
 + (void)saveImage:(UIImage *)image {
     
-    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
 }
 
-// 成功保存图片到相册中, 必须调用此方法, 否则会报参数越界错误
-+ (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
-    if (error) {
-        
-        
-    }
+#pragma mark 比较两张图片是否相等
++ (BOOL)compareImageOne:(UIImage *)imageOne withImageTwo:(UIImage *)imageTwo {
+    NSData *dataOne = UIImagePNGRepresentation(imageOne);
+    NSData *dataTwo = UIImagePNGRepresentation(imageTwo);
     
-    NSLog(@"contextInfo ======= %@",contextInfo);
-    NSLog(@"error ======= %@",error);
+    // 如果两个图片相同，则返回YES,不相同，返回NO
+    if ([dataOne isEqualToData:dataTwo]) {
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 @end
