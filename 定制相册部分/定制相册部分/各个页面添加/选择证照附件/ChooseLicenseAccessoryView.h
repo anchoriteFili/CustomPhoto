@@ -10,4 +10,7 @@
 
 @interface ChooseLicenseAccessoryView : UIView
 
+@property (weak, nonatomic) IBOutlet UILabel *headerContentLabel; // 头部label显示
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView; // 用于浏览图片
+
 @end

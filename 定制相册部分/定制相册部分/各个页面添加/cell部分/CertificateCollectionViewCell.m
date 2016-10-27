@@ -45,15 +45,6 @@
         self.certificateBackImageView.image = model.itemImage;
     }
     
-    
-//    if (model.imageUrl.length) { // 有链接赋值
-//        
-//        
-//    } else { // 无连接直接赋值图片
-//        
-//        
-//    }
-    
     // 状态图片赋值
     switch (model.cellImageType) {
         case CertificateCellImageEmpty: // 没有图片状态

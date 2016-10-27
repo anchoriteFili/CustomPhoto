@@ -9,6 +9,8 @@
 #import "ChooseLicenseAccessoryVC.h"
 #import "CertificateCollectionViewCell.h" // 自定义cell
 #import "CustomPhotoAlbum.h" // 自定义相册
+#import "ChooseLicenseAccessoryView.h" // 预览页面
+#import "AppDelegate.h"
 
 @interface ChooseLicenseAccessoryVC ()<UICollectionViewDataSource,UICollectionViewDelegate,CertificateCollectionViewCellDelegate>
 
@@ -19,6 +21,8 @@
 @property (nonatomic,retain) NSMutableArray *modelArray; // model数据数组
 
 @property (nonatomic,strong) NSMutableArray *modelAdditionArray; // 用于存储从相册或相机中添加的图片
+
+@property (nonatomic,retain) ChooseLicenseAccessoryView *previewView; // 图片展示页面
 
 @end
 
@@ -167,10 +171,14 @@
             
         }
             
-        case TouchEventTypeBrowse: // 进入浏览页面
-            NSLog(@"进入浏览页面");
+        case TouchEventTypeBrowse: {// 进入浏览页面
+            
+            [UIView animateWithDuration:3.0 animations:^{
+                self.previewView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
+            }];
             
             break;
+        }
             
         case TouchEventTypeDelete: { // 删除触发事件
             
@@ -220,6 +228,17 @@
         _modelAdditionArray = [NSMutableArray array];
     }
     return _modelAdditionArray;
+}
+
+#pragma mark 浏览按钮懒加载
+- (ChooseLicenseAccessoryView *)previewView {
+    if (!_previewView) {
+        _previewView = [[ChooseLicenseAccessoryView alloc] initWithFrame:CGRectMake(WIDTH, 0, WIDTH, HEIGHT)];
+        
+        UIWindow * window = [UIApplication sharedApplication].keyWindow;
+        [window addSubview:_previewView];
+    }
+    return _previewView;
 }
 
 
