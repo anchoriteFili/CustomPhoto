@@ -32,6 +32,8 @@
 		FAB9A87E1DC0D45C0062050F /* CustomCameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9A87C1DC0D45C0062050F /* CustomCameraVC.xib */; };
 		FAB9A8871DC19E790062050F /* CustomCameraCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A8851DC19E790062050F /* CustomCameraCVCell.m */; };
 		FAB9A8881DC19E790062050F /* CustomCameraCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9A8861DC19E790062050F /* CustomCameraCVCell.xib */; };
+		FAB9A90E1DC21F7B0062050F /* ChooseLicenseAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A90D1DC21F7B0062050F /* ChooseLicenseAccessoryView.m */; };
+		FAB9A9101DC21F900062050F /* ChooseLicenseAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9A90F1DC21F900062050F /* ChooseLicenseAccessoryView.xib */; };
 		FAC107EA1DBDFA2A00680017 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107E91DBDFA2A00680017 /* main.m */; };
 		FAC107ED1DBDFA2A00680017 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EC1DBDFA2A00680017 /* AppDelegate.m */; };
 		FAC107F01DBDFA2A00680017 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EF1DBDFA2A00680017 /* ViewController.m */; };
@@ -110,6 +112,9 @@
 		FAB9A8841DC19E790062050F /* CustomCameraCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCameraCVCell.h; sourceTree = "<group>"; };
 		FAB9A8851DC19E790062050F /* CustomCameraCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCameraCVCell.m; sourceTree = "<group>"; };
 		FAB9A8861DC19E790062050F /* CustomCameraCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCameraCVCell.xib; sourceTree = "<group>"; };
+		FAB9A90C1DC21F7B0062050F /* ChooseLicenseAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseLicenseAccessoryView.h; sourceTree = "<group>"; };
+		FAB9A90D1DC21F7B0062050F /* ChooseLicenseAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseLicenseAccessoryView.m; sourceTree = "<group>"; };
+		FAB9A90F1DC21F900062050F /* ChooseLicenseAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseLicenseAccessoryView.xib; sourceTree = "<group>"; };
 		FAC107E51DBDFA2A00680017 /* 定制相册部分.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "定制相册部分.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC107E91DBDFA2A00680017 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAC107EB1DBDFA2A00680017 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -330,6 +335,9 @@
 			children = (
 				FAC108291DBE027700680017 /* ChooseLicenseAccessoryVC.h */,
 				FAC1082A1DBE027700680017 /* ChooseLicenseAccessoryVC.m */,
+				FAB9A90C1DC21F7B0062050F /* ChooseLicenseAccessoryView.h */,
+				FAB9A90D1DC21F7B0062050F /* ChooseLicenseAccessoryView.m */,
+				FAB9A90F1DC21F900062050F /* ChooseLicenseAccessoryView.xib */,
 			);
 			path = "选择证照附件";
 			sourceTree = "<group>";
@@ -471,6 +479,7 @@
 				FAC107F51DBDFA2A00680017 /* Assets.xcassets in Resources */,
 				FAC107F31DBDFA2A00680017 /* Main.storyboard in Resources */,
 				FA39FFF91DBF795200493569 /* CustomPhotoAlbum.xib in Resources */,
+				FAB9A9101DC21F900062050F /* ChooseLicenseAccessoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +511,7 @@
 				FA39FFE31DBF058B00493569 /* DACircularProgressView.m in Sources */,
 				FA39FFE71DBF058B00493569 /* SDWebImageDecoder.m in Sources */,
 				FA39FFE81DBF058B00493569 /* SDWebImageDownloader.m in Sources */,
+				FAB9A90E1DC21F7B0062050F /* ChooseLicenseAccessoryView.m in Sources */,
 				FAC107F01DBDFA2A00680017 /* ViewController.m in Sources */,
 				FA39FFEA1DBF058B00493569 /* SDWebImageManager.m in Sources */,
 				FA39FFEC1DBF058B00493569 /* UIButton+WebCache.m in Sources */,
