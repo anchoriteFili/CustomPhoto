@@ -19,6 +19,8 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 #pragma mark ******* collectionView部分 ********
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView; // 用于存放拍过照片
 
+@property (nonatomic,assign) BOOL isFlashOn; //闪光灯是否开启
+
 #pragma mark ******* 相机部分 *******
 @property (strong,nonatomic) AVCaptureSession *captureSession;//负责输入和输出设备之间的数据传递
 @property (strong,nonatomic) AVCaptureDeviceInput *captureDeviceInput;//负责从AVCaptureDevice获得输入数据
@@ -168,19 +170,27 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     [self setFlashModeButtonStatus];
 }
 
+
+#pragma mark 是否开启闪光灯
+- (IBAction)flashButtonClick:(UIButton *)sender {
+    
+    if (self.isFlashOn) {
+        // 开启闪光灯
+        [self setFlashMode:AVCaptureFlashModeOn];
+        [self setFlashModeButtonStatus];
+        
+    } else {
+        // 关闭闪光灯
+        [self setFlashMode:AVCaptureFlashModeOff];
+        [self setFlashModeButtonStatus];
+    }
+    
+    self.isFlashOn = !self.isFlashOn;
+}
+
 #pragma mark 自动闪光灯开启
 - (IBAction)flashAutoClick:(UIButton *)sender {
     [self setFlashMode:AVCaptureFlashModeAuto];
-    [self setFlashModeButtonStatus];
-}
-#pragma mark 打开闪光灯
-- (IBAction)flashOnClick:(UIButton *)sender {
-    [self setFlashMode:AVCaptureFlashModeOn];
-    [self setFlashModeButtonStatus];
-}
-#pragma mark 关闭闪光灯
-- (IBAction)flashOffClick:(UIButton *)sender {
-    [self setFlashMode:AVCaptureFlashModeOff];
     [self setFlashModeButtonStatus];
 }
 

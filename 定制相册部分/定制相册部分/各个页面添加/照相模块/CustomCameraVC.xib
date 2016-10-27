@@ -40,6 +40,9 @@
                                 <constraint firstAttribute="height" constant="22" id="ilY-EX-eFv"/>
                             </constraints>
                             <state key="normal" image="CameraFlashlight"/>
+                            <connections>
+                                <action selector="flashButtonClick:" destination="-1" eventType="touchUpInside" id="4KZ-0m-M8N"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wlB-4w-Ycl">
                             <constraints>
@@ -47,6 +50,9 @@
                                 <constraint firstAttribute="width" constant="40" id="PN6-gi-kkg"/>
                             </constraints>
                             <state key="normal" image="CameraReversal"/>
+                            <connections>
+                                <action selector="toggleButtonClick:" destination="-1" eventType="touchUpInside" id="jSP-hf-PvQ"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tfc-96-xWo">
                             <constraints>
