@@ -18,6 +18,8 @@
 
 @property (nonatomic,retain) NSMutableArray *modelArray; // model数据数组
 
+@property (nonatomic,strong) NSMutableArray *modelArrayAddition; // 用于存储从相册或相机中添加的图片
+
 @end
 
 @implementation ChooseLicenseAccessoryVC
@@ -210,6 +212,13 @@
         _modelArray = [NSMutableArray array];
     }
     return _modelArray;
+}
+
+- (NSMutableArray *)modelArrayAddition {
+    if (!_modelArrayAddition) {
+        _modelArrayAddition = [NSMutableArray array];
+    }
+    return _modelArrayAddition;
 }
 
 

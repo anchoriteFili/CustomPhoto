@@ -18,8 +18,6 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 #pragma mark ******* collectionView部分 ********
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView; // 用于存放拍过照片
-@property (nonatomic,retain) NSMutableArray *modelArray; // model数据数组
-
 
 #pragma mark ******* 相机部分 *******
 @property (strong,nonatomic) AVCaptureSession *captureSession;//负责输入和输出设备之间的数据传递
@@ -40,6 +38,8 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    [self collectionViewInitialization]; // 初始化collectionView
     
 }
 
@@ -119,7 +119,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         if (imageDataSampleBuffer) {
             NSData *imageData=[AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
             UIImage *image=[UIImage imageWithData:imageData];
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+//            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
             //            ALAssetsLibrary *assetsLibrary=[[ALAssetsLibrary alloc]init];
             //            [assetsLibrary writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:nil];
             
@@ -127,6 +127,11 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
             model.isNewImage = YES;
             model.itemImage = image;
             [self.modelArray addObject:model];
+            
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                //回到主线程
+//                
+//            });
             
             [self.collectionView reloadData];
         }
@@ -442,6 +447,36 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 }
 
 #pragma mark *************** collectionView部分 end ***************
+
+#pragma mark *************** 自定义按钮方法部分 begin ***************
+#pragma mark 取消按钮点击事件
+- (IBAction)cancalButtonClick:(UIButton *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark 完成按钮点击事件
+- (IBAction)completeButtonClick:(UIButton *)sender {
+    /**
+     基本逻辑：
+     点击完成，收回页面，并进入展示页面，将新添加的图片添加进去。
+     这个有个问题，怎么把数据传过去，这是个问题，可以这样，原数据本身就是一掉线，这样的话就可以了
+     */
+    
+    
+}
+
+#pragma mark 去相册按钮点击事件
+- (IBAction)goPhotoAlbumButtonClick:(UIButton *)sender {
+    /**
+     基本逻辑：
+     直接退出页面，即可
+     */
+    
+    
+}
+
+#pragma mark *************** 自定义按钮方法部分 end ***************
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

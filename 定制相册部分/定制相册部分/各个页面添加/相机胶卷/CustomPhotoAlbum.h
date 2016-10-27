@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-
 @interface CustomPhotoAlbum : UIViewController
+
+@property (nonatomic,retain) NSMutableArray *modelArray; // 数据一条线
 
 @end

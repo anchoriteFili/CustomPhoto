@@ -30,6 +30,9 @@
                             <state key="normal" title="取消">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="cancalButtonClick:" destination="-1" eventType="touchUpInside" id="byJ-BY-zRO"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Qf-e2-Ric">
                             <constraints>
@@ -53,6 +56,9 @@
                             <state key="normal" title="完成">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="completeButtonClick:" destination="-1" eventType="touchUpInside" id="iju-ED-99f"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.20784313725490194" green="0.20784313725490194" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
@@ -89,6 +95,9 @@
                             <inset key="titleEdgeInsets" minX="-28" minY="0.0" maxX="-12" maxY="-26"/>
                             <inset key="imageEdgeInsets" minX="12" minY="-14" maxX="0.0" maxY="0.0"/>
                             <state key="normal" title="去相册" image="CustomCameraVC_Album"/>
+                            <connections>
+                                <action selector="goPhotoAlbumButtonClick:" destination="-1" eventType="touchUpInside" id="fgw-xg-wY9"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" red="0.20784313730000001" green="0.20784313730000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
@@ -109,11 +118,11 @@
                                 </view>
                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="BRW-Zk-Jew">
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="20" id="vTL-Aq-tVN">
-                                        <size key="itemSize" width="52" height="52"/>
+                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="15" minimumInteritemSpacing="10" id="vTL-Aq-tVN">
+                                        <size key="itemSize" width="54" height="54"/>
                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                        <inset key="sectionInset" minX="20" minY="21.5" maxX="0.0" maxY="0.0"/>
+                                        <inset key="sectionInset" minX="15" minY="0.0" maxX="20" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
                             </subviews>

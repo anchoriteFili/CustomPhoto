@@ -18,7 +18,6 @@
 @property (nonatomic,strong) UIView *tableViewBackView; // 承载tableView的背景view
 @property (nonatomic,retain) UITableView *tableView; // 用于显示相册名的tableView
 
-@property (nonatomic,retain) NSMutableArray *modelArray; // model数据数组
 @property (nonatomic,strong) NSMutableArray *albumsArray; // 相册的数组
 
 @property (weak, nonatomic) IBOutlet UIButton *middleHeaderButton; // 相册胶卷Button
@@ -257,7 +256,11 @@
         }
             
         case TouchEventTypePhoto: { // 进入拍照
-            [self presentViewController:[[CustomCameraVC alloc] init] animated:YES completion:nil];
+            
+            CustomCameraVC *customCameraVC = [[CustomCameraVC alloc] init];
+            customCameraVC.modelArray = self.modelArray;
+            
+            [self presentViewController:customCameraVC animated:YES completion:nil];
             break;
         }
             

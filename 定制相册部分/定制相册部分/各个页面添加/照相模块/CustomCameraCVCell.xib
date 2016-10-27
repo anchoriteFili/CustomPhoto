@@ -9,10 +9,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="customCameraCVCell" id="gTV-IL-0wX" customClass="CustomCameraCVCell">
-            <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
+            <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
+                <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lbk-h2-haB">
@@ -39,7 +39,7 @@
             <connections>
                 <outlet property="contentImageView" destination="Lbk-h2-haB" id="5nY-OY-xVw"/>
             </connections>
-            <point key="canvasLocation" x="57.5" y="121"/>
+            <point key="canvasLocation" x="57" y="121"/>
         </collectionViewCell>
     </objects>
     <resources>
