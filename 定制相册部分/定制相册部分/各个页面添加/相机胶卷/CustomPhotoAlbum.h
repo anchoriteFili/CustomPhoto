@@ -10,6 +10,6 @@
 
 @interface CustomPhotoAlbum : UIViewController
 
-@property (nonatomic,strong) NSMutableArray *modelArrayAddition; // 用于存储从相册或相机中添加的图片
+@property (nonatomic,strong) NSMutableArray *modelAdditionArray; // 用于存储从相册或相机中添加的图片
 
 @end

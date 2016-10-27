@@ -62,5 +62,7 @@ typedef NS_ENUM(NSInteger, CertificateCellType) {
 
 @property (nonatomic,assign) BOOL isNewImage; // 是否是相机添加或者是相册添加的新图片
 
+@property (nonatomic,strong) NSString *localIdentifier; // 照片在相册中的标识
+
 
 @end

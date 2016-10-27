@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <Photos/Photos.h>
+#import "CertificateCellModel.h" // 自定义部分
 
 @interface AlbumTool : NSObject
 
@@ -27,7 +28,7 @@
 + (void)getCoverImageWith:(PHAssetCollection *)assetCollection withBlcok:(void(^)(UIImage *image))image;
 
 #pragma mark 保存图片
-+ (void)saveImage:(UIImage *)image;
++ (void)saveImage:(UIImage *)image withLocalIdentifier:(void(^)(NSString *localIdentifier))localIdentifier;
 
 #pragma mark 比较两张图片是否相等
 + (BOOL)compareImageOne:(UIImage *)imageOne withImageTwo:(UIImage *)imageTwo;

@@ -259,7 +259,7 @@
         case TouchEventTypePhoto: { // 进入拍照
             
             CustomCameraVC *customCameraVC = [[CustomCameraVC alloc] init];
-            customCameraVC.modelArrayAddition = self.modelArrayAddition;
+            customCameraVC.modelAdditionArray = self.modelAdditionArray;
             
             [self presentViewController:customCameraVC animated:YES completion:nil];
             break;
@@ -327,14 +327,62 @@
     }
     
     // 获取单个相册中的图片
-    NSMutableArray *imagesArray = [AlbumTool getAlbumThumbnailWithAssetCollection:[self.albumsArray objectAtIndex:index]];
+    self.modelArray = [AlbumTool getAlbumThumbnailWithAssetCollection:[self.albumsArray objectAtIndex:index]];
     
-    // 将图片添加到数据源
-    for (UIImage *image in imagesArray) {
-        CertificateCellModel *model = [[CertificateCellModel alloc] init];
-        model.itemImage = image;
-        model.cellImageType = CertificateCellImageDeselect;
-        [self.modelArray addObject:model];
+    // 新添加一步，对两个数据源进行比较，用于初始化显示
+    [self compareTwoModelArray];
+    
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:YES];
+    
+    
+    
+    NSLog(@"modelAdditionArray.count ===== %lu",(unsigned long)self.modelAdditionArray.count);
+    
+    [self compareTwoModelArray];
+    
+}
+
+#pragma mark 比较两个数组中元素
+- (void)compareTwoModelArray {
+    
+    /**
+     匹配规则：
+     首先，从相机那边传过来最多有9张图片，那么最外层最多有9遍判断
+     内部循环，内部匹配，值匹配前20张，如果前20张没有匹配完毕，则直接废弃掉，也就是内部最多只有20遍循环，
+     
+     
+     那么怎么写呢？
+     */
+    
+    for (CertificateCellModel *model in self.modelAdditionArray) {
+        
+        
+        /**
+         如果数量大于20，直接按顺序遍历即可，如果数量不大于20，则按照
+         */
+        
+        NSUInteger cycleNumber = 0; // 创建循环次数
+        
+        if (self.modelArray.count > 20) {
+            cycleNumber = 20;
+        } else {
+            cycleNumber = self.modelArray.count;
+        }
+        
+        for (int i = 0; i < cycleNumber; i ++) {
+            CertificateCellModel *modelOne = [self.modelArray objectAtIndex:i];
+            
+            if ([model.localIdentifier isEqualToString:modelOne.localIdentifier]) {
+                
+                NSLog(@"匹配到一张");
+                modelOne.cellImageType = CertificateCellImageSelect;
+                break;
+            }
+        }
     }
     
     // 刷新数据

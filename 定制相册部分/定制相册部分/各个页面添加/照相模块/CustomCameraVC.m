@@ -120,14 +120,20 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
             NSData *imageData=[AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
             UIImage *image=[UIImage imageWithData:imageData];
             
-            [AlbumTool saveImage:image]; // 保存图片
-            
-            CertificateCellModel *model = [[CertificateCellModel alloc] init];
-            model.isNewImage = YES;
-            model.itemImage = image;
-            [self.modelArrayAddition addObject:model];
-            
-            [self.collectionView reloadData];
+            [AlbumTool saveImage:image withLocalIdentifier:^(NSString *localIdentifier) {
+                
+                CertificateCellModel *model = [[CertificateCellModel alloc] init];
+                model.isNewImage = YES;
+                model.itemImage = image;
+                model.localIdentifier = localIdentifier;
+                [self.modelAdditionArray addObject:model];
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    //回到主线程
+                    [self.collectionView reloadData];
+                });
+                
+            }]; // 保存图片
         }
         
     }];
@@ -403,11 +409,11 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 }
 
 #pragma mark modelArray的懒加载
-- (NSMutableArray *)modelArrayAddition {
-    if (!_modelArrayAddition) {
-        _modelArrayAddition = [NSMutableArray array];
+- (NSMutableArray *)modelAdditionArray {
+    if (!_modelAdditionArray) {
+        _modelAdditionArray = [NSMutableArray array];
     }
-    return _modelArrayAddition;
+    return _modelAdditionArray;
 }
 
 #pragma mark *************** collectionView部分 begin ***************
@@ -424,7 +430,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return self.modelArrayAddition.count;
+    return self.modelAdditionArray.count;
     
 }
 
@@ -432,7 +438,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     CustomCameraCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierCustomCameraCVCell forIndexPath:indexPath];
     
-    CertificateCellModel *model = [self.modelArrayAddition objectAtIndex:indexPath.row];
+    CertificateCellModel *model = [self.modelAdditionArray objectAtIndex:indexPath.row];
     cell.contentImageView.image = model.itemImage;
     
     return cell;

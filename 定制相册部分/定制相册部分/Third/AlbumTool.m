@@ -51,21 +51,33 @@
     
 //    NSLog(@"assets.count ========== %lu",(unsigned long)assets.count);
     
-    NSMutableArray *imagesArray = [NSMutableArray array];
+    NSMutableArray *modelArray = [NSMutableArray array];
     
     for (PHAsset *asset in assets) {
         // 是否要原图
         CGSize size = original ? CGSizeMake(asset.pixelWidth, asset.pixelHeight) : CGSizeZero;
         
+        
+        NSLog(@"asset.burstIdentifier ====== %@",asset.localIdentifier);
+        
         // 从asset中获得图片
         [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
-
             
-            [imagesArray addObject:result];
+            /**
+             为了优化，直接将model在这里创建
+             */
+            
+            CertificateCellModel *model = [[CertificateCellModel alloc] init];
+            model.itemImage = result;
+            model.localIdentifier = asset.localIdentifier;
+            model.cellImageType = CertificateCellImageDeselect;
+            [modelArray addObject:model];
         }];
     }
     
-    return imagesArray;
+    modelArray = (NSMutableArray *)[[modelArray reverseObjectEnumerator] allObjects];
+    
+    return modelArray;
 }
 
 #pragma mark 获取单张原图
@@ -113,18 +125,72 @@
 }
 
 #pragma mark 保存图片
-+ (void)saveImage:(UIImage *)image {
++ (void)saveImage:(UIImage *)image withLocalIdentifier:(void(^)(NSString *localIdentifier))localIdentifier {
     
-    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+//    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    
+    __block NSString *assetId = nil;
+    
+    [[PHPhotoLibrary sharedPhotoLibrary] performChanges:^{ // 这个block里保存一些"修改"性质的代码
+        // 新建一个PHAssetCreationRequest对象, 保存图片到"相机胶卷"
+        // 返回PHAsset(图片)的字符串标识
+        assetId = [PHAssetCreationRequest creationRequestForAssetFromImage:image].placeholderForCreatedAsset.localIdentifier;
+        
+    } completionHandler:^(BOOL success, NSError * _Nullable error) {
+        if (error) {
+            NSLog(@"保存图片到相机胶卷中失败");
+            return;
+        }
+        
+        localIdentifier(assetId);
+        NSLog(@"成功保存图片到相机胶卷中");
+    }];
+    
 }
+
+
+/**
+ *  返回相册
+ */
++ (PHAssetCollection *)collection{
+    // 先获得之前创建过的相册
+    // 获得相机胶卷
+    PHAssetCollection *cameraRoll = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil].lastObject;
+    
+    return cameraRoll;
+}
+
+
 
 #pragma mark 比较两张图片是否相等
 + (BOOL)compareImageOne:(UIImage *)imageOne withImageTwo:(UIImage *)imageTwo {
-    NSData *dataOne = UIImagePNGRepresentation(imageOne);
-    NSData *dataTwo = UIImagePNGRepresentation(imageTwo);
+    
+    
+    NSData *dataOne;
+    if (UIImagePNGRepresentation(imageOne) == nil) {
+        
+        dataOne = UIImageJPEGRepresentation(imageOne, 1);
+        
+    } else {
+        
+        dataOne = UIImagePNGRepresentation(imageOne);
+    }
+    
+    NSData *dataTwo;
+    if (UIImagePNGRepresentation(imageTwo) == nil) {
+        
+        dataTwo = UIImageJPEGRepresentation(imageTwo, 1);
+        
+    } else {
+        
+        dataTwo = UIImagePNGRepresentation(imageTwo);
+    }
+    
     
     // 如果两个图片相同，则返回YES,不相同，返回NO
-    if ([dataOne isEqualToData:dataTwo]) {
+    if ([dataOne isEqual:dataTwo]) {
+        
+        NSLog(@"有匹配");
         return YES;
     } else {
         return NO;
