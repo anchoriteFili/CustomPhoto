@@ -10,6 +10,6 @@
 
 @interface CustomCameraVC : UIViewController
 
-@property (nonatomic,retain) NSMutableArray *modelArray; // 数据一条线
+@property (nonatomic,strong) NSMutableArray *modelArrayAddition; // 用于存储从相册或相机中添加的图片
 
 @end

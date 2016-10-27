@@ -26,5 +26,7 @@
 #pragma mark 获取封面图片方法
 + (void)getCoverImageWith:(PHAssetCollection *)assetCollection withBlcok:(void(^)(UIImage *image))image;
 
+#pragma mark 保存图片
++ (void)saveImage:(UIImage *)image;
 
 @end

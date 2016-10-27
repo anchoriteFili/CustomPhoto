@@ -111,4 +111,20 @@
 
 }
 
++ (void)saveImage:(UIImage *)image {
+    
+    UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+}
+
+// 成功保存图片到相册中, 必须调用此方法, 否则会报参数越界错误
++ (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo{
+    if (error) {
+        
+        
+    }
+    
+    NSLog(@"contextInfo ======= %@",contextInfo);
+    NSLog(@"error ======= %@",error);
+}
+
 @end
