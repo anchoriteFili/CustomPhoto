@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CertificateCellModel.h"
 
-#pragma mark 添加两个代理方法
+#pragma mark 添加代理方法
 @protocol CertificateCollectionViewCellDelegate <NSObject>
 
 #pragma mark 传出各种点击类型
