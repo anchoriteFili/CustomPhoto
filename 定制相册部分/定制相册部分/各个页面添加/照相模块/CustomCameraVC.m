@@ -119,23 +119,13 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         if (imageDataSampleBuffer) {
             NSData *imageData=[AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
             UIImage *image=[UIImage imageWithData:imageData];
-//            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
-//                        ALAssetsLibrary *assetsLibrary=[[ALAssetsLibrary alloc]init];
-//            [assetsLibrary writeImageToSavedPhotosAlbum:[image CGImage] orientation:(ALAssetOrientation)[image imageOrientation] completionBlock:^(NSURL *assetURL, NSError *error) {
-//                
-//            }];
             
-            [AlbumTool saveImage:image];
+            [AlbumTool saveImage:image]; // 保存图片
             
             CertificateCellModel *model = [[CertificateCellModel alloc] init];
             model.isNewImage = YES;
             model.itemImage = image;
             [self.modelArrayAddition addObject:model];
-            
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                //回到主线程
-//                
-//            });
             
             [self.collectionView reloadData];
         }
