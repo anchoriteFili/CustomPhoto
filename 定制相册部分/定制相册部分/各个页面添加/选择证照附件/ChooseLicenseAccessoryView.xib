@@ -12,7 +12,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ylz-lI-iuU"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="btI-2J-MXL">
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iV6-D6-WZ8">
                     <subviews>
                         <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m0f-HG-eNZ">
@@ -66,18 +68,18 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="ylz-lI-iuU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7ls-Om-50L"/>
-                <constraint firstItem="ylz-lI-iuU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="N8i-ap-bz0"/>
+                <constraint firstItem="btI-2J-MXL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="9pT-mq-Olk"/>
+                <constraint firstItem="btI-2J-MXL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="PMe-5M-Zt4"/>
                 <constraint firstAttribute="trailing" secondItem="iV6-D6-WZ8" secondAttribute="trailing" id="Sl7-i6-E8r"/>
-                <constraint firstAttribute="bottom" secondItem="ylz-lI-iuU" secondAttribute="bottom" id="UDg-AM-o7a"/>
-                <constraint firstAttribute="trailing" secondItem="ylz-lI-iuU" secondAttribute="trailing" id="ZMF-mh-oo9"/>
+                <constraint firstAttribute="bottom" secondItem="btI-2J-MXL" secondAttribute="bottom" id="Tkm-hl-ao3"/>
+                <constraint firstAttribute="trailing" secondItem="btI-2J-MXL" secondAttribute="trailing" id="kWV-DY-Y6O"/>
                 <constraint firstItem="iV6-D6-WZ8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="uhi-Xb-Tw2"/>
                 <constraint firstItem="iV6-D6-WZ8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="zso-Zw-7uB"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <connections>
+                <outlet property="bearView" destination="btI-2J-MXL" id="1C8-gR-ppG"/>
                 <outlet property="headerContentLabel" destination="jbx-20-CW4" id="ot2-Wt-AkF"/>
-                <outlet property="scrollView" destination="ylz-lI-iuU" id="uWy-rf-9Tj"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="66.5"/>
         </view>

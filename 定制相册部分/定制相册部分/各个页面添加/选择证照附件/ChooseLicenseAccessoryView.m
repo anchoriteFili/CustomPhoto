@@ -18,13 +18,23 @@
         self = [[[NSBundle mainBundle] loadNibNamed:className owner:self options:nil] lastObject];
         
         
+        //    1. 采用本地图片实现
+        //    1.1 创建图片数组
+       
         
+        NSMutableArray *images = [NSMutableArray arrayWithObjects:[UIImage imageNamed:@"h1.png"],
+                                  [UIImage imageNamed:@"h2.png"],
+                                  [UIImage imageNamed:@"h3.png"],
+                                  [UIImage imageNamed:@"h4.png"]
+                                  , nil];
         
+        self.imagesScrollView = [[ImagesScrollView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+        [self.bearView addSubview:self.imagesScrollView];
+
         
-        
-        
-        
-        
+        [self.imagesScrollView inputImages:images andComplete:^(BOOL complete) {
+            
+        }];
         
         
         
@@ -32,6 +42,8 @@
     }
     return self;
 }
+
+
 
 #pragma mark 返回按钮点击事件
 - (IBAction)backButtonClick:(UIButton *)sender {

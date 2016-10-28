@@ -7,10 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SDCycleScrollView.h"
+#import "ImagesScrollView.h"
 
-@interface ChooseLicenseAccessoryView : UIView
+@interface ChooseLicenseAccessoryView : UIView<SDCycleScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *headerContentLabel; // 头部label显示
-@property (weak, nonatomic) IBOutlet UIScrollView *scrollView; // 用于浏览图片
+
+@property (weak, nonatomic) IBOutlet UIView *bearView; // 承载scrollView的view
+
+@property (nonatomic,retain) ImagesScrollView *imagesScrollView; // 用于轮播的view
+
+
 
 @end

@@ -173,9 +173,11 @@
             
         case TouchEventTypeBrowse: {// 进入浏览页面
             
-            [UIView animateWithDuration:3.0 animations:^{
-                self.previewView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
-            }];
+//            [UIView animateWithDuration:3.0 animations:^{
+//                
+//            }];
+            
+            self.previewView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
             
             break;
         }

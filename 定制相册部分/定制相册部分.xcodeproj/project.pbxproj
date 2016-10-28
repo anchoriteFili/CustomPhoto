@@ -42,6 +42,7 @@
 		FAB9A9BE1DC2EEEB0062050F /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9B41DC2EEEB0062050F /* SDCollectionViewCell.m */; };
 		FAB9A9BF1DC2EEEB0062050F /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9B61DC2EEEB0062050F /* SDCycleScrollView.m */; };
 		FAB9A9C01DC2EEEB0062050F /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9B81DC2EEEB0062050F /* UIView+SDExtension.m */; };
+		FAB9A9C31DC2F9F80062050F /* ImagesScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9C21DC2F9F80062050F /* ImagesScrollView.m */; };
 		FAC107EA1DBDFA2A00680017 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107E91DBDFA2A00680017 /* main.m */; };
 		FAC107ED1DBDFA2A00680017 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EC1DBDFA2A00680017 /* AppDelegate.m */; };
 		FAC107F01DBDFA2A00680017 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EF1DBDFA2A00680017 /* ViewController.m */; };
@@ -139,6 +140,8 @@
 		FAB9A9B61DC2EEEB0062050F /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
 		FAB9A9B71DC2EEEB0062050F /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
 		FAB9A9B81DC2EEEB0062050F /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
+		FAB9A9C11DC2F9F80062050F /* ImagesScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesScrollView.h; sourceTree = "<group>"; };
+		FAB9A9C21DC2F9F80062050F /* ImagesScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesScrollView.m; sourceTree = "<group>"; };
 		FAC107E51DBDFA2A00680017 /* 定制相册部分.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "定制相册部分.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC107E91DBDFA2A00680017 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAC107EB1DBDFA2A00680017 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -191,6 +194,8 @@
 		FA39FFC11DBF058A00493569 /* Third */ = {
 			isa = PBXGroup;
 			children = (
+				FAB9A9C11DC2F9F80062050F /* ImagesScrollView.h */,
+				FAB9A9C21DC2F9F80062050F /* ImagesScrollView.m */,
 				FAB9A8591DC0854C0062050F /* AlbumTool.h */,
 				FAB9A85A1DC0854C0062050F /* AlbumTool.m */,
 				FAB9A9A71DC2EEEB0062050F /* SDCycleScrollView */,
@@ -573,6 +578,7 @@
 				FAC107F01DBDFA2A00680017 /* ViewController.m in Sources */,
 				FAB9A9BE1DC2EEEB0062050F /* SDCollectionViewCell.m in Sources */,
 				FA39FFEA1DBF058B00493569 /* SDWebImageManager.m in Sources */,
+				FAB9A9C31DC2F9F80062050F /* ImagesScrollView.m in Sources */,
 				FA39FFEC1DBF058B00493569 /* UIButton+WebCache.m in Sources */,
 				FAB9A85B1DC0854C0062050F /* AlbumTool.m in Sources */,
 				FAB9A85F1DC08F3C0062050F /* CertificateTableViewCell.m in Sources */,
