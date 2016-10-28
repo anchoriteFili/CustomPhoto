@@ -176,8 +176,9 @@
 //            [UIView animateWithDuration:3.0 animations:^{
 //                
 //            }];
-            
+            self.previewView.hidden = NO;
             self.previewView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
+            [self.previewView updateScrollViewWithModelArray:self.modelArray atIndex:index];
             
             break;
         }

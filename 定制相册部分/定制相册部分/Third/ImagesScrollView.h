@@ -41,7 +41,7 @@
 /**
  * 传入的图片数组
  */
-- (void)inputImages:(NSMutableArray *)images andComplete:(void(^)(BOOL complete))complete;
+- (void)inputImages:(NSMutableArray *)images atIndex:(NSInteger)index andComplete:(void(^)(BOOL complete))complete;
 
 
 @end

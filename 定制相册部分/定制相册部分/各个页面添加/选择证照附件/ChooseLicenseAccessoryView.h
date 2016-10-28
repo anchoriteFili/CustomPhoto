@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SDCycleScrollView.h"
 #import "ImagesScrollView.h"
+#import "CertificateCellModel.h"
 
-@interface ChooseLicenseAccessoryView : UIView<SDCycleScrollViewDelegate>
+@interface ChooseLicenseAccessoryView : UIView<ImagesScrollViewDelegate>
+
+@property (nonatomic,strong) NSMutableArray *modelArray; // 接收数组
 
 @property (weak, nonatomic) IBOutlet UILabel *headerContentLabel; // 头部label显示
 
@@ -18,6 +20,6 @@
 
 @property (nonatomic,retain) ImagesScrollView *imagesScrollView; // 用于轮播的view
 
-
+- (void)updateScrollViewWithModelArray:(NSMutableArray *)modelArray atIndex:(NSInteger)index;
 
 @end

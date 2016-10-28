@@ -40,6 +40,7 @@
     } else if (model.imageUrl.length) {
         // 大背景图片的赋值
         [self.certificateBackImageView sd_setImageWithURL:[NSURL URLWithString:model.imageUrl] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            model.itemImage = image;
         }];
     } else {
         self.certificateBackImageView.image = model.itemImage;

@@ -17,33 +17,39 @@
         NSString *className = NSStringFromClass([self class]);
         self = [[[NSBundle mainBundle] loadNibNamed:className owner:self options:nil] lastObject];
         
-        
-        //    1. 采用本地图片实现
-        //    1.1 创建图片数组
-       
-        
-        NSMutableArray *images = [NSMutableArray arrayWithObjects:[UIImage imageNamed:@"h1.png"],
-                                  [UIImage imageNamed:@"h2.png"],
-                                  [UIImage imageNamed:@"h3.png"],
-                                  [UIImage imageNamed:@"h4.png"]
-                                  , nil];
-        
         self.imagesScrollView = [[ImagesScrollView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
         [self.bearView addSubview:self.imagesScrollView];
+        self.imagesScrollView.delegate = self;
 
-        
-        [self.imagesScrollView inputImages:images andComplete:^(BOOL complete) {
-            
-        }];
-        
-        
-        
-        
     }
     return self;
 }
 
+#pragma mark 更新图片部分
+- (void)updateScrollViewWithModelArray:(NSMutableArray *)modelArray atIndex:(NSInteger)index {
+    
+    self.modelArray = modelArray;
+    
+    // 添加图片，更新scrollView
+    NSMutableArray *images = [NSMutableArray array];
+    
+    for (CertificateCellModel *model in modelArray) {
+        [images addObject:model.itemImage];
+    }
+    
+    [self.imagesScrollView inputImages:images atIndex:index andComplete:^(BOOL complete) {
+        
+    }];
+    
+    self.headerContentLabel.text = [NSString stringWithFormat:@"%ld/%lu",index+1,(unsigned long)modelArray.count];
+}
 
+#pragma mark 滚动图代理方法
+- (void)imagesScrollViewDidEndScrollAtPage:(NSInteger)page {
+    NSLog(@"page ====== %ld",(long)page);
+    
+    self.headerContentLabel.text = [NSString stringWithFormat:@"%ld/%lu",page+1,(unsigned long)self.modelArray.count];
+}
 
 #pragma mark 返回按钮点击事件
 - (IBAction)backButtonClick:(UIButton *)sender {

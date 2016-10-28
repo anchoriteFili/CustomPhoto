@@ -17,7 +17,9 @@
 @implementation ImagesScrollView
 
 #pragma mark 传入图片，将图片放入scrollView中
-- (void)inputImages:(NSMutableArray *)images andComplete:(void(^)(BOOL complete))complete {
+- (void)inputImages:(NSMutableArray *)images atIndex:(NSInteger)index andComplete:(void(^)(BOOL complete))complete {
+    
+    
     
     // 1. 移除scrollView中所有的子视图
     for (UIView *view in self.scrollView.subviews) {
@@ -40,6 +42,8 @@
         self.scrollView.showsHorizontalScrollIndicator = NO;
         [self.scrollView addSubview:imageView];
     }
+    
+    [self.scrollView setContentOffset:CGPointMake(index*GETWIDTH(self.scrollView), 0) animated:NO];
     
     complete(YES);
 }
