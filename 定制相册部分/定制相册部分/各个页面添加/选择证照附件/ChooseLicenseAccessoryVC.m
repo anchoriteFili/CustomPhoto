@@ -32,6 +32,30 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    [self initializeCollectionView]; // 初始化collectionView
+    [self.view addSubview:self.bottomSaveView]; // 添加底部保存按钮的view
+    [self initializeNotification]; // 初始化刷新collectionView页面的通知
+    
+#pragma mark 初始化数据
+    NSArray *imageUrlArray = @[@"http://img.ivsky.com/img/bizhi/slides/201511/11/december.jpg",@"http://h.hiphotos.baidu.com/image/pic/item/267f9e2f0708283890f56e02bb99a9014c08f128.jpg",@"http://a.hiphotos.baidu.com/image/pic/item/b219ebc4b74543a9fa0c4bc11c178a82b90114a3.jpg",@"http://c.hiphotos.baidu.com/image/pic/item/024f78f0f736afc33b1dbe65b119ebc4b7451298.jpg",@"http://d.hiphotos.baidu.com/image/pic/item/77094b36acaf2edd481ef6e78f1001e9380193d5.jpg"];
+
+    for (int i = 0; i < imageUrlArray.count; i ++) {
+        
+        CertificateCellModel *model = [[CertificateCellModel alloc] init];
+        model.isAlbum = NO;
+        model.cellImageType = CertificateCellImageEmpty;
+        model.imageUrl = [imageUrlArray objectAtIndex:i];
+        [self.modelArray addObject:model];
+    }
+    
+}
+
+
+
+#pragma mark ****************** collectionView代理部分 begin ******************
+
+- (void)initializeCollectionView {
+    
 #pragma mark 初始化collectionView
     //    1.创建布局管理类---flowLayout:流式布局
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
@@ -66,26 +90,7 @@
     [self.collectionView registerClass:[CertificateCollectionViewCell class] forCellWithReuseIdentifier:identifierCell];
     
     [self.view addSubview:self.collectionView]; // 添加collectionView
-    
-    [self.view addSubview:self.bottomSaveView]; // 添加底部保存按钮的view
-    
-#pragma mark 初始化数据
-    NSArray *imageUrlArray = @[@"http://img.ivsky.com/img/bizhi/slides/201511/11/december.jpg",@"http://h.hiphotos.baidu.com/image/pic/item/267f9e2f0708283890f56e02bb99a9014c08f128.jpg",@"http://a.hiphotos.baidu.com/image/pic/item/b219ebc4b74543a9fa0c4bc11c178a82b90114a3.jpg",@"http://c.hiphotos.baidu.com/image/pic/item/024f78f0f736afc33b1dbe65b119ebc4b7451298.jpg",@"http://d.hiphotos.baidu.com/image/pic/item/77094b36acaf2edd481ef6e78f1001e9380193d5.jpg"];
-
-    for (int i = 0; i < imageUrlArray.count; i ++) {
-        
-        CertificateCellModel *model = [[CertificateCellModel alloc] init];
-        model.isAlbum = NO;
-        model.cellImageType = CertificateCellImageEmpty;
-        model.imageUrl = [imageUrlArray objectAtIndex:i];
-        [self.modelArray addObject:model];
-    }
-    
 }
-
-
-
-#pragma mark ****************** collectionView代理部分 begin ******************
 
 // 设置footerView
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
@@ -278,6 +283,29 @@
     
     
 }
+
+#pragma mark ************** 通知部分 begin **************
+#pragma mark 初始化通知
+- (void)initializeNotification {
+    
+    // 添加页面数据刷新通知，因为页面通用一个数据
+#pragma mark 接收信息对象在通知中心进行注册，包括：信息名称、接受信息时的处理方法。
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadCollectionViewNotification:) name:reloadChooseLicenseAccessoryVCNotification object:nil];
+}
+
+#pragma mark 通知方法
+- (void)reloadCollectionViewNotification:(NSNotification *)notification {
+
+    // 只刷新页面
+    [self.collectionView reloadData];
+}
+
+- (void)dealloc {
+#pragma mark 在通知中心注销
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark ************** 通知部分 end **************
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

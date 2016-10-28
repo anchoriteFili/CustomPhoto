@@ -41,18 +41,23 @@
         
     }];
     
+    self.currentPage = index;
     self.headerContentLabel.text = [NSString stringWithFormat:@"%ld/%lu",index+1,(unsigned long)modelArray.count];
 }
 
 #pragma mark 滚动图代理方法
 - (void)imagesScrollViewDidEndScrollAtPage:(NSInteger)page {
-    NSLog(@"page ====== %ld",(long)page);
+    
+    self.currentPage = page;
     
     self.headerContentLabel.text = [NSString stringWithFormat:@"%ld/%lu",page+1,(unsigned long)self.modelArray.count];
 }
 
 #pragma mark 返回按钮点击事件
 - (IBAction)backButtonClick:(UIButton *)sender {
+    
+#pragma mark 对象通过通知中心广播消息，包括：信息名称、信息内容。
+    [[NSNotificationCenter defaultCenter] postNotificationName:reloadChooseLicenseAccessoryVCNotification object:self userInfo:nil];
     
     self.hidden = YES;
     
@@ -62,6 +67,26 @@
 - (IBAction)deleteButtonClick:(UIButton *)sender {
     
     
+    [self.modelArray removeObjectAtIndex:self.currentPage];
+
+    
+    // 添加图片，更新scrollView
+    NSMutableArray *images = [NSMutableArray array];
+    
+    for (CertificateCellModel *model in self.modelArray) {
+        [images addObject:model.itemImage];
+    }
+    
+    [self.imagesScrollView inputImages:images atIndex:self.currentPage-1 andComplete:^(BOOL complete) {
+        
+    }];
+    
+    self.currentPage = self.currentPage-1;
+    self.headerContentLabel.text = [NSString stringWithFormat:@"%ld/%lu",self.currentPage+1,(unsigned long)self.modelArray.count];
+    
+    if (self.currentPage+1 == 0) {
+        self.hidden = YES;
+    }
     
 }
 

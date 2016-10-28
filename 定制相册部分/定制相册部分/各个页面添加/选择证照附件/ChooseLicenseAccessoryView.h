@@ -14,6 +14,8 @@
 
 @property (nonatomic,strong) NSMutableArray *modelArray; // 接收数组
 
+@property (nonatomic,assign) NSInteger currentPage; // 当前页面
+
 @property (weak, nonatomic) IBOutlet UILabel *headerContentLabel; // 头部label显示
 
 @property (weak, nonatomic) IBOutlet UIView *bearView; // 承载scrollView的view

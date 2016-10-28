@@ -18,6 +18,9 @@
 #import "UIImageView+WebCache.h"
 #import "AlbumTool.h"
 
+// 刷新选择证照附件页面数据通知标识
+#define reloadChooseLicenseAccessoryVCNotification @"reloadChooseLicenseAccessoryVCNotification"
+
 #pragma mark 颜色转换宏
 #define RGBA_COLOR(R, G, B, A) [UIColor colorWithRed:((R)/255.0f) green:((G)/255.0f) blue:((B)/255.0f) alpha:A]
 #define RGB_COLOR(R, G, B) [UIColor colorWithRed:((R)/255.0f) green:((G)/255.0f) blue:((B)/255.0f) alpha:1.0f]
