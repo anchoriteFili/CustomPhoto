@@ -327,18 +327,18 @@
     }
     
     // 获取单个相册中的图片
-    self.modelArray = [AlbumTool getAlbumThumbnailWithAssetCollection:[self.albumsArray objectAtIndex:index]];
-    
-    // 新添加一步，对两个数据源进行比较，用于初始化显示
-    [self compareTwoModelArray];
+    [AlbumTool getAlbumThumbnailWithAssetCollection:[self.albumsArray objectAtIndex:index] andComplete:^(NSMutableArray *modelArray) {
+        self.modelArray = modelArray;
+        
+        // 新添加一步，对两个数据源进行比较，用于初始化显示
+        [self compareTwoModelArray];
+    }];
     
     
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
-    
-    
     
     NSLog(@"modelAdditionArray.count ===== %lu",(unsigned long)self.modelAdditionArray.count);
     

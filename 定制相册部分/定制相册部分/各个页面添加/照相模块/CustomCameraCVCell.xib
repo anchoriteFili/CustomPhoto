@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lbk-h2-haB">
+                    <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lbk-h2-haB">
                         <constraints>
                             <constraint firstAttribute="width" constant="44" id="NOr-Ib-PvH"/>
                             <constraint firstAttribute="height" constant="44" id="uYQ-nT-2gW"/>

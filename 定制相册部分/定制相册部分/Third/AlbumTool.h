@@ -16,7 +16,7 @@
 + (NSMutableArray *)getAlbumObjects;
 
 #pragma mark 根据胶卷儿获取缩略图
-+ (NSMutableArray *)getAlbumThumbnailWithAssetCollection:(PHAssetCollection *)assetCollection;
++ (void)getAlbumThumbnailWithAssetCollection:(PHAssetCollection *)assetCollection  andComplete:(void(^)(NSMutableArray *modelArray))modelArrayBlock;
 
 #pragma mark 获取指定某张图片的原图
 + (void)photoWithAssetCollection:(PHAssetCollection *)assetCollection atIndex:(NSInteger)index withBlcok:(void(^)(UIImage *image))image;

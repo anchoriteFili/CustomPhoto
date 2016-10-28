@@ -33,14 +33,15 @@
 }
 
 #pragma mark 获取所有的缩略图
-+ (NSMutableArray *)getAlbumThumbnailWithAssetCollection:(PHAssetCollection *)assetCollection {
-    return [self enumerateAssetsInAssetCollection:assetCollection original:NO];
++ (void)getAlbumThumbnailWithAssetCollection:(PHAssetCollection *)assetCollection andComplete:(void(^)(NSMutableArray *modelArray))modelArrayBlock {
+    [self enumerateAssetsInAssetCollection:assetCollection original:NO andComplete:^(NSMutableArray *modelArray) {
+        modelArrayBlock(modelArray);
+    }];
 }
 
 #pragma mark 缩略图的获取
-+ (NSMutableArray *)enumerateAssetsInAssetCollection:(PHAssetCollection *)assetCollection original:(BOOL)original {
++ (void)enumerateAssetsInAssetCollection:(PHAssetCollection *)assetCollection original:(BOOL)original andComplete:(void(^)(NSMutableArray *modelArray))modelArrayBlock {
     NSLog(@"相簿名:%@", assetCollection.localizedTitle);
-    NSLog(@"endDate == %@",assetCollection.localIdentifier);
     
     PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
     // 同步获得图片, 只会返回1张图片
@@ -51,34 +52,69 @@
     
 //    NSLog(@"assets.count ========== %lu",(unsigned long)assets.count);
     
-    NSMutableArray *modelArray = [NSMutableArray array];
+    /**
+     如果我在这里添加一个GCD呢，会怎样呢？先试试
+     */
     
-    for (PHAsset *asset in assets) {
-        // 是否要原图
-        CGSize size = original ? CGSizeMake(asset.pixelWidth, asset.pixelHeight) : CGSizeZero;
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         
+        NSMutableArray *modelArray = [NSMutableArray array];
         
-        NSLog(@"asset.burstIdentifier ====== %@",asset.localIdentifier);
-        
-        // 从asset中获得图片
-        [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+        for (PHAsset *asset in assets) {
+            // 是否要原图
+            CGSize size = original ? CGSizeMake(asset.pixelWidth, asset.pixelHeight) : CGSizeMake(125, 125);
             
-            /**
-             为了优化，直接将model在这里创建
-             */
+            // 从asset中获得图片
+            [[PHImageManager defaultManager] requestImageForAsset:asset targetSize:size contentMode:PHImageContentModeDefault options:options resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
+                
+                /**
+                 为了优化，直接将model在这里创建
+                 */
+                
+                CertificateCellModel *model = [[CertificateCellModel alloc] init];
+                model.itemImage = result;
+                model.localIdentifier = asset.localIdentifier;
+                model.cellImageType = CertificateCellImageDeselect;
+                [modelArray addObject:model];
+            }];
+        }
+        
+        modelArray = (NSMutableArray *)[[modelArray reverseObjectEnumerator] allObjects];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
             
-            CertificateCellModel *model = [[CertificateCellModel alloc] init];
-            model.itemImage = result;
-            model.localIdentifier = asset.localIdentifier;
-            model.cellImageType = CertificateCellImageDeselect;
-            [modelArray addObject:model];
-        }];
-    }
-    
-    modelArray = (NSMutableArray *)[[modelArray reverseObjectEnumerator] allObjects];
-    
-    return modelArray;
+            modelArrayBlock(modelArray);
+            //回到主线程
+        });
+        
+    });
 }
+
++ (void)test {
+    
+    __block NSMutableArray *arrayOne = [NSMutableArray array];
+    __block NSMutableArray *arrayTwo = [NSMutableArray array];
+    __block NSMutableArray *arrayThree = [NSMutableArray array];
+    __block NSMutableArray *arrayFour = [NSMutableArray array];
+    
+    dispatch_group_async(dispatch_group_create(), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        arrayOne = nil;
+    });
+    
+    dispatch_group_async(dispatch_group_create(), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        arrayTwo = nil;
+    });
+    
+    dispatch_group_async(dispatch_group_create(), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        arrayThree = nil;
+    });
+    
+    //    上边的任务都完成了再执行这个通知任务
+    dispatch_group_notify(dispatch_group_create(), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        arrayFour = nil;
+    });
+}
+
 
 #pragma mark 获取单张原图
 /**
