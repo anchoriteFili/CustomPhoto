@@ -8,6 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomPhotoAlbum">
             <connections>
+                <outlet property="ensuerButton" destination="Nfq-wd-BAK" id="Ez4-4z-5aF"/>
                 <outlet property="middleHeaderButton" destination="LSK-lY-YQD" id="d7Y-pT-xYO"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -51,7 +52,7 @@
                                 <constraint firstAttribute="width" constant="86" id="HbD-gX-T38"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <state key="normal" title="确定(100)">
+                            <state key="normal" title="确定(0)">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>

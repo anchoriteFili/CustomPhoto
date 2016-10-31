@@ -23,6 +23,8 @@
 @property (nonatomic,strong) NSMutableArray *albumsArray; // 相册的数组
 
 @property (weak, nonatomic) IBOutlet UIButton *middleHeaderButton; // 相册胶卷Button
+@property (weak, nonatomic) IBOutlet UIButton *ensuerButton; // 确定按钮点击
+
 
 
 @end
@@ -175,7 +177,6 @@
         cell.contentLabel.text = [NSString stringWithFormat:@"%@ %lu",assetCollection.localizedTitle, (unsigned long)[AlbumTool getAlbumCountWith:assetCollection]];
     }
     
-    
     [AlbumTool getCoverImageWith:assetCollection withBlcok:^(UIImage *image) {
         cell.headImageView.image = image;
     }];
@@ -210,6 +211,7 @@
             model.cellImageType = CertificateCellImageSelect;
             
             [self.modelAdditionArray addObject:model];
+            [self updateEnsureButtonContent]; // 更新确定按钮
             [self.collectionView reloadData];
             break;
         }
@@ -227,7 +229,7 @@
                     break;
                 }
             }
-            
+            [self updateEnsureButtonContent]; // 更新确定按钮
             [self.collectionView reloadData];
             break;
         }
@@ -300,6 +302,30 @@
 
 #pragma mark 确定按钮点击事件
 - (IBAction)ensureButtonClick:(UIButton *)sender {
+    
+    /**
+     基本逻辑：
+     1. 刷新选择证照附件页面
+     2. 并退出当前页面
+     */
+    
+    for (CertificateCellModel *model in self.modelAdditionArray) {
+        model.cellImageType = CertificateCellImageEmpty;
+    }
+    
+    // 将数据添加过去
+    [self.modelArray addObjectsFromArray:self.modelAdditionArray];
+#pragma mark 刷新选择证照附件页面
+    [[NSNotificationCenter defaultCenter] postNotificationName:reloadChooseLicenseAccessoryVCNotification object:self userInfo:nil];
+    
+    // 收回自己页面
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+#pragma mark 更新确定按钮中的相关内容方法
+- (void)updateEnsureButtonContent {
+    [self.ensuerButton setTitle:[NSString stringWithFormat:@"确定(%lu)",(unsigned long)self.modelAdditionArray.count] forState:UIControlStateNormal];
 }
 
 #pragma mark 预览按钮点击事件
@@ -353,10 +379,10 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:YES];
     
-    NSLog(@"modelAdditionArray.count ===== %lu",(unsigned long)self.modelAdditionArray.count);
+    [self updateEnsureButtonContent]; // 刷新确定按钮内容
     
+//    NSLog(@"modelAdditionArray.count ===== %lu",(unsigned long)self.modelAdditionArray.count);
 //    [self compareTwoModelArray];
-    
 }
 
 #pragma mark 比较两个数组中元素
@@ -400,6 +426,7 @@
 }
 
 #pragma mark ************ 相册处理部分 end ************
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

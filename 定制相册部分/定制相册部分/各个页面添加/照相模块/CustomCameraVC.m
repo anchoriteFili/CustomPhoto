@@ -504,10 +504,14 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 #pragma mark 完成按钮点击事件
 - (IBAction)completeButtonClick:(UIButton *)sender {
     /**
-     基本逻辑：
+     基本逻辑： CertificateCellImageEmpty
      点击完成，收回页面，并进入展示页面，将新添加的图片添加进去。
      这个有个问题，怎么把数据传过去，这是个问题，可以这样，原数据本身就是条线线，这样的话就可以了
      */
+    
+    for (CertificateCellModel *model in self.modelTakePhotosArray) {
+        model.cellImageType = CertificateCellImageEmpty;
+    }
     
     // 将数据添加过去
     [self.modelArray addObjectsFromArray:self.modelTakePhotosArray];
