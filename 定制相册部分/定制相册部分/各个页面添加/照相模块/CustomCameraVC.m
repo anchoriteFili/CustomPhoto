@@ -92,7 +92,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     CALayer *layer=self.viewContainer.layer;
     layer.masksToBounds=YES;
     
-    _captureVideoPreviewLayer.frame=layer.bounds;
+    _captureVideoPreviewLayer.frame= CGRectMake(0, 0, WIDTH, WIDTH/375.0*499.0);
     _captureVideoPreviewLayer.videoGravity=AVLayerVideoGravityResizeAspectFill;//填充模式
     //将视频预览层添加到界面中
     //[layer addSublayer:_captureVideoPreviewLayer];
@@ -158,6 +158,22 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
         
     }];
 }
+
+- (UIImage*)imageWithImageSimple:(UIImage*)image scaledToSize:(CGSize)newSize {
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    // Tell the old image to draw in this new context, with the desired
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    // End the context
+    UIGraphicsEndImageContext();
+    // Return the new image.
+    return newImage;
+}
+
+
 #pragma mark 切换前后摄像头
 - (IBAction)toggleButtonClick:(UIButton *)sender {
     AVCaptureDevice *currentDevice=[self.captureDeviceInput device];
