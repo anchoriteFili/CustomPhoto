@@ -12,7 +12,7 @@
 #import "CustomCameraVC.h" // 拍照页面
 #import "AlbumTool.h"
 
-@interface CustomPhotoAlbum ()<UICollectionViewDataSource,UICollectionViewDelegate,CertificateCollectionViewCellDelegate,UITableViewDataSource,UITableViewDelegate>
+@interface CustomPhotoAlbum ()<UICollectionViewDataSource,UICollectionViewDelegate,CertificateCollectionViewCellDelegate,UITableViewDataSource,UITableViewDelegate,CustomCameraVCDelegate>
 
 @property (nonatomic,retain) UICollectionView *collectionView; // 创建collectionView
 @property (nonatomic,strong) UIView *tableViewBackView; // 承载tableView的背景view
@@ -218,7 +218,16 @@
             CertificateCellModel *model = [self.albumModelArray objectAtIndex:index];
             model.cellImageType = CertificateCellImageDeselect;
             
-            [self.modelAdditionArray removeObject:model];
+            /**
+             这个就尴尬了，要怎么弄呢？不是同一个啊。
+             */
+            for (CertificateCellModel *removeMode in self.modelAdditionArray) {
+                if ([removeMode.localIdentifier isEqualToString:model.localIdentifier]) {
+                    [self.modelAdditionArray removeObject:removeMode];
+                    break;
+                }
+            }
+            
             [self.collectionView reloadData];
             break;
         }
@@ -227,11 +236,41 @@
             
             CustomCameraVC *customCameraVC = [[CustomCameraVC alloc] init];
             customCameraVC.modelAdditionArray = self.modelAdditionArray;
-            
+            customCameraVC.modelArray = self.modelArray;
+            customCameraVC.delegate = self;
             [self presentViewController:customCameraVC animated:YES completion:nil];
             break;
         }
             
+        default:
+            break;
+    }
+}
+
+#pragma mark 相机页面传过来
+- (void)customCameraCVButtonClickEventType:(CustomCameraVCButtonClickType)touchEventType {
+    
+    switch (touchEventType) {
+        case CustomCameraVCButtonClickTypeCancleClick: { // 取消按钮
+            // 暂时不做任何处理
+            break;
+        }
+            
+        case CustomCameraVCButtonClickTypeCompleteClick: { // 完成按钮
+            // 直接退出页面即可
+            
+            [self dismissViewControllerAnimated:NO completion:nil];
+            break;
+        }
+            
+        case CustomCameraVCButtonClickTypeAlbumClick: { // 去相册按钮
+            
+            self.albumModelArray = nil;
+            self.albumsArray = nil;
+            [self selectAlbumWithIndex:0]; // 获取第一个相册的数据
+            
+            break;
+        }
         default:
             break;
     }
@@ -289,7 +328,7 @@
 #pragma mark 加载相册显示数据
 - (void)selectAlbumWithIndex:(NSInteger)index {
     
-    [self.modelAdditionArray removeAllObjects];
+    [self.albumModelArray removeAllObjects];
     self.tableViewBackView.hidden = YES; // 隐藏tableView
     
     PHAssetCollection *assetCollection = [self.albumsArray objectAtIndex:index];
@@ -316,7 +355,7 @@
     
     NSLog(@"modelAdditionArray.count ===== %lu",(unsigned long)self.modelAdditionArray.count);
     
-    [self compareTwoModelArray];
+//    [self compareTwoModelArray];
     
 }
 
@@ -328,6 +367,8 @@
      首先，从相机那边传过来最多有9张图片，那么最外层最多有9遍判断
      内部循环，内部匹配，值匹配前20张，如果前20张没有匹配完毕，则直接废弃掉，也就是内部最多只有20遍循环，
      */
+    
+    NSLog(@"self.modelAdditionArray.count; ==== %lu",(unsigned long)self.modelAdditionArray.count);
     
     for (CertificateCellModel *model in self.modelAdditionArray) {
         /**

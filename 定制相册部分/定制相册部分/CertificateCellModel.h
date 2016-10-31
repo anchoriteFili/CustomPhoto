@@ -48,6 +48,13 @@ typedef NS_ENUM(NSInteger, CertificateCellType) {
     CertificateCellAlbum, // 相册形式
 };
 
+// 照相机个点击事件的相关枚举
+typedef NS_ENUM(NSInteger, CustomCameraVCButtonClickType) {
+    CustomCameraVCButtonClickTypeCancleClick, // 点击取消按钮
+    CustomCameraVCButtonClickTypeCompleteClick, // 点击完成按钮
+    CustomCameraVCButtonClickTypeAlbumClick // 点击去相册按钮
+};
+
 @interface CertificateCellModel : NSObject
 
 @property (nonatomic,assign) BOOL isAlbum; // 判断是否是相册形式

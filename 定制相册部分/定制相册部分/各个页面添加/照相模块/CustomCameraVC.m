@@ -10,7 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "CustomCameraCVCell.h"
-#import "CertificateCellModel.h"
+
 
 typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
@@ -18,6 +18,8 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 #pragma mark ******* collectionView部分 ********
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView; // 用于存放拍过照片
+// 用于存放所有的从上级传过来的图片和相机拍到的图片，先进行赋值
+@property (nonatomic,strong) NSMutableArray *modelTakePhotosArray;
 
 @property (nonatomic,assign) BOOL isFlashOn; //闪光灯是否开启
 
@@ -128,7 +130,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
                 model.isNewImage = YES;
                 model.itemImage = image;
                 model.localIdentifier = localIdentifier;
-                [self.modelAdditionArray addObject:model];
+                [self.modelTakePhotosArray addObject:model];
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     //回到主线程
@@ -418,13 +420,19 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     }];
 }
 
-#pragma mark modelAdditionArray的懒加载
-- (NSMutableArray *)modelAdditionArray {
-    if (!_modelAdditionArray) {
-        _modelAdditionArray = [NSMutableArray array];
+#pragma mark modelTakePhotosArray的懒加载,先进行赋值
+- (NSMutableArray *)modelTakePhotosArray {
+    if (!_modelTakePhotosArray) {
+        _modelTakePhotosArray = [NSMutableArray array];
+        
+        // 先承接相册中的数组，
+        _modelTakePhotosArray = [NSMutableArray arrayWithArray:self.modelAdditionArray];
+        NSLog(@"_modelTakePhotosArray ======= %@",_modelTakePhotosArray);
     }
-    return _modelAdditionArray;
+    return _modelTakePhotosArray;
 }
+
+
 
 #pragma mark *************** collectionView部分 begin ***************
 - (void)collectionViewInitialization {
@@ -440,7 +448,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return self.modelAdditionArray.count;
+    return self.modelTakePhotosArray.count;
     
 }
 
@@ -448,7 +456,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     CustomCameraCVCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifierCustomCameraCVCell forIndexPath:indexPath];
     cell.delegate = self;
-    CertificateCellModel *model = [self.modelAdditionArray objectAtIndex:indexPath.row];
+    CertificateCellModel *model = [self.modelTakePhotosArray objectAtIndex:indexPath.row];
     model.index = indexPath.row;
     [cell updateCellWithModel:model];
     
@@ -468,7 +476,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
             
         case CustomCameraCVCellClickTypeSmallImage: { // 点击小图片，删除相关数据
             
-            [self.modelAdditionArray removeObjectAtIndex:index];
+            [self.modelTakePhotosArray removeObjectAtIndex:index];
             [self.collectionView reloadData];
             break;
         }
@@ -482,6 +490,14 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 #pragma mark *************** 自定义按钮方法部分 begin ***************
 #pragma mark 取消按钮点击事件
 - (IBAction)cancalButtonClick:(UIButton *)sender {
+    /**
+     基本逻辑：
+     点击取消，不做任何处理，但是还是要写过去，以防万一
+     */
+    if (_delegate && [_delegate respondsToSelector:@selector(customCameraCVButtonClickEventType:)]) {
+        [_delegate customCameraCVButtonClickEventType:CustomCameraVCButtonClickTypeCancleClick];
+    }
+    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -490,9 +506,20 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     /**
      基本逻辑：
      点击完成，收回页面，并进入展示页面，将新添加的图片添加进去。
-     这个有个问题，怎么把数据传过去，这是个问题，可以这样，原数据本身就是一掉线，这样的话就可以了
+     这个有个问题，怎么把数据传过去，这是个问题，可以这样，原数据本身就是条线线，这样的话就可以了
      */
     
+    // 将数据添加过去
+    [self.modelArray addObjectsFromArray:self.modelTakePhotosArray];
+#pragma mark 刷新选择证照附件页面
+    [[NSNotificationCenter defaultCenter] postNotificationName:reloadChooseLicenseAccessoryVCNotification object:self userInfo:nil];
+    
+    // 收回自己页面
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(customCameraCVButtonClickEventType:)]) {
+        [_delegate customCameraCVButtonClickEventType:CustomCameraVCButtonClickTypeCompleteClick];
+    }
     
 }
 
@@ -500,10 +527,21 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 - (IBAction)goPhotoAlbumButtonClick:(UIButton *)sender {
     /**
      基本逻辑：
-     直接退出页面，即可
+     1. 将相机中照片数组直接复制到相机胶卷页面选中数组
+     2. 启用代理方法，刷新相机胶卷页面数据
+     3. 退出页面
      */
     
+    [self.modelAdditionArray removeAllObjects];
+    [self.modelAdditionArray addObjectsFromArray:self.modelTakePhotosArray];
     
+    NSLog(@"self.modelAdditionArray ===== %@",self.modelAdditionArray);
+    
+    if (_delegate && [_delegate respondsToSelector:@selector(customCameraCVButtonClickEventType:)]) {
+        [_delegate customCameraCVButtonClickEventType:CustomCameraVCButtonClickTypeAlbumClick];
+    }
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark *************** 自定义按钮方法部分 end ***************
