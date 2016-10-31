@@ -32,7 +32,7 @@
     self.selectModelCount = modelArray.count;
     [self updateSelectImageCountLabel];
     
-    // 刚进来显示显示打对号图片
+    
     [self.selectButton setImage:[UIImage imageNamed:@"CustomPhotoAlbumPreviewView_choose"] forState:UIControlStateNormal];
     
     // 添加图片，更新scrollView

@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import "CustomCameraCVCell.h"
+#import "CustomCameraUsePhotoView.h" // 拍照后显示的数据
 
 
 typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
@@ -34,6 +35,8 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 @property (weak, nonatomic) IBOutlet UIButton *flashOnButton;//打开闪光灯按钮
 @property (weak, nonatomic) IBOutlet UIButton *flashOffButton;//关闭闪光灯按钮
 @property (weak, nonatomic) IBOutlet UIImageView *focusCursor; //聚焦光标
+
+@property (nonatomic,retain) CustomCameraUsePhotoView *usePhotoView; // 是否使用照片页面
 
 @end
 
@@ -130,11 +133,24 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
                 model.isNewImage = YES;
                 model.itemImage = image;
                 model.localIdentifier = localIdentifier;
-                [self.modelTakePhotosArray addObject:model];
+                
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    //回到主线程
-                    [self.collectionView reloadData];
+                    
+                    self.usePhotoView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
+                    self.usePhotoView.hidden = NO;
+                    
+                    [self.usePhotoView updateViewWithModel:model andCompleteWithBlock:^(BOOL isUsePhoto) {
+                        // 如果返回YES，则添加数组，如果返回NO，则不做任何处理
+                        
+                        if (isUsePhoto) {
+                            [self.modelTakePhotosArray addObject:model];
+                            //回到主线程
+                            [self.collectionView reloadData];
+                        }
+                        
+                    }];
+                    
                 });
                 
             }]; // 保存图片
@@ -549,6 +565,18 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 }
 
 #pragma mark *************** 自定义按钮方法部分 end ***************
+
+#pragma mark 是否使用照片view懒加载
+- (CustomCameraUsePhotoView *)usePhotoView {
+    if (!_usePhotoView) {
+        _usePhotoView = [[CustomCameraUsePhotoView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+        
+        UIWindow * window = [UIApplication sharedApplication].keyWindow;
+        [window addSubview:_usePhotoView];
+        _usePhotoView.hidden = YES;
+    }
+    return _usePhotoView;
+}
 
 
 - (void)didReceiveMemoryWarning {
