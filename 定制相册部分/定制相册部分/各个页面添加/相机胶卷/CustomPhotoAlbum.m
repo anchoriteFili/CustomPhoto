@@ -11,6 +11,7 @@
 #import "CertificateTableViewCell.h"
 #import "CustomCameraVC.h" // 拍照页面
 #import "AlbumTool.h"
+#import "CustomPhotoAlbumPreviewView.h" // 预览页面
 
 @interface CustomPhotoAlbum ()<UICollectionViewDataSource,UICollectionViewDelegate,CertificateCollectionViewCellDelegate,UITableViewDataSource,UITableViewDelegate,CustomCameraVCDelegate>
 
@@ -24,6 +25,8 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *middleHeaderButton; // 相册胶卷Button
 @property (weak, nonatomic) IBOutlet UIButton *ensuerButton; // 确定按钮点击
+
+@property (nonatomic,retain) CustomPhotoAlbumPreviewView *previewView; // 图片展示页面
 
 
 
@@ -330,7 +333,27 @@
 
 #pragma mark 预览按钮点击事件
 - (IBAction)previewButtonClick:(UIButton *)sender {
+    
+    /**
+     预览view的创建：
+         创建页面，完成相关链接即可，其实逻辑基本相同
+     */
+    self.previewView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
+    self.previewView.hidden = NO;
 }
+
+#pragma mark 浏览按钮懒加载
+- (CustomPhotoAlbumPreviewView *)previewView {
+    if (!_previewView) {
+        _previewView = [[CustomPhotoAlbumPreviewView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT)];
+        
+        UIWindow * window = [UIApplication sharedApplication].keyWindow;
+        [window addSubview:_previewView];
+        self.previewView.hidden = YES;
+    }
+    return _previewView;
+}
+
 
 #pragma mark *************** 页面中自定义按钮点击事件 end ***************
 

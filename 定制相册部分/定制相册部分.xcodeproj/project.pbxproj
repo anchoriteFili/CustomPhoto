@@ -25,6 +25,8 @@
 		FA39FFF41DBF343200493569 /* CertificateCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFF31DBF343200493569 /* CertificateCellModel.m */; };
 		FA39FFF81DBF795200493569 /* CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFF61DBF795100493569 /* CustomPhotoAlbum.m */; };
 		FA39FFF91DBF795200493569 /* CustomPhotoAlbum.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA39FFF71DBF795100493569 /* CustomPhotoAlbum.xib */; };
+		FAB722F01DC7206D005FF7FF /* CustomPhotoAlbumPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB722EF1DC7206D005FF7FF /* CustomPhotoAlbumPreviewView.m */; };
+		FAB722F21DC72079005FF7FF /* CustomPhotoAlbumPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB722F11DC72079005FF7FF /* CustomPhotoAlbumPreviewView.xib */; };
 		FAB9A85B1DC0854C0062050F /* AlbumTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A85A1DC0854C0062050F /* AlbumTool.m */; };
 		FAB9A85F1DC08F3C0062050F /* CertificateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A85D1DC08F3C0062050F /* CertificateTableViewCell.m */; };
 		FAB9A8601DC08F3C0062050F /* CertificateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9A85E1DC08F3C0062050F /* CertificateTableViewCell.xib */; };
@@ -110,6 +112,9 @@
 		FA39FFF51DBF795100493569 /* CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPhotoAlbum.h; sourceTree = "<group>"; };
 		FA39FFF61DBF795100493569 /* CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPhotoAlbum.m; sourceTree = "<group>"; };
 		FA39FFF71DBF795100493569 /* CustomPhotoAlbum.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPhotoAlbum.xib; sourceTree = "<group>"; };
+		FAB722EE1DC7206D005FF7FF /* CustomPhotoAlbumPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPhotoAlbumPreviewView.h; sourceTree = "<group>"; };
+		FAB722EF1DC7206D005FF7FF /* CustomPhotoAlbumPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPhotoAlbumPreviewView.m; sourceTree = "<group>"; };
+		FAB722F11DC72079005FF7FF /* CustomPhotoAlbumPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPhotoAlbumPreviewView.xib; sourceTree = "<group>"; };
 		FAB9A8591DC0854C0062050F /* AlbumTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTool.h; sourceTree = "<group>"; };
 		FAB9A85A1DC0854C0062050F /* AlbumTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTool.m; sourceTree = "<group>"; };
 		FAB9A85C1DC08F3C0062050F /* CertificateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateTableViewCell.h; sourceTree = "<group>"; };
@@ -387,6 +392,9 @@
 				FA39FFF51DBF795100493569 /* CustomPhotoAlbum.h */,
 				FA39FFF61DBF795100493569 /* CustomPhotoAlbum.m */,
 				FA39FFF71DBF795100493569 /* CustomPhotoAlbum.xib */,
+				FAB722EE1DC7206D005FF7FF /* CustomPhotoAlbumPreviewView.h */,
+				FAB722EF1DC7206D005FF7FF /* CustomPhotoAlbumPreviewView.m */,
+				FAB722F11DC72079005FF7FF /* CustomPhotoAlbumPreviewView.xib */,
 			);
 			path = "相机胶卷";
 			sourceTree = "<group>";
@@ -533,6 +541,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAB9A87E1DC0D45C0062050F /* CustomCameraVC.xib in Resources */,
+				FAB722F21DC72079005FF7FF /* CustomPhotoAlbumPreviewView.xib in Resources */,
 				FAC108371DBE0F7900680017 /* CertificateCollectionViewCell.xib in Resources */,
 				FAB9A8601DC08F3C0062050F /* CertificateTableViewCell.xib in Resources */,
 				FAC107F81DBDFA2A00680017 /* LaunchScreen.storyboard in Resources */,
@@ -568,6 +577,7 @@
 				FA39FFEF1DBF058B00493569 /* UIImageView+HighlightedWebCache.m in Sources */,
 				FA39FFF81DBF795200493569 /* CustomPhotoAlbum.m in Sources */,
 				FAC108361DBE0F7900680017 /* CertificateCollectionViewCell.m in Sources */,
+				FAB722F01DC7206D005FF7FF /* CustomPhotoAlbumPreviewView.m in Sources */,
 				FA39FFEB1DBF058B00493569 /* SDWebImagePrefetcher.m in Sources */,
 				FA39FFE31DBF058B00493569 /* DACircularProgressView.m in Sources */,
 				FA39FFE71DBF058B00493569 /* SDWebImageDecoder.m in Sources */,
