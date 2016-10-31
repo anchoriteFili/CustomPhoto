@@ -13,7 +13,7 @@
 #import "AlbumTool.h"
 #import "CustomPhotoAlbumPreviewView.h" // 预览页面
 
-@interface CustomPhotoAlbum ()<UICollectionViewDataSource,UICollectionViewDelegate,CertificateCollectionViewCellDelegate,UITableViewDataSource,UITableViewDelegate,CustomCameraVCDelegate>
+@interface CustomPhotoAlbum ()<UICollectionViewDataSource,UICollectionViewDelegate,CertificateCollectionViewCellDelegate,UITableViewDataSource,UITableViewDelegate,CustomCameraVCDelegate,CustomPhotoAlbumPreviewViewDelegate>
 
 @property (nonatomic,retain) UICollectionView *collectionView; // 创建collectionView
 @property (nonatomic,strong) UIView *tableViewBackView; // 承载tableView的背景view
@@ -339,7 +339,15 @@
          创建页面，完成相关链接即可，其实逻辑基本相同
      */
     self.previewView.frame = CGRectMake(0, 0, WIDTH, HEIGHT);
+    [self.previewView updateScrollViewWithModelArray:self.modelAdditionArray atIndex:0];
+    self.previewView.delegate = self;
     self.previewView.hidden = NO;
+}
+
+#pragma mark 预览页面中完成按钮点击事件
+- (void)CustomPhotoAlbumPreviewCompleteButtonClick {
+    // 将数据再次进行匹配即可
+    [self compareTwoModelArray];
 }
 
 #pragma mark 浏览按钮懒加载
