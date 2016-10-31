@@ -18,7 +18,8 @@
 @property (nonatomic,strong) UIView *tableViewBackView; // 承载tableView的背景view
 @property (nonatomic,retain) UITableView *tableView; // 用于显示相册名的tableView
 
-@property (nonatomic,retain) NSMutableArray *modelArray; // 承载相册中照片
+@property (nonatomic,strong) NSMutableArray *modelAdditionArray; // 用于存储从相册或相机中添加的图片
+@property (nonatomic,strong) NSMutableArray *albumModelArray; // 用于存储所有的相册中的图片
 @property (nonatomic,strong) NSMutableArray *albumsArray; // 相册的数组
 
 @property (weak, nonatomic) IBOutlet UIButton *middleHeaderButton; // 相册胶卷Button
@@ -82,7 +83,7 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return self.modelArray.count+1;
+    return self.albumModelArray.count+1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -101,7 +102,7 @@
     } else {
         
         // 这只各个item的状态
-        CertificateCellModel *model = [self.modelArray objectAtIndex:indexPath.row-1];
+        CertificateCellModel *model = [self.albumModelArray objectAtIndex:indexPath.row-1];
         model.index = indexPath.row-1; // 数据在数组中的位置
         [cell updateCellWithModel:model];
     }
@@ -203,55 +204,21 @@
      在其中对modelArray中的数据进行处理，处理完后刷新页面
      */
     switch (touchEventType) {
-        case TouchEventTypeEdit: { // 进入编辑状态
+        case TouchEventTypeSelect: { // 选中状态 albumModelArray
             
-            for (int i = 0; i < self.modelArray.count; i ++) {
-                
-                CertificateCellModel *model = [self.modelArray objectAtIndex:i];
-                model.cellImageType = CertificateCellImageDelete;
-            }
-            [self.collectionView reloadData];
-            
-            break;
-        }
-            
-        case TouchEventTypeCancalEdit: { // 取消编辑状态
-            
-            for (int i = 0; i < self.modelArray.count; i ++) {
-                
-                CertificateCellModel *model = [self.modelArray objectAtIndex:i];
-                model.cellImageType = CertificateCellImageEmpty;
-            }
-            
-            [self.collectionView reloadData];
-            
-            break;
-            
-        }
-            
-        case TouchEventTypeBrowse: // 进入浏览页面
-            NSLog(@"进入浏览页面");
-            
-            break;
-            
-        case TouchEventTypeDelete: { // 删除触发事件
-            
-            [self.modelArray removeObjectAtIndex:index];
-            [self.collectionView reloadData];
-            break;
-        }
-            
-        case TouchEventTypeSelect: { // 选中状态
-            
-            CertificateCellModel *model = [self.modelArray objectAtIndex:index];
+            CertificateCellModel *model = [self.albumModelArray objectAtIndex:index];
             model.cellImageType = CertificateCellImageSelect;
+            
+            [self.modelAdditionArray addObject:model];
             [self.collectionView reloadData];
             break;
         }
             
         case TouchEventTypeDeselect: {// 不选中状态
-            CertificateCellModel *model = [self.modelArray objectAtIndex:index];
+            CertificateCellModel *model = [self.albumModelArray objectAtIndex:index];
             model.cellImageType = CertificateCellImageDeselect;
+            
+            [self.modelAdditionArray removeObject:model];
             [self.collectionView reloadData];
             break;
         }
@@ -270,12 +237,11 @@
     }
 }
 
-#pragma mark modelArray的懒加载
-- (NSMutableArray *)modelArray {
-    if (!_modelArray) {
-        _modelArray = [NSMutableArray array];
+- (NSMutableArray *)modelAdditionArray {
+    if (!_modelAdditionArray) {
+        _modelAdditionArray = [NSMutableArray array];
     }
-    return _modelArray;
+    return _modelAdditionArray;
 }
 
 
@@ -312,10 +278,18 @@
     return _albumsArray;
 }
 
+#pragma mark 相册内所有图片数组懒加载
+- (NSMutableArray *)albumModelArray {
+    if (!_albumModelArray) {
+        _albumModelArray = [NSMutableArray array];
+    }
+    return _albumModelArray;
+}
+
 #pragma mark 加载相册显示数据
 - (void)selectAlbumWithIndex:(NSInteger)index {
     
-    [self.modelArray removeAllObjects];
+    [self.modelAdditionArray removeAllObjects];
     self.tableViewBackView.hidden = YES; // 隐藏tableView
     
     PHAssetCollection *assetCollection = [self.albumsArray objectAtIndex:index];
@@ -328,7 +302,7 @@
     
     // 获取单个相册中的图片
     [AlbumTool getAlbumThumbnailWithAssetCollection:[self.albumsArray objectAtIndex:index] andComplete:^(NSMutableArray *modelArray) {
-        self.modelArray = modelArray;
+        self.albumModelArray = modelArray;
         
         // 新添加一步，对两个数据源进行比较，用于初始化显示
         [self compareTwoModelArray];
@@ -353,28 +327,23 @@
      匹配规则：
      首先，从相机那边传过来最多有9张图片，那么最外层最多有9遍判断
      内部循环，内部匹配，值匹配前20张，如果前20张没有匹配完毕，则直接废弃掉，也就是内部最多只有20遍循环，
-     
-     
-     那么怎么写呢？
      */
     
     for (CertificateCellModel *model in self.modelAdditionArray) {
-        
-        
         /**
          如果数量大于20，直接按顺序遍历即可，如果数量不大于20，则按照
          */
         
         NSUInteger cycleNumber = 0; // 创建循环次数
         
-        if (self.modelArray.count > 20) {
+        if (self.modelAdditionArray.count > 20) {
             cycleNumber = 20;
         } else {
-            cycleNumber = self.modelArray.count;
+            cycleNumber = self.modelAdditionArray.count;
         }
         
         for (int i = 0; i < cycleNumber; i ++) {
-            CertificateCellModel *modelOne = [self.modelArray objectAtIndex:i];
+            CertificateCellModel *modelOne = [self.albumModelArray objectAtIndex:i];
             
             if ([model.localIdentifier isEqualToString:modelOne.localIdentifier]) {
                 

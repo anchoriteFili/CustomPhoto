@@ -20,8 +20,6 @@
 
 @property (nonatomic,retain) NSMutableArray *modelArray; // model数据数组
 
-@property (nonatomic,strong) NSMutableArray *modelAdditionArray; // 用于存储从相册或相机中添加的图片
-
 @property (nonatomic,retain) ChooseLicenseAccessoryView *previewView; // 图片展示页面
 
 @end
@@ -213,7 +211,7 @@
         case TouchEventTypePhoto: { // 进入拍照
             NSLog(@"拍照状态");
             CustomPhotoAlbum *customPhotoAlbum = [[CustomPhotoAlbum alloc] init];
-            customPhotoAlbum.modelAdditionArray = self.modelAdditionArray;
+            customPhotoAlbum.modelArray = self.modelArray;
             [self presentViewController:customPhotoAlbum animated:YES completion:nil];
             break;
         }
@@ -231,12 +229,7 @@
     return _modelArray;
 }
 
-- (NSMutableArray *)modelAdditionArray {
-    if (!_modelAdditionArray) {
-        _modelAdditionArray = [NSMutableArray array];
-    }
-    return _modelAdditionArray;
-}
+
 
 #pragma mark 浏览按钮懒加载
 - (ChooseLicenseAccessoryView *)previewView {

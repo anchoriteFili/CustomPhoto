@@ -418,7 +418,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     }];
 }
 
-#pragma mark modelArray的懒加载
+#pragma mark modelAdditionArray的懒加载
 - (NSMutableArray *)modelAdditionArray {
     if (!_modelAdditionArray) {
         _modelAdditionArray = [NSMutableArray array];
