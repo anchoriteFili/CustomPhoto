@@ -362,20 +362,11 @@
 			isa = PBXGroup;
 			children = (
 				FAC1082C1DBE037A00680017 /* cell部分 */,
-				FAC108241DBE026300680017 /* 压缩包相关 */,
 				FAC108251DBE026300680017 /* 照相模块 */,
 				FAC108261DBE026300680017 /* 相机胶卷 */,
 				FAC108271DBE026300680017 /* 选择证照附件 */,
-				FAC108281DBE026300680017 /* 预览部分 */,
 			);
 			path = "各个页面添加";
-			sourceTree = "<group>";
-		};
-		FAC108241DBE026300680017 /* 压缩包相关 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "压缩包相关";
 			sourceTree = "<group>";
 		};
 		FAC108251DBE026300680017 /* 照相模块 */ = {
@@ -417,13 +408,6 @@
 				FAB9A90F1DC21F900062050F /* ChooseLicenseAccessoryView.xib */,
 			);
 			path = "选择证照附件";
-			sourceTree = "<group>";
-		};
-		FAC108281DBE026300680017 /* 预览部分 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "预览部分";
 			sourceTree = "<group>";
 		};
 		FAC1082C1DBE037A00680017 /* cell部分 */ = {

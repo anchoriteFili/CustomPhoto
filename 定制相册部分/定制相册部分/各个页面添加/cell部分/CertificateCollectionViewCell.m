@@ -53,15 +53,15 @@
             break;
             
         case CertificateCellImageDelete: // 编辑时的删除图片状态
-            self.certificateImageView.image = [UIImage imageNamed:@"CertificateCell_delete"];
+            self.certificateImageView.image = [UIImage imageNamed:@"CustomCameraCVCell_delete"];
             break;
             
         case CertificateCellImageDeselect: // 空圆圈没有选择状态
-            self.certificateImageView.image = [UIImage imageNamed:@"CertificateCell_deselect"];
+            self.certificateImageView.image = [UIImage imageNamed:@"CustomPhotoAlbumPreviewView_NoChoose"];
             break;
             
         case CertificateCellImageSelect: // 打对号的选择状态
-            self.certificateImageView.image = [UIImage imageNamed:@"CertificateCell_select"];
+            self.certificateImageView.image = [UIImage imageNamed:@"CustomPhotoAlbumPreviewView_choose"];
             break;
             
         default:
