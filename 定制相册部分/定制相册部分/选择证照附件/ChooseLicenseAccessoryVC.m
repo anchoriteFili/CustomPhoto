@@ -38,13 +38,22 @@
     self.title = @"选择证照附件";
     [self setNav];
     
+    self.view.backgroundColor = [UIColor redColor];
+    
+    NSMutableArray *imageUrlArray = [NSMutableArray arrayWithObjects:@"http://img1.3lian.com/2015/a1/131/d/271.jpg",@"http://img15.3lian.com/2015/a1/15/d/1.jpg",@"http://img1.3lian.com/2015/a1/3/d/53.jpg",@"http://img1.3lian.com/2015/a1/39/d/196.jpg",@"http://pic.nipic.com/2008-03-25/2008325121527690_2.jpg", nil];
+    
+    for (NSString *imageUrl in imageUrlArray) {
+        CertificateCellModel *model = [[CertificateCellModel alloc] init];
+        model.isAlbum = NO;
+        model.cellImageType = CertificateCellImageEmpty;
+        model.imageUrl = imageUrl;
+        [self.modelArray addObject:model];
+        [self.imageUrlArray addObject:imageUrl];
+    }
     
     
     
-    
-    
-    
-    [self loadDataSource];
+//    [self loadDataSource];
     
     if (self.isUploadClick) {
         CustomPhotoAlbum *customPhotoAlbum = [[CustomPhotoAlbum alloc] init];
@@ -230,7 +239,7 @@
     layout.footerReferenceSize = CGSizeMake(WIDTH, 23);
     
     //    2.根据布局管理类创建collectionView
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-GETHEIGHT(self.bottomSaveView)-64) collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, WIDTH, HEIGHT-GETHEIGHT(self.bottomSaveView)) collectionViewLayout:layout];
     
     //    3.设置数据源，代理
     self.collectionView.delegate = self;
@@ -402,11 +411,10 @@
     return _previewView;
 }
 
-
 #pragma mark 底部保存按钮view懒加载
 - (UIView *)bottomSaveView {
     if (!_bottomSaveView) {
-        _bottomSaveView = [[UIView alloc] initWithFrame:CGRectMake(0, HEIGHT-65-64, WIDTH, 65)];
+        _bottomSaveView = [[UIView alloc] initWithFrame:CGRectMake(0, HEIGHT-65, WIDTH, 65)];
         
         UIButton *saveBtn = [[UIButton alloc] initWithFrame:CGRectMake(20, 15.5, GETWIDTH(_bottomSaveView)-30, 45)];
         saveBtn.center = CGPointMake(GETWIDTH(_bottomSaveView)/2, GETHEIGHT(_bottomSaveView)/2);
