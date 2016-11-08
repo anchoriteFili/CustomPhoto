@@ -135,6 +135,7 @@
                 <constraint firstAttribute="trailing" secondItem="Ysn-WL-3Ir" secondAttribute="trailing" id="nCU-od-G64"/>
                 <constraint firstItem="Ysn-WL-3Ir" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ohG-gf-KdD"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <connections>
                 <outlet property="bearView" destination="Ysn-WL-3Ir" id="SCZ-lO-PS5"/>
                 <outlet property="footerView" destination="4QY-jw-0Mg" id="jcf-JR-vcz"/>

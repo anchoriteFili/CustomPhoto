@@ -190,6 +190,7 @@
                 <constraint firstAttribute="trailing" secondItem="Mms-Lr-Sba" secondAttribute="trailing" id="vII-4Z-sAc"/>
                 <constraint firstAttribute="trailing" secondItem="SSj-6W-6lU" secondAttribute="trailing" id="vs2-jc-c7m"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <point key="canvasLocation" x="33.5" y="103.5"/>
         </view>
     </objects>

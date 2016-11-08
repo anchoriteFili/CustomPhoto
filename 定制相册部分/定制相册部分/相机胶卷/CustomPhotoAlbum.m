@@ -266,6 +266,14 @@
             // 9张图片的限制
             if (self.modelAdditionArray.count >= 5) {
 //                [MBProgressHUD showError:@"最多只能添加5张"];
+                
+                
+                MBProgressHUD *hudView = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+                hudView.mode = MBProgressHUDModeText;
+                hudView.label.text = @"最多只能添加5张";
+                hudView.label.textColor = [UIColor whiteColor];
+                [hudView hideAnimated:YES afterDelay:1];
+
                 return;
             }
             

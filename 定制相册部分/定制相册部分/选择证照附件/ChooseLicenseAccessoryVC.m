@@ -450,11 +450,11 @@
     NSLog(@"self.imageUrlArray ========= %@",self.imageUrlArray);
     
     MBProgressHUD *hudView = [MBProgressHUD showHUDAddedTo:[[UIApplication sharedApplication].delegate window] animated:YES];
+
     hudView.label.text = @"保存中...";
-//    [hudView show:YES atHud:hudView toView:[[UIApplication sharedApplication].delegate window]];
-    [hudView showAnimated:YES];
+    [hudView hideAnimated:YES afterDelay:1];
     
-    
+    //    [hudView show:YES atHud:hudView toView:[[UIApplication sharedApplication].delegate window]];
     
 //    [IWHttpTool postWithURL:@"/Order/OperationOrderCustomerAttachment" params:@{@"OrderCustomerImageUrl":self.imageUrlArray,@"OrderCustomerId":self.customerId} success:^(id json) {
 //        [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];

@@ -78,6 +78,7 @@
                 <constraint firstAttribute="trailing" secondItem="fIV-i1-SjS" secondAttribute="trailing" id="f3e-UF-e1w"/>
                 <constraint firstAttribute="bottom" secondItem="0Ys-39-r3T" secondAttribute="bottom" id="trg-o3-N75"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <connections>
                 <outlet property="footerView" destination="0Ys-39-r3T" id="q4w-LB-6YN"/>
                 <outlet property="imageView" destination="fIV-i1-SjS" id="fBd-Er-8Oq"/>
