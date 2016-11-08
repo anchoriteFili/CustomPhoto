@@ -22,22 +22,6 @@
 		FA39FFEF1DBF058B00493569 /* UIImageView+HighlightedWebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFDE1DBF058B00493569 /* UIImageView+HighlightedWebCache.m */; };
 		FA39FFF01DBF058B00493569 /* UIImageView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFE01DBF058B00493569 /* UIImageView+WebCache.m */; };
 		FA39FFF11DBF058B00493569 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFE21DBF058B00493569 /* UIView+WebCacheOperation.m */; };
-		FA39FFF41DBF343200493569 /* CertificateCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFF31DBF343200493569 /* CertificateCellModel.m */; };
-		FA39FFF81DBF795200493569 /* CustomPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39FFF61DBF795100493569 /* CustomPhotoAlbum.m */; };
-		FA39FFF91DBF795200493569 /* CustomPhotoAlbum.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA39FFF71DBF795100493569 /* CustomPhotoAlbum.xib */; };
-		FAB722F01DC7206D005FF7FF /* CustomPhotoAlbumPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB722EF1DC7206D005FF7FF /* CustomPhotoAlbumPreviewView.m */; };
-		FAB722F21DC72079005FF7FF /* CustomPhotoAlbumPreviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB722F11DC72079005FF7FF /* CustomPhotoAlbumPreviewView.xib */; };
-		FAB723341DC74E5A005FF7FF /* CustomCameraUsePhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB723331DC74E5A005FF7FF /* CustomCameraUsePhotoView.m */; };
-		FAB723361DC75E75005FF7FF /* CustomCameraUsePhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB723351DC75E75005FF7FF /* CustomCameraUsePhotoView.xib */; };
-		FAB9A85B1DC0854C0062050F /* AlbumTool.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A85A1DC0854C0062050F /* AlbumTool.m */; };
-		FAB9A85F1DC08F3C0062050F /* CertificateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A85D1DC08F3C0062050F /* CertificateTableViewCell.m */; };
-		FAB9A8601DC08F3C0062050F /* CertificateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9A85E1DC08F3C0062050F /* CertificateTableViewCell.xib */; };
-		FAB9A87D1DC0D45C0062050F /* CustomCameraVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A87B1DC0D45C0062050F /* CustomCameraVC.m */; };
-		FAB9A87E1DC0D45C0062050F /* CustomCameraVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9A87C1DC0D45C0062050F /* CustomCameraVC.xib */; };
-		FAB9A8871DC19E790062050F /* CustomCameraCVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A8851DC19E790062050F /* CustomCameraCVCell.m */; };
-		FAB9A8881DC19E790062050F /* CustomCameraCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9A8861DC19E790062050F /* CustomCameraCVCell.xib */; };
-		FAB9A90E1DC21F7B0062050F /* ChooseLicenseAccessoryView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A90D1DC21F7B0062050F /* ChooseLicenseAccessoryView.m */; };
-		FAB9A9101DC21F900062050F /* ChooseLicenseAccessoryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB9A90F1DC21F900062050F /* ChooseLicenseAccessoryView.xib */; };
 		FAB9A9B91DC2EEEB0062050F /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9A91DC2EEEB0062050F /* NSData+SDDataCache.m */; };
 		FAB9A9BA1DC2EEEB0062050F /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9AC1DC2EEEB0062050F /* TAAbstractDotView.m */; };
 		FAB9A9BB1DC2EEEB0062050F /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9AE1DC2EEEB0062050F /* TAAnimatedDotView.m */; };
@@ -46,7 +30,6 @@
 		FAB9A9BE1DC2EEEB0062050F /* SDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9B41DC2EEEB0062050F /* SDCollectionViewCell.m */; };
 		FAB9A9BF1DC2EEEB0062050F /* SDCycleScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9B61DC2EEEB0062050F /* SDCycleScrollView.m */; };
 		FAB9A9C01DC2EEEB0062050F /* UIView+SDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9B81DC2EEEB0062050F /* UIView+SDExtension.m */; };
-		FAB9A9C31DC2F9F80062050F /* ImagesScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9C21DC2F9F80062050F /* ImagesScrollView.m */; };
 		FAC107EA1DBDFA2A00680017 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107E91DBDFA2A00680017 /* main.m */; };
 		FAC107ED1DBDFA2A00680017 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EC1DBDFA2A00680017 /* AppDelegate.m */; };
 		FAC107F01DBDFA2A00680017 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC107EF1DBDFA2A00680017 /* ViewController.m */; };
@@ -55,9 +38,6 @@
 		FAC107F81DBDFA2A00680017 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAC107F61DBDFA2A00680017 /* LaunchScreen.storyboard */; };
 		FAC108031DBDFA2A00680017 /* ______Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC108021DBDFA2A00680017 /* ______Tests.m */; };
 		FAC1080E1DBDFA2A00680017 /* ______UITests.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC1080D1DBDFA2A00680017 /* ______UITests.m */; };
-		FAC1082B1DBE027700680017 /* ChooseLicenseAccessoryVC.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC1082A1DBE027700680017 /* ChooseLicenseAccessoryVC.m */; };
-		FAC108361DBE0F7900680017 /* CertificateCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC108341DBE0F7900680017 /* CertificateCollectionViewCell.m */; };
-		FAC108371DBE0F7900680017 /* CertificateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC108351DBE0F7900680017 /* CertificateCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,31 +89,6 @@
 		FA39FFE01DBF058B00493569 /* UIImageView+WebCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+WebCache.m"; sourceTree = "<group>"; };
 		FA39FFE11DBF058B00493569 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		FA39FFE21DBF058B00493569 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
-		FA39FFF21DBF343200493569 /* CertificateCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateCellModel.h; sourceTree = "<group>"; };
-		FA39FFF31DBF343200493569 /* CertificateCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateCellModel.m; sourceTree = "<group>"; };
-		FA39FFF51DBF795100493569 /* CustomPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPhotoAlbum.h; sourceTree = "<group>"; };
-		FA39FFF61DBF795100493569 /* CustomPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPhotoAlbum.m; sourceTree = "<group>"; };
-		FA39FFF71DBF795100493569 /* CustomPhotoAlbum.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPhotoAlbum.xib; sourceTree = "<group>"; };
-		FAB722EE1DC7206D005FF7FF /* CustomPhotoAlbumPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPhotoAlbumPreviewView.h; sourceTree = "<group>"; };
-		FAB722EF1DC7206D005FF7FF /* CustomPhotoAlbumPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPhotoAlbumPreviewView.m; sourceTree = "<group>"; };
-		FAB722F11DC72079005FF7FF /* CustomPhotoAlbumPreviewView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomPhotoAlbumPreviewView.xib; sourceTree = "<group>"; };
-		FAB723321DC74E5A005FF7FF /* CustomCameraUsePhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCameraUsePhotoView.h; sourceTree = "<group>"; };
-		FAB723331DC74E5A005FF7FF /* CustomCameraUsePhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCameraUsePhotoView.m; sourceTree = "<group>"; };
-		FAB723351DC75E75005FF7FF /* CustomCameraUsePhotoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCameraUsePhotoView.xib; sourceTree = "<group>"; };
-		FAB9A8591DC0854C0062050F /* AlbumTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlbumTool.h; sourceTree = "<group>"; };
-		FAB9A85A1DC0854C0062050F /* AlbumTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlbumTool.m; sourceTree = "<group>"; };
-		FAB9A85C1DC08F3C0062050F /* CertificateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateTableViewCell.h; sourceTree = "<group>"; };
-		FAB9A85D1DC08F3C0062050F /* CertificateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateTableViewCell.m; sourceTree = "<group>"; };
-		FAB9A85E1DC08F3C0062050F /* CertificateTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CertificateTableViewCell.xib; sourceTree = "<group>"; };
-		FAB9A87A1DC0D45C0062050F /* CustomCameraVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCameraVC.h; sourceTree = "<group>"; };
-		FAB9A87B1DC0D45C0062050F /* CustomCameraVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCameraVC.m; sourceTree = "<group>"; };
-		FAB9A87C1DC0D45C0062050F /* CustomCameraVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCameraVC.xib; sourceTree = "<group>"; };
-		FAB9A8841DC19E790062050F /* CustomCameraCVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCameraCVCell.h; sourceTree = "<group>"; };
-		FAB9A8851DC19E790062050F /* CustomCameraCVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCameraCVCell.m; sourceTree = "<group>"; };
-		FAB9A8861DC19E790062050F /* CustomCameraCVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCameraCVCell.xib; sourceTree = "<group>"; };
-		FAB9A90C1DC21F7B0062050F /* ChooseLicenseAccessoryView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseLicenseAccessoryView.h; sourceTree = "<group>"; };
-		FAB9A90D1DC21F7B0062050F /* ChooseLicenseAccessoryView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseLicenseAccessoryView.m; sourceTree = "<group>"; };
-		FAB9A90F1DC21F900062050F /* ChooseLicenseAccessoryView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseLicenseAccessoryView.xib; sourceTree = "<group>"; };
 		FAB9A9A81DC2EEEB0062050F /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		FAB9A9A91DC2EEEB0062050F /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		FAB9A9AB1DC2EEEB0062050F /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -150,8 +105,6 @@
 		FAB9A9B61DC2EEEB0062050F /* SDCycleScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDCycleScrollView.m; sourceTree = "<group>"; };
 		FAB9A9B71DC2EEEB0062050F /* UIView+SDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDExtension.h"; sourceTree = "<group>"; };
 		FAB9A9B81DC2EEEB0062050F /* UIView+SDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDExtension.m"; sourceTree = "<group>"; };
-		FAB9A9C11DC2F9F80062050F /* ImagesScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesScrollView.h; sourceTree = "<group>"; };
-		FAB9A9C21DC2F9F80062050F /* ImagesScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesScrollView.m; sourceTree = "<group>"; };
 		FAC107E51DBDFA2A00680017 /* 定制相册部分.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "定制相册部分.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC107E91DBDFA2A00680017 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		FAC107EB1DBDFA2A00680017 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -168,12 +121,7 @@
 		FAC108091DBDFA2A00680017 /* 定制相册部分UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "定制相册部分UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC1080D1DBDFA2A00680017 /* ______UITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "______UITests.m"; sourceTree = "<group>"; };
 		FAC1080F1DBDFA2A00680017 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FAC108291DBE027700680017 /* ChooseLicenseAccessoryVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseLicenseAccessoryVC.h; sourceTree = "<group>"; };
-		FAC1082A1DBE027700680017 /* ChooseLicenseAccessoryVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseLicenseAccessoryVC.m; sourceTree = "<group>"; };
 		FAC108321DBE09D200680017 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		FAC108331DBE0F7900680017 /* CertificateCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CertificateCollectionViewCell.h; sourceTree = "<group>"; };
-		FAC108341DBE0F7900680017 /* CertificateCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CertificateCollectionViewCell.m; sourceTree = "<group>"; };
-		FAC108351DBE0F7900680017 /* CertificateCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CertificateCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,10 +152,6 @@
 		FA39FFC11DBF058A00493569 /* Third */ = {
 			isa = PBXGroup;
 			children = (
-				FAB9A9C11DC2F9F80062050F /* ImagesScrollView.h */,
-				FAB9A9C21DC2F9F80062050F /* ImagesScrollView.m */,
-				FAB9A8591DC0854C0062050F /* AlbumTool.h */,
-				FAB9A85A1DC0854C0062050F /* AlbumTool.m */,
 				FAB9A9A71DC2EEEB0062050F /* SDCycleScrollView */,
 				FA39FFC21DBF058A00493569 /* DACircularProgress */,
 				FA39FFC51DBF058A00493569 /* SDWebImage */,
@@ -314,10 +258,7 @@
 		FAC107E71DBDFA2A00680017 /* 定制相册部分 */ = {
 			isa = PBXGroup;
 			children = (
-				FA39FFF21DBF343200493569 /* CertificateCellModel.h */,
-				FA39FFF31DBF343200493569 /* CertificateCellModel.m */,
 				FA39FFC11DBF058A00493569 /* Third */,
-				FAC108231DBE026300680017 /* 各个页面添加 */,
 				FAC107EB1DBDFA2A00680017 /* AppDelegate.h */,
 				FAC107EC1DBDFA2A00680017 /* AppDelegate.m */,
 				FAC107EE1DBDFA2A00680017 /* ViewController.h */,
@@ -356,71 +297,6 @@
 				FAC1080F1DBDFA2A00680017 /* Info.plist */,
 			);
 			path = "定制相册部分UITests";
-			sourceTree = "<group>";
-		};
-		FAC108231DBE026300680017 /* 各个页面添加 */ = {
-			isa = PBXGroup;
-			children = (
-				FAC1082C1DBE037A00680017 /* cell部分 */,
-				FAC108251DBE026300680017 /* 照相模块 */,
-				FAC108261DBE026300680017 /* 相机胶卷 */,
-				FAC108271DBE026300680017 /* 选择证照附件 */,
-			);
-			path = "各个页面添加";
-			sourceTree = "<group>";
-		};
-		FAC108251DBE026300680017 /* 照相模块 */ = {
-			isa = PBXGroup;
-			children = (
-				FAB9A87A1DC0D45C0062050F /* CustomCameraVC.h */,
-				FAB9A87B1DC0D45C0062050F /* CustomCameraVC.m */,
-				FAB9A87C1DC0D45C0062050F /* CustomCameraVC.xib */,
-				FAB9A8841DC19E790062050F /* CustomCameraCVCell.h */,
-				FAB9A8851DC19E790062050F /* CustomCameraCVCell.m */,
-				FAB9A8861DC19E790062050F /* CustomCameraCVCell.xib */,
-				FAB723321DC74E5A005FF7FF /* CustomCameraUsePhotoView.h */,
-				FAB723331DC74E5A005FF7FF /* CustomCameraUsePhotoView.m */,
-				FAB723351DC75E75005FF7FF /* CustomCameraUsePhotoView.xib */,
-			);
-			path = "照相模块";
-			sourceTree = "<group>";
-		};
-		FAC108261DBE026300680017 /* 相机胶卷 */ = {
-			isa = PBXGroup;
-			children = (
-				FA39FFF51DBF795100493569 /* CustomPhotoAlbum.h */,
-				FA39FFF61DBF795100493569 /* CustomPhotoAlbum.m */,
-				FA39FFF71DBF795100493569 /* CustomPhotoAlbum.xib */,
-				FAB722EE1DC7206D005FF7FF /* CustomPhotoAlbumPreviewView.h */,
-				FAB722EF1DC7206D005FF7FF /* CustomPhotoAlbumPreviewView.m */,
-				FAB722F11DC72079005FF7FF /* CustomPhotoAlbumPreviewView.xib */,
-			);
-			path = "相机胶卷";
-			sourceTree = "<group>";
-		};
-		FAC108271DBE026300680017 /* 选择证照附件 */ = {
-			isa = PBXGroup;
-			children = (
-				FAC108291DBE027700680017 /* ChooseLicenseAccessoryVC.h */,
-				FAC1082A1DBE027700680017 /* ChooseLicenseAccessoryVC.m */,
-				FAB9A90C1DC21F7B0062050F /* ChooseLicenseAccessoryView.h */,
-				FAB9A90D1DC21F7B0062050F /* ChooseLicenseAccessoryView.m */,
-				FAB9A90F1DC21F900062050F /* ChooseLicenseAccessoryView.xib */,
-			);
-			path = "选择证照附件";
-			sourceTree = "<group>";
-		};
-		FAC1082C1DBE037A00680017 /* cell部分 */ = {
-			isa = PBXGroup;
-			children = (
-				FAC108331DBE0F7900680017 /* CertificateCollectionViewCell.h */,
-				FAC108341DBE0F7900680017 /* CertificateCollectionViewCell.m */,
-				FAC108351DBE0F7900680017 /* CertificateCollectionViewCell.xib */,
-				FAB9A85C1DC08F3C0062050F /* CertificateTableViewCell.h */,
-				FAB9A85D1DC08F3C0062050F /* CertificateTableViewCell.m */,
-				FAB9A85E1DC08F3C0062050F /* CertificateTableViewCell.xib */,
-			);
-			path = "cell部分";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -532,17 +408,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAB723361DC75E75005FF7FF /* CustomCameraUsePhotoView.xib in Resources */,
-				FAB9A87E1DC0D45C0062050F /* CustomCameraVC.xib in Resources */,
-				FAB722F21DC72079005FF7FF /* CustomPhotoAlbumPreviewView.xib in Resources */,
-				FAC108371DBE0F7900680017 /* CertificateCollectionViewCell.xib in Resources */,
-				FAB9A8601DC08F3C0062050F /* CertificateTableViewCell.xib in Resources */,
 				FAC107F81DBDFA2A00680017 /* LaunchScreen.storyboard in Resources */,
-				FAB9A8881DC19E790062050F /* CustomCameraCVCell.xib in Resources */,
 				FAC107F51DBDFA2A00680017 /* Assets.xcassets in Resources */,
 				FAC107F31DBDFA2A00680017 /* Main.storyboard in Resources */,
-				FA39FFF91DBF795200493569 /* CustomPhotoAlbum.xib in Resources */,
-				FAB9A9101DC21F900062050F /* ChooseLicenseAccessoryView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,25 +436,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA39FFEF1DBF058B00493569 /* UIImageView+HighlightedWebCache.m in Sources */,
-				FA39FFF81DBF795200493569 /* CustomPhotoAlbum.m in Sources */,
-				FAC108361DBE0F7900680017 /* CertificateCollectionViewCell.m in Sources */,
-				FAB722F01DC7206D005FF7FF /* CustomPhotoAlbumPreviewView.m in Sources */,
 				FA39FFEB1DBF058B00493569 /* SDWebImagePrefetcher.m in Sources */,
 				FA39FFE31DBF058B00493569 /* DACircularProgressView.m in Sources */,
 				FA39FFE71DBF058B00493569 /* SDWebImageDecoder.m in Sources */,
 				FA39FFE81DBF058B00493569 /* SDWebImageDownloader.m in Sources */,
 				FAB9A9BC1DC2EEEB0062050F /* TADotView.m in Sources */,
-				FAB9A90E1DC21F7B0062050F /* ChooseLicenseAccessoryView.m in Sources */,
 				FAB9A9BB1DC2EEEB0062050F /* TAAnimatedDotView.m in Sources */,
 				FAC107F01DBDFA2A00680017 /* ViewController.m in Sources */,
 				FAB9A9BE1DC2EEEB0062050F /* SDCollectionViewCell.m in Sources */,
 				FA39FFEA1DBF058B00493569 /* SDWebImageManager.m in Sources */,
-				FAB9A9C31DC2F9F80062050F /* ImagesScrollView.m in Sources */,
 				FA39FFEC1DBF058B00493569 /* UIButton+WebCache.m in Sources */,
-				FAB9A85B1DC0854C0062050F /* AlbumTool.m in Sources */,
-				FAB9A85F1DC08F3C0062050F /* CertificateTableViewCell.m in Sources */,
-				FAB9A87D1DC0D45C0062050F /* CustomCameraVC.m in Sources */,
-				FAB723341DC74E5A005FF7FF /* CustomCameraUsePhotoView.m in Sources */,
 				FAB9A9B91DC2EEEB0062050F /* NSData+SDDataCache.m in Sources */,
 				FA39FFEE1DBF058B00493569 /* UIImage+MultiFormat.m in Sources */,
 				FA39FFF01DBF058B00493569 /* UIImageView+WebCache.m in Sources */,
@@ -597,12 +456,9 @@
 				FA39FFED1DBF058B00493569 /* UIImage+GIF.m in Sources */,
 				FA39FFE61DBF058B00493569 /* SDWebImageCompat.m in Sources */,
 				FA39FFE41DBF058B00493569 /* NSData+ImageContentType.m in Sources */,
-				FAC1082B1DBE027700680017 /* ChooseLicenseAccessoryVC.m in Sources */,
 				FAB9A9C01DC2EEEB0062050F /* UIView+SDExtension.m in Sources */,
-				FAB9A8871DC19E790062050F /* CustomCameraCVCell.m in Sources */,
 				FAC107EA1DBDFA2A00680017 /* main.m in Sources */,
 				FAB9A9BD1DC2EEEB0062050F /* TAPageControl.m in Sources */,
-				FA39FFF41DBF343200493569 /* CertificateCellModel.m in Sources */,
 				FA39FFE51DBF058B00493569 /* SDImageCache.m in Sources */,
 				FAB9A9BF1DC2EEEB0062050F /* SDCycleScrollView.m in Sources */,
 			);
