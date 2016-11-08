@@ -46,6 +46,7 @@
 		FA59CF631DD1A87000EB04C8 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF5F1DD1A87000EB04C8 /* LICENSE */; };
 		FA59CF641DD1A87000EB04C8 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA59CF611DD1A87000EB04C8 /* MBProgressHUD.m */; };
 		FA59CF651DD1A87000EB04C8 /* README.mdown in Sources */ = {isa = PBXBuildFile; fileRef = FA59CF621DD1A87000EB04C8 /* README.mdown */; };
+		FA59CF681DD1CEED00EB04C8 /* 选择证照附件.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF671DD1CEED00EB04C8 /* 选择证照附件.gif */; };
 		FAB9A9B91DC2EEEB0062050F /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9A91DC2EEEB0062050F /* NSData+SDDataCache.m */; };
 		FAB9A9BA1DC2EEEB0062050F /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9AC1DC2EEEB0062050F /* TAAbstractDotView.m */; };
 		FAB9A9BB1DC2EEEB0062050F /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9AE1DC2EEEB0062050F /* TAAnimatedDotView.m */; };
@@ -151,6 +152,7 @@
 		FA59CF601DD1A87000EB04C8 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		FA59CF611DD1A87000EB04C8 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		FA59CF621DD1A87000EB04C8 /* README.mdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.mdown; sourceTree = "<group>"; };
+		FA59CF671DD1CEED00EB04C8 /* 选择证照附件.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "选择证照附件.gif"; sourceTree = "<group>"; };
 		FAB9A9A81DC2EEEB0062050F /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		FAB9A9A91DC2EEEB0062050F /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		FAB9A9AB1DC2EEEB0062050F /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -347,6 +349,14 @@
 			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
+		FA59CF661DD1CEED00EB04C8 /* 展示文件 */ = {
+			isa = PBXGroup;
+			children = (
+				FA59CF671DD1CEED00EB04C8 /* 选择证照附件.gif */,
+			);
+			path = "展示文件";
+			sourceTree = "<group>";
+		};
 		FAB9A9A71DC2EEEB0062050F /* SDCycleScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +411,7 @@
 		FAC107E71DBDFA2A00680017 /* 定制相册部分 */ = {
 			isa = PBXGroup;
 			children = (
+				FA59CF661DD1CEED00EB04C8 /* 展示文件 */,
 				FA59CF191DD1A4C900EB04C8 /* 相机胶卷 */,
 				FA59CF201DD1A4C900EB04C8 /* 选择证照附件 */,
 				FA59CF261DD1A4C900EB04C8 /* 照相模块 */,
@@ -561,6 +572,7 @@
 				FAC107F81DBDFA2A00680017 /* LaunchScreen.storyboard in Resources */,
 				FA59CF431DD1A4C900EB04C8 /* CustomPhotoAlbumPreviewView.xib in Resources */,
 				FA59CF4A1DD1A4C900EB04C8 /* CustomCameraUsePhotoView.xib in Resources */,
+				FA59CF681DD1CEED00EB04C8 /* 选择证照附件.gif in Resources */,
 				FA59CF461DD1A4C900EB04C8 /* ChooseLicenseAccessoryView.xib in Resources */,
 				FA59CF631DD1A87000EB04C8 /* LICENSE in Resources */,
 				FA59CF501DD1A4C900EB04C8 /* CertificateTableViewCell.xib in Resources */,
