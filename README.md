@@ -12,8 +12,8 @@
 #### 2. 相机胶卷模块
   此页面是自定义相册部分，从手机相册中获取相关相册和图片进行展示，并对图片的处理<br>
   主要难点：`大量显示图片卡顿`.<br>
-  ![](https://github.com/anchoriteFili/CustomPhoto/blob/master/定制相册部分/定制相册部分/展示文件/相册.png)
+  ![](https://github.com/anchoriteFili/CustomPhoto/blob/master/定制相册部分/定制相册部分/展示文件/相册.png)<br>
 #### 3. 照相模块
   此模块是自定义相机部分，里边添加了`可以将拍的照片显示到一个collectionView上进行显示`<br>
-  ![](https://github.com/anchoriteFili/CustomPhoto/blob/master/定制相册部分/定制相册部分/展示文件/相机.png)
+  ![](https://github.com/anchoriteFili/CustomPhoto/blob/master/定制相册部分/定制相册部分/展示文件/相机.png)<br>
 
