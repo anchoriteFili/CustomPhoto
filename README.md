@@ -8,5 +8,5 @@
   主要难点：`大量显示图片卡顿`.
 #### 3. 照相模块
   此模块是自定义相机部分，里边添加了`可以将拍的照片显示到一个collectionView上进行显示`
-相关链接
+#### 相关链接：
 [iOS开发中dismiss到最底层控制器的方法](http://blog.csdn.net/nunchakushuang/article/details/45198969"悬停显示")
