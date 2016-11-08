@@ -49,6 +49,9 @@
 		FA59CF6A1DD1D11B00EB04C8 /* 选择证照附件.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF691DD1D11B00EB04C8 /* 选择证照附件.gif */; };
 		FA59CF6C1DD1D5BE00EB04C8 /* 相机.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF6B1DD1D5BE00EB04C8 /* 相机.gif */; };
 		FA59CF6E1DD1D5C800EB04C8 /* 相册.gif in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF6D1DD1D5C800EB04C8 /* 相册.gif */; };
+		FA59CF781DD1D8BD00EB04C8 /* 相册.PNG in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF751DD1D8BD00EB04C8 /* 相册.PNG */; };
+		FA59CF791DD1D8BD00EB04C8 /* 相机.PNG in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF761DD1D8BD00EB04C8 /* 相机.PNG */; };
+		FA59CF7A1DD1D8BD00EB04C8 /* 选择证照附件.PNG in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF771DD1D8BD00EB04C8 /* 选择证照附件.PNG */; };
 		FAB9A9B91DC2EEEB0062050F /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9A91DC2EEEB0062050F /* NSData+SDDataCache.m */; };
 		FAB9A9BA1DC2EEEB0062050F /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9AC1DC2EEEB0062050F /* TAAbstractDotView.m */; };
 		FAB9A9BB1DC2EEEB0062050F /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9AE1DC2EEEB0062050F /* TAAnimatedDotView.m */; };
@@ -157,6 +160,9 @@
 		FA59CF691DD1D11B00EB04C8 /* 选择证照附件.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "选择证照附件.gif"; sourceTree = "<group>"; };
 		FA59CF6B1DD1D5BE00EB04C8 /* 相机.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "相机.gif"; sourceTree = "<group>"; };
 		FA59CF6D1DD1D5C800EB04C8 /* 相册.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "相册.gif"; sourceTree = "<group>"; };
+		FA59CF751DD1D8BD00EB04C8 /* 相册.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相册.PNG"; sourceTree = "<group>"; };
+		FA59CF761DD1D8BD00EB04C8 /* 相机.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相机.PNG"; sourceTree = "<group>"; };
+		FA59CF771DD1D8BD00EB04C8 /* 选择证照附件.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选择证照附件.PNG"; sourceTree = "<group>"; };
 		FAB9A9A81DC2EEEB0062050F /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		FAB9A9A91DC2EEEB0062050F /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		FAB9A9AB1DC2EEEB0062050F /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -356,6 +362,9 @@
 		FA59CF661DD1CEED00EB04C8 /* 展示文件 */ = {
 			isa = PBXGroup;
 			children = (
+				FA59CF751DD1D8BD00EB04C8 /* 相册.PNG */,
+				FA59CF761DD1D8BD00EB04C8 /* 相机.PNG */,
+				FA59CF771DD1D8BD00EB04C8 /* 选择证照附件.PNG */,
 				FA59CF6D1DD1D5C800EB04C8 /* 相册.gif */,
 				FA59CF691DD1D11B00EB04C8 /* 选择证照附件.gif */,
 				FA59CF6B1DD1D5BE00EB04C8 /* 相机.gif */,
@@ -578,6 +587,7 @@
 				FAC107F81DBDFA2A00680017 /* LaunchScreen.storyboard in Resources */,
 				FA59CF431DD1A4C900EB04C8 /* CustomPhotoAlbumPreviewView.xib in Resources */,
 				FA59CF4A1DD1A4C900EB04C8 /* CustomCameraUsePhotoView.xib in Resources */,
+				FA59CF791DD1D8BD00EB04C8 /* 相机.PNG in Resources */,
 				FA59CF6A1DD1D11B00EB04C8 /* 选择证照附件.gif in Resources */,
 				FA59CF461DD1A4C900EB04C8 /* ChooseLicenseAccessoryView.xib in Resources */,
 				FA59CF631DD1A87000EB04C8 /* LICENSE in Resources */,
@@ -586,8 +596,10 @@
 				FA59CF6E1DD1D5C800EB04C8 /* 相册.gif in Resources */,
 				FAC107F51DBDFA2A00680017 /* Assets.xcassets in Resources */,
 				FAC107F31DBDFA2A00680017 /* Main.storyboard in Resources */,
+				FA59CF781DD1D8BD00EB04C8 /* 相册.PNG in Resources */,
 				FA59CF4E1DD1A4C900EB04C8 /* CertificateCollectionViewCell.xib in Resources */,
 				FA59CF411DD1A4C900EB04C8 /* CustomPhotoAlbum.xib in Resources */,
+				FA59CF7A1DD1D8BD00EB04C8 /* 选择证照附件.PNG in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
