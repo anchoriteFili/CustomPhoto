@@ -142,34 +142,11 @@
             [newImagesArray addObject:imageStr];
         }
         
-//        [IWHttpTool postWithURL:@"/File/UploadPictureMulti" params:@{@"FileStreamData":newImagesArray,@"PictureType":@"1"} success:^(id json) {
-//            NSLog(@"json = %@", json);
-//            
-//            NSLog(@"json ************** %@",json);
-//            
-//            NSArray *PicUrlArray = json[@"PicUrl"];
-//            
-//            for (NSString *imageUrl in PicUrlArray) {
-//                // 在此处使用新的链接形成新的model，并将其添加到modelArray中
-//                CertificateCellModel *model = [[CertificateCellModel alloc] init];
-//                model.isAlbum = NO;
-//                model.cellImageType = CertificateCellImageEmpty;
-//                model.imageUrl = imageUrl;
-//                [self.modelArray addObject:model];
-//                
-//                [self.imageUrlArray addObject:imageUrl];
-//                
-//            }
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                //回到主线程
-//                [self.collectionView reloadData];
-//                [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-//                [MBProgressHUD showSuccess:@"添加成功"];
-//            });
-//            
-//        } failure:^(NSError * error) {
-//            
-//        }];
+        /**
+         * 此处为将将压缩好的图片上传到服务器，并从服务器中获取获取图片链接的地方
+         */
+        
+
     });
     
     
@@ -454,15 +431,11 @@
     hudView.label.text = @"保存中...";
     [hudView hideAnimated:YES afterDelay:1];
     
-    //    [hudView show:YES atHud:hudView toView:[[UIApplication sharedApplication].delegate window]];
     
-//    [IWHttpTool postWithURL:@"/Order/OperationOrderCustomerAttachment" params:@{@"OrderCustomerImageUrl":self.imageUrlArray,@"OrderCustomerId":self.customerId} success:^(id json) {
-//        [MBProgressHUD hideAllHUDsForView:[[UIApplication sharedApplication].delegate window] animated:YES];
-//        [MBProgressHUD showSuccess:@"保存成功"];
-//        NSLog(@"%@", json);
-//        
-//    } failure:^(NSError *error) {
-//    }];
+    /**
+     此处为保存动作
+     */
+
 }
 
 #pragma mark ************** 通知部分 begin **************

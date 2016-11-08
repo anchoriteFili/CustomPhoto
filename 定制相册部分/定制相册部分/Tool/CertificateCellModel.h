@@ -56,6 +56,7 @@ typedef NS_ENUM(NSInteger, CustomCameraVCButtonClickType) {
     CustomCameraVCButtonClickTypeAlbumClick // 点击去相册按钮
 };
 
+// 用于传递数据
 @interface CertificateCellModel : NSObject
 
 @property (nonatomic,assign) BOOL isAlbum; // 判断是否是相册形式

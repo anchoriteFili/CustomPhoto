@@ -17,6 +17,7 @@
 
 #import <UIKit/UIKit.h>
 
+// 多张图片滑动相关
 @protocol ImagesScrollViewDelegate <NSObject>
 
 // 点击图片的代理
@@ -35,7 +36,6 @@
  * 自身代理
  */
 @property (nonatomic,assign) id<ImagesScrollViewDelegate,NSObject> delegate;
-
 
 
 /**

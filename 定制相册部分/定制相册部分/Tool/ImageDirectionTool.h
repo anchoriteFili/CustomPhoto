@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreMotion/CoreMotion.h>
 
+// 重力感应及其改变拍照后照片方向相关
 @interface ImageDirectionTool : NSObject
 /**
 * 开启重力感应

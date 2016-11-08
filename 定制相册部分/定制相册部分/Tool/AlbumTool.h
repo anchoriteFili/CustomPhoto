@@ -10,6 +10,10 @@
 #import <Photos/Photos.h>
 #import "CertificateCellModel.h" // 自定义部分
 
+/**
+ * 此工具主要用于处理从系统相册中获取相册及其照片的部分
+ */
+
 #define PageNumber 66   // 每次返回的张数是66
 @interface AlbumTool : NSObject
 
