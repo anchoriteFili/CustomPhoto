@@ -1,4 +1,4 @@
-###                          定制相机相册
+###                             定制相机相册
 主要分为三个部分：
 #### 1. 选择证照附件页面（`起中转作用`）
   此页面一方面接收来自服务器的相关数据，对其内容进行处理，展示到页面上，另一方面，<br>
@@ -9,4 +9,6 @@
 #### 3. 照相模块
   此模块是自定义相机部分，里边添加了`可以将拍的照片显示到一个collectionView上进行显示`
 #### 相关链接：
-[iOS开发中dismiss到最底层控制器的方法](http://blog.csdn.net/nunchakushuang/article/details/45198969"悬停显示")
+[iOS开发中dismiss到最底层控制器的方法](http://blog.csdn.net/nunchakushuang/article/details/45198969 "悬停显示")<br>
+[iOS实时获取当前的屏幕方向之重力感应](http://www.jianshu.com/p/72d6c63006b3 "悬停显示")<br>
+[IOS 图片上传处理 图片压缩 图片处理](http://www.open-open.com/lib/view/open1375933073921.html"悬停显示")<br>
