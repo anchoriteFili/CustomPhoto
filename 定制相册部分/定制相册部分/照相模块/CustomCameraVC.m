@@ -147,7 +147,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     // 9张图片的限制
     if (self.modelTakePhotosArray.count >= 5) {
-        [MBProgressHUD showError:@"最多只能添加5张"];
+//        [MBProgressHUD showError:@"最多只能添加5张"];
         return;
     }
     //根据设备输出获得连接

@@ -265,7 +265,7 @@
         case TouchEventTypeSelect: { // 选中状态 albumModelArray
             // 9张图片的限制
             if (self.modelAdditionArray.count >= 5) {
-                [MBProgressHUD showError:@"最多只能添加5张"];
+//                [MBProgressHUD showError:@"最多只能添加5张"];
                 return;
             }
             
@@ -429,7 +429,7 @@
         self.previewView.delegate = self;
         self.previewView.hidden = NO;
     } else {
-        [MBProgressHUD showError:@"请选择您要浏览的图片"];
+//        [MBProgressHUD showError:@"请选择您要浏览的图片"];
     }
 
 }
