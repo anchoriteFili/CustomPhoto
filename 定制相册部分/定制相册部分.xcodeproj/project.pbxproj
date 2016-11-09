@@ -52,7 +52,6 @@
 		FA59CF881DD1EFC200EB04C8 /* 小图测试.png in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF871DD1EFC200EB04C8 /* 小图测试.png */; };
 		FA59CF8B1DD1F17000EB04C8 /* 相册.png in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF891DD1F17000EB04C8 /* 相册.png */; };
 		FA59CF8E1DD1F17700EB04C8 /* 选择证照附件.png in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF8D1DD1F17700EB04C8 /* 选择证照附件.png */; };
-		FA59CF901DD2B44F00EB04C8 /* 相机.PNG in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF8F1DD2B44F00EB04C8 /* 相机.PNG */; };
 		FAB9A9B91DC2EEEB0062050F /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9A91DC2EEEB0062050F /* NSData+SDDataCache.m */; };
 		FAB9A9BA1DC2EEEB0062050F /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9AC1DC2EEEB0062050F /* TAAbstractDotView.m */; };
 		FAB9A9BB1DC2EEEB0062050F /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9AE1DC2EEEB0062050F /* TAAnimatedDotView.m */; };
@@ -164,7 +163,6 @@
 		FA59CF871DD1EFC200EB04C8 /* 小图测试.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "小图测试.png"; sourceTree = "<group>"; };
 		FA59CF891DD1F17000EB04C8 /* 相册.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相册.png"; sourceTree = "<group>"; };
 		FA59CF8D1DD1F17700EB04C8 /* 选择证照附件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选择证照附件.png"; sourceTree = "<group>"; };
-		FA59CF8F1DD2B44F00EB04C8 /* 相机.PNG */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相机.PNG"; sourceTree = "<group>"; };
 		FAB9A9A81DC2EEEB0062050F /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		FAB9A9A91DC2EEEB0062050F /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		FAB9A9AB1DC2EEEB0062050F /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -366,7 +364,6 @@
 			children = (
 				FA59CF8D1DD1F17700EB04C8 /* 选择证照附件.png */,
 				FA59CF891DD1F17000EB04C8 /* 相册.png */,
-				FA59CF8F1DD2B44F00EB04C8 /* 相机.PNG */,
 				FA59CF871DD1EFC200EB04C8 /* 小图测试.png */,
 				FA59CF6D1DD1D5C800EB04C8 /* 相册.gif */,
 				FA59CF691DD1D11B00EB04C8 /* 选择证照附件.gif */,
@@ -595,7 +592,6 @@
 				FA59CF8B1DD1F17000EB04C8 /* 相册.png in Resources */,
 				FA59CF461DD1A4C900EB04C8 /* ChooseLicenseAccessoryView.xib in Resources */,
 				FA59CF631DD1A87000EB04C8 /* LICENSE in Resources */,
-				FA59CF901DD2B44F00EB04C8 /* 相机.PNG in Resources */,
 				FA59CF6C1DD1D5BE00EB04C8 /* 相机.gif in Resources */,
 				FA59CF501DD1A4C900EB04C8 /* CertificateTableViewCell.xib in Resources */,
 				FA59CF6E1DD1D5C800EB04C8 /* 相册.gif in Resources */,
