@@ -31,3 +31,57 @@
 此模块是自定义相机部分，里边添加了`可以将拍的照片显示到一个collectionView上进行显示`<br>
 ![](https://github.com/anchoriteFili/CustomPhoto/blob/master/定制相册部分/定制相册部分/展示文件/相机.png)<br>
 
+### 重点功能使用方法：
+
+#### 1. 使用<Photos/Photos.h>定制相册过程
+1> 导入框架头：#import <Photos/Photos.h> <br>
+2> 获取所有胶卷名字<br>
+```object_c
+#pragma mark 获取所有的胶卷的名字
++ (NSMutableArray *)getAlbumObjects;
+
+#pragma mark 获取胶卷的名字相关数据
++ (NSMutableArray *)getAlbumObjects {
+
+NSMutableArray *array = [NSMutableArray array];
+
+// 获得相机胶卷
+PHAssetCollection *cameraRoll = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil].lastObject;
+[array addObject:cameraRoll];
+
+// 获得所有的自定义相簿
+PHFetchResult<PHAssetCollection *> *assetCollections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+
+for (PHAssetCollection *assetCollection in assetCollections) {
+
+PHFetchResult<PHAsset *> *assets = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
+
+if (assets.count) { // 如果相册里有图片，则添加到数组中
+[array addObject:assetCollection];
+}
+}
+
+return array;
+
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
