@@ -1,4 +1,5 @@
 ### 相关链接：
+* [定制相机相册-博客园](http://files.cnblogs.com/files/AnchoriteFiliGod/定制相机相册-博客园.pdf"悬停显示")<br>
 * [iOS开发中自定义相册功能性能改善](http://www.tuicool.com/articles/Az2Yvu7 "悬停显示")<br>
 * [LGPhotoBrowser](https://github.com/gang544043963/LGPhotoBrowser "悬停显示")<br>
 * [iOS开发中dismiss到最底层控制器的方法](http://blog.csdn.net/nunchakushuang/article/details/45198969 "悬停显示")<br>
