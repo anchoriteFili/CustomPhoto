@@ -95,7 +95,6 @@
                 }];
             }
         }
-//        modelArray = (NSMutableArray *)[[modelArray reverseObjectEnumerator] allObjects];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             
@@ -109,7 +108,7 @@
 #pragma mark 获取单张原图
 /**
  基本逻辑：
- 首先知道相册，然后再知道相册中的第几个，那么
+ 首先知道相册，然后再知道相册中的第几个，那么直接匹配localIdentifier即可
  */
 + (void)photoWithAssetCollection:(PHAssetCollection *)assetCollection withLocalIdentifier:(NSString *)localIdentifier andPage:(NSInteger)page withBlcok:(void(^)(UIImage *bigImage))bigImage {
     
@@ -161,7 +160,6 @@
 #pragma mark 获取封面图片方法
 + (void)getCoverImageWith:(PHAssetCollection *)assetCollection withBlcok:(void(^)(UIImage *image))image {
     
-    
     PHFetchResult *assetResult = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
     [[PHImageManager defaultManager] requestImageForAsset:assetResult.firstObject targetSize:CGSizeZero contentMode:PHImageContentModeDefault options:[PHImageRequestOptions new] resultHandler:^(UIImage * _Nullable result, NSDictionary * _Nullable info) {
         image(result);
@@ -187,58 +185,11 @@
             return;
         }
         
-        localIdentifier(assetId);
+        localIdentifier(assetId); // 将图片保存到相册中，并获取其唯一标识assetId及localIdentifier，用于后期的筛选
         NSLog(@"成功保存图片到相机胶卷中");
     }];
     
 }
 
-
-/**
- *  返回相册
- */
-+ (PHAssetCollection *)collection{
-    // 先获得之前创建过的相册
-    // 获得相机胶卷
-    PHAssetCollection *cameraRoll = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil].lastObject;
-    
-    return cameraRoll;
-}
-
-
-
-#pragma mark 比较两张图片是否相等
-+ (BOOL)compareImageOne:(UIImage *)imageOne withImageTwo:(UIImage *)imageTwo {
-    
-    
-    NSData *dataOne;
-    if (UIImagePNGRepresentation(imageOne) == nil) {
-        
-        dataOne = UIImageJPEGRepresentation(imageOne, 1);
-        
-    } else {
-        
-        dataOne = UIImagePNGRepresentation(imageOne);
-    }
-    
-    NSData *dataTwo;
-    if (UIImagePNGRepresentation(imageTwo) == nil) {
-        
-        dataTwo = UIImageJPEGRepresentation(imageTwo, 1);
-        
-    } else {
-        
-        dataTwo = UIImagePNGRepresentation(imageTwo);
-    }
-    
-    // 如果两个图片相同，则返回YES,不相同，返回NO
-    if ([dataOne isEqual:dataTwo]) {
-        
-        NSLog(@"有匹配");
-        return YES;
-    } else {
-        return NO;
-    }
-}
 
 @end

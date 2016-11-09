@@ -138,6 +138,13 @@
 #pragma mark 滚动代理相关
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     
+    /**
+     基本逻辑：
+     如果上一阶段的pageNumber中的图片添加完毕，每一组图片的高度大约为3000，
+     数值方向的偏移量大于3000，并且不是最后一张，就加载下一组的图片，大约一组
+     图片用零点几秒时间，无影响
+     */
+    
     if (scrollView == self.collectionView) {
         
         if (self.isAddPage && self.collectionView.contentOffset.y > self.currentPage*3000-700 && self.currentPage < self.totalPage ) {

@@ -35,7 +35,5 @@
 #pragma mark 保存图片
 + (void)saveImage:(UIImage *)image withLocalIdentifier:(void(^)(NSString *localIdentifier))localIdentifier;
 
-#pragma mark 比较两张图片是否相等
-+ (BOOL)compareImageOne:(UIImage *)imageOne withImageTwo:(UIImage *)imageTwo;
 
 @end

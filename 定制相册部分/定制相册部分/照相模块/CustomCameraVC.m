@@ -45,9 +45,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 @property (nonatomic,retain) CustomCameraUsePhotoView *usePhotoView; // 是否使用照片页面
 
 #pragma mark 重力感应部分 ***
-@property (nonatomic,assign) UIImageOrientation imageOrientation; // 用于保存当前方向状态
 @property (nonatomic,strong) CMMotionManager *mManager; // 重力感应管理
-@property (nonatomic,assign) NSTimeInterval updateInterval; // 时间间隔
 
 @end
 
@@ -112,6 +110,7 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
     
     //创建视频预览层，用于实时展示摄像头状态
     _captureVideoPreviewLayer=[[AVCaptureVideoPreviewLayer alloc]initWithSession:self.captureSession];
+    // 从新写一遍，不然获取的xib中的layer宽高都是1000
     self.viewContainer.layer.frame = CGRectMake(0, 0, WIDTH, HEIGHT-168);
     CALayer *layer=self.viewContainer.layer;
     layer.masksToBounds=YES;
@@ -671,7 +670,6 @@ typedef void(^PropertyChangeBlock)(AVCaptureDevice *captureDevice);
 // 重力感应管理懒加载
 - (CMMotionManager *)mManager {
     if (!_mManager) {
-        self.updateInterval = 5;
         _mManager = [[CMMotionManager alloc] init];
     }
     return _mManager;

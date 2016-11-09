@@ -50,7 +50,7 @@
                  }
              }
              
-             [self stopUpdateWithManager:manager];
+             [self stopUpdateWithManager:manager]; // 调用一次直接关闭
          }];
     }
 }
