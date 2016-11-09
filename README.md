@@ -34,9 +34,9 @@
 ### 重点功能使用方法：
 
 #### 1. 使用<Photos/Photos.h>定制相册过程
-1> 导入框架头：#import <Photos/Photos.h> <br>
+1> 导入框架头：`#import <Photos/Photos.h>` <br>
 2> 获取所有胶卷名字<br>
-```object_c
+``` OC
 #pragma mark 获取所有的胶卷的名字
 + (NSMutableArray *)getAlbumObjects;
 
