@@ -53,6 +53,7 @@
 		FA59CF8B1DD1F17000EB04C8 /* 相册.png in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF891DD1F17000EB04C8 /* 相册.png */; };
 		FA59CF8E1DD1F17700EB04C8 /* 选择证照附件.png in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF8D1DD1F17700EB04C8 /* 选择证照附件.png */; };
 		FA59CF921DD2B51900EB04C8 /* 相机.png in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF911DD2B51900EB04C8 /* 相机.png */; };
+		FA59CF941DD2FFBE00EB04C8 /* 定制相机相册-博客园.pdf in Resources */ = {isa = PBXBuildFile; fileRef = FA59CF931DD2FFBE00EB04C8 /* 定制相机相册-博客园.pdf */; };
 		FAB9A9B91DC2EEEB0062050F /* NSData+SDDataCache.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9A91DC2EEEB0062050F /* NSData+SDDataCache.m */; };
 		FAB9A9BA1DC2EEEB0062050F /* TAAbstractDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9AC1DC2EEEB0062050F /* TAAbstractDotView.m */; };
 		FAB9A9BB1DC2EEEB0062050F /* TAAnimatedDotView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB9A9AE1DC2EEEB0062050F /* TAAnimatedDotView.m */; };
@@ -165,6 +166,7 @@
 		FA59CF891DD1F17000EB04C8 /* 相册.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相册.png"; sourceTree = "<group>"; };
 		FA59CF8D1DD1F17700EB04C8 /* 选择证照附件.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "选择证照附件.png"; sourceTree = "<group>"; };
 		FA59CF911DD2B51900EB04C8 /* 相机.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "相机.png"; sourceTree = "<group>"; };
+		FA59CF931DD2FFBE00EB04C8 /* 定制相机相册-博客园.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "定制相机相册-博客园.pdf"; sourceTree = "<group>"; };
 		FAB9A9A81DC2EEEB0062050F /* NSData+SDDataCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SDDataCache.h"; sourceTree = "<group>"; };
 		FAB9A9A91DC2EEEB0062050F /* NSData+SDDataCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SDDataCache.m"; sourceTree = "<group>"; };
 		FAB9A9AB1DC2EEEB0062050F /* TAAbstractDotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TAAbstractDotView.h; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				FA59CF871DD1EFC200EB04C8 /* 小图测试.png */,
 				FA59CF6D1DD1D5C800EB04C8 /* 相册.gif */,
 				FA59CF691DD1D11B00EB04C8 /* 选择证照附件.gif */,
+				FA59CF931DD2FFBE00EB04C8 /* 定制相机相册-博客园.pdf */,
 				FA59CF6B1DD1D5BE00EB04C8 /* 相机.gif */,
 				FA59CF911DD2B51900EB04C8 /* 相机.png */,
 			);
@@ -591,6 +594,7 @@
 				FAC107F81DBDFA2A00680017 /* LaunchScreen.storyboard in Resources */,
 				FA59CF431DD1A4C900EB04C8 /* CustomPhotoAlbumPreviewView.xib in Resources */,
 				FA59CF8E1DD1F17700EB04C8 /* 选择证照附件.png in Resources */,
+				FA59CF941DD2FFBE00EB04C8 /* 定制相机相册-博客园.pdf in Resources */,
 				FA59CF4A1DD1A4C900EB04C8 /* CustomCameraUsePhotoView.xib in Resources */,
 				FA59CF6A1DD1D11B00EB04C8 /* 选择证照附件.gif in Resources */,
 				FA59CF8B1DD1F17000EB04C8 /* 相册.png in Resources */,
