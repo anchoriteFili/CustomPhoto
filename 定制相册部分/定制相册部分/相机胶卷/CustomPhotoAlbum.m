@@ -237,9 +237,13 @@
     PHAssetCollection *assetCollection = [self.albumsArray objectAtIndex:indexPath.row];
     
     if ([assetCollection.localizedTitle isEqualToString:@"All Photos"]) {
-        cell.contentLabel.text = [NSString stringWithFormat:@"所有相册 %lu",(unsigned long)[AlbumTool getAlbumCountWith:assetCollection]];
+        
+        cell.contentLabel.text = @"所有相册";
+        cell.countLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[AlbumTool getAlbumCountWith:assetCollection]];
     } else {
-        cell.contentLabel.text = [NSString stringWithFormat:@"%@ %lu",assetCollection.localizedTitle, (unsigned long)[AlbumTool getAlbumCountWith:assetCollection]];
+        
+        cell.contentLabel.text = [NSString stringWithFormat:@"%@",assetCollection.localizedTitle];
+        cell.countLabel.text = [NSString stringWithFormat:@"%lu",(unsigned long)[AlbumTool getAlbumCountWith:assetCollection]];
     }
     
     [AlbumTool getCoverImageWith:assetCollection withBlcok:^(UIImage *image) {
