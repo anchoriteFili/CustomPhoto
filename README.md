@@ -1,4 +1,6 @@
 #### 相关链接：
+* [iOS开发中自定义相册功能性能改善](http://www.tuicool.com/articles/Az2Yvu7 "悬停显示")<br>
+* [LGPhotoBrowser](https://github.com/gang544043963/LGPhotoBrowser "悬停显示")<br>
 * [iOS开发中dismiss到最底层控制器的方法](http://blog.csdn.net/nunchakushuang/article/details/45198969 "悬停显示")<br>
 * [iOS实时获取当前的屏幕方向之重力感应](http://www.jianshu.com/p/72d6c63006b3 "悬停显示")<br>
 * [IOS 图片上传处理 图片压缩 图片处理](http://www.open-open.com/lib/view/open1375933073921.html"悬停显示")<br>
