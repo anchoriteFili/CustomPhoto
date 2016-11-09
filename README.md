@@ -43,25 +43,25 @@
 #pragma mark 获取胶卷的名字相关数据
 + (NSMutableArray *)getAlbumObjects {
 
-NSMutableArray *array = [NSMutableArray array];
+    NSMutableArray *array = [NSMutableArray array];
 
-// 获得相机胶卷
-PHAssetCollection *cameraRoll = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil].lastObject;
-[array addObject:cameraRoll];
+    // 获得相机胶卷
+    PHAssetCollection *cameraRoll = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil].lastObject;
+    [array addObject:cameraRoll];
 
-// 获得所有的自定义相簿
-PHFetchResult<PHAssetCollection *> *assetCollections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
+    // 获得所有的自定义相簿
+    PHFetchResult<PHAssetCollection *> *assetCollections = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeAlbum subtype:PHAssetCollectionSubtypeAlbumRegular options:nil];
 
-for (PHAssetCollection *assetCollection in assetCollections) {
+    for (PHAssetCollection *assetCollection in assetCollections) {
 
-PHFetchResult<PHAsset *> *assets = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
+        PHFetchResult<PHAsset *> *assets = [PHAsset fetchAssetsInAssetCollection:assetCollection options:nil];
 
-if (assets.count) { // 如果相册里有图片，则添加到数组中
-[array addObject:assetCollection];
-}
-}
+        if (assets.count) { // 如果相册里有图片，则添加到数组中
+            [array addObject:assetCollection];
+        }
+    }
 
-return array;
+    return array;
 
 }
 ```
