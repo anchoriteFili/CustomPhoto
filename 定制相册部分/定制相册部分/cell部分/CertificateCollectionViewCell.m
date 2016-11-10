@@ -115,6 +115,28 @@
             break;
         }
             
+        case CertificateCellImageSelect: {
+            // 如果是选中状态，点击进入非选中状态
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(certificateCollectionViewCellDelegateEventType:atIndex:)]) {
+                
+                // 进入编辑状态
+                [_delegate certificateCollectionViewCellDelegateEventType:TouchEventTypeDeselect atIndex:self.model.index];
+            }
+            break;
+        }
+            
+        case CertificateCellImageDeselect: {
+            // 如果是空圈儿非选中状态，点击进入选中状态
+            
+            if (_delegate && [_delegate respondsToSelector:@selector(certificateCollectionViewCellDelegateEventType:atIndex:)]) {
+                
+                // 进入编辑状态
+                [_delegate certificateCollectionViewCellDelegateEventType:TouchEventTypeSelect atIndex:self.model.index];
+            }
+            break;
+        }
+            
         default:
             break;
     }
