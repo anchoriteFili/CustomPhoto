@@ -48,11 +48,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    self.albumsArray = [AlbumTool getAlbumObjects];
     [self initializeCollectionView]; // 创建collectionView
     [self initializeTableView]; // tableView的初始化
     [self selectAlbumWithIndex:0]; // 默认显示第一个相册
 }
+
+
 
 #pragma mark ****************** collectionView部分 begin ******************
 #pragma mark collectionView初始化
@@ -99,7 +101,6 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
     return self.totalPhotos+1;
-//    return self.albumModelArray.count+1;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
@@ -226,7 +227,7 @@
 #pragma mark 设置每个section的行数
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section;
 {
-    return self.albumsArray.count;
+    return 0;
 }
 
 #pragma mark cellForRow方法
@@ -330,11 +331,22 @@
             
         case TouchEventTypePhoto: { // 进入拍照
             
-            CustomCameraVC *customCameraVC = [[CustomCameraVC alloc] init];
-            customCameraVC.modelAdditionArray = self.modelAdditionArray;
-            customCameraVC.modelArray = self.modelArray;
-            customCameraVC.delegate = self;
-            [self presentViewController:customCameraVC animated:YES completion:nil];
+            [AlbumTool cameraAuthorizationWithAuthorization:^(CameraAuthorizationType authorization) {
+                
+                if (authorization == CameraAuthorizationTypeClose) {
+                    // 添加提示框
+                    UIAlertView * alertViewNOVersion = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请前往设置->隐私->相机授权应用访问相机权限" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                    [alertViewNOVersion show];
+                } else if (authorization == CameraAuthorizationTypeAllow) {
+                    
+                    CustomCameraVC *customCameraVC = [[CustomCameraVC alloc] init];
+                    customCameraVC.modelAdditionArray = self.modelAdditionArray;
+                    customCameraVC.modelArray = self.modelArray;
+                    customCameraVC.delegate = self;
+                    [self presentViewController:customCameraVC animated:YES completion:nil];
+                }
+            }];
+            
             break;
         }
             
@@ -478,6 +490,8 @@
 #pragma mark 相册数组懒加载
 - (NSMutableArray *)albumsArray {
     if (!_albumsArray) {
+        _albumsArray = [NSMutableArray array];
+//        _albumsArray = [NSMutableArray arrayWithArray:[AlbumTool getAlbumObjects]];
         _albumsArray = [AlbumTool getAlbumObjects];
     }
     return _albumsArray;
@@ -502,8 +516,12 @@
     self.headerArrowImageView.image = [UIImage imageNamed:@"CustomPhotoAlbum_expandImage"]; // 显示上箭头
     
     [self.albumModelArray removeAllObjects]; // 先清空相册
-    
+
     PHAssetCollection *assetCollection = [self.albumsArray objectAtIndex:index];
+    
+    
+    NSLog(@"self.albumsArray ======== %@",self.albumsArray);
+    
     
     if ([assetCollection.localizedTitle isEqualToString:@"All Photos"]) {
         self.middleHeaderLabel.text = @"所有相册";

@@ -10,6 +10,54 @@
 
 @implementation AlbumTool
 
+#pragma mark 访问是否获取了相册权限
++ (void)albumAuthorizationWithAuthorization:(void(^)(AlbumAuthorizationType authorization))authorization {
+    
+    PHAuthorizationStatus status = [PHPhotoLibrary authorizationStatus];
+    if (status == PHAuthorizationStatusRestricted ||
+        status == PHAuthorizationStatusDenied) {
+
+        authorization(AlbumAuthorizationTypeClose); // 关闭了权限
+    } else if (status == PHAuthorizationStatusAuthorized) {
+        
+        authorization(AlbumAuthorizationTypeAllow); // 开了权限
+    } else {
+        
+        // 如果是默认状态，就开始申请权限，并将申请到的权限返回
+        [PHPhotoLibrary requestAuthorization:^(PHAuthorizationStatus status) {
+            
+            if (status == PHAuthorizationStatusDenied) {
+                authorization(AlbumAuthorizationTypeClose); // 关闭了权限
+            } else if (status == PHAuthorizationStatusAuthorized) {
+                authorization(AlbumAuthorizationTypeAllow); // 开了权限
+            }
+        }];
+    }
+}
+
+#pragma mark 获取相机权限
++ (void)cameraAuthorizationWithAuthorization:(void(^)(CameraAuthorizationType authorization))authorization {
+    
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+    if (authStatus == AVAuthorizationStatusAuthorized) {
+        
+        authorization(CameraAuthorizationTypeAllow); // 权限已开启
+    } else if (authStatus == AVAuthorizationStatusDenied) {
+        
+        authorization(CameraAuthorizationTypeClose); // 权限已关闭
+    } else if (authStatus == AVAuthorizationStatusNotDetermined) {
+        
+        [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
+            
+            if (granted) {
+                authorization(CameraAuthorizationTypeAllow); // 权限已开启
+            } else {
+                authorization(CameraAuthorizationTypeClose); // 权限已关闭
+            }
+        }];
+    }
+}
+
 #pragma mark 获取胶卷的名字相关数据
 + (NSMutableArray *)getAlbumObjects {
     
@@ -17,6 +65,11 @@
     
     // 获得相机胶卷
     PHAssetCollection *cameraRoll = [PHAssetCollection fetchAssetCollectionsWithType:PHAssetCollectionTypeSmartAlbum subtype:PHAssetCollectionSubtypeSmartAlbumUserLibrary options:nil].lastObject;
+    
+    if (!cameraRoll) {
+        return array;
+    }
+    
     [array addObject:cameraRoll];
     
     // 获得所有的自定义相簿

@@ -35,6 +35,24 @@
     [self.view addSubview:self.bottomSaveView]; // 添加底部保存按钮的view
     [self initializeNotification]; // 初始化刷新collectionView页面的通知
     
+#pragma mark 测试相机相册权限
+    [AlbumTool albumAuthorizationWithAuthorization:^(AlbumAuthorizationType authorization) {
+        
+        if (authorization == AlbumAuthorizationTypeClose) {
+            // 添加提示框
+            UIAlertView * alertViewNOVersion = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请前往设置->隐私->照片授权应用访问相册权限" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+            [alertViewNOVersion show];
+        } else if (authorization == AlbumAuthorizationTypeAllow) {
+            
+            if (self.isUploadClick) {
+                CustomPhotoAlbum *customPhotoAlbum = [[CustomPhotoAlbum alloc] init];
+                customPhotoAlbum.modelArray = self.modelArray;
+                [self presentViewController:customPhotoAlbum animated:YES completion:nil];
+            }
+        }
+    }];
+    
+    
     self.title = @"选择证照附件";
     [self setNav];
     
@@ -66,29 +84,7 @@
 #pragma mark - loadDataSource 数据加载部分
 - (void)loadDataSource {
     
-    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:@{@"OrderCustomerId":self.customerId}];
     
-//    [IWHttpTool WMpostWithURL:@"/Order/GetOrderCustomerAttachmentById" params:params success:^(id json){
-//        
-//        NSLog(@"json ======= %@",json);
-//        
-//        NSArray * array = json[@"OrderCustomerAttachmentList"];
-//        if (array.count) {
-//            for (NSDictionary * dic in array) {
-//                
-//                CertificateCellModel *model = [[CertificateCellModel alloc] init];
-//                model.isAlbum = NO;
-//                model.cellImageType = CertificateCellImageEmpty;
-//                model.imageUrl = dic[@"ImageUrl"];
-//                [self.modelArray addObject:model];
-//                [self.imageUrlArray addObject:dic[@"ImageUrl"]];
-//            }
-//        }
-//        [self.collectionView reloadData];
-//        
-//    } failure:^(NSError *error) {
-//        NSLog(@"-------页面加载失败error is %@------",error);
-//    }];
 }
 
 #pragma mark 上传图片接口
@@ -333,15 +329,26 @@
         }
         case TouchEventTypePhoto: { // 进入拍照
             
-            // 只有先退出编辑状态，才能点击拍照按钮
-            if (self.isEditState) {
-                [self cancelItemEditState];
-                return;
-            }
-            NSLog(@"拍照状态");
-            CustomPhotoAlbum *customPhotoAlbum = [[CustomPhotoAlbum alloc] init];
-            customPhotoAlbum.modelArray = self.modelArray;
-            [self presentViewController:customPhotoAlbum animated:YES completion:nil];
+            [AlbumTool albumAuthorizationWithAuthorization:^(AlbumAuthorizationType authorization) {
+                
+                if (authorization == AlbumAuthorizationTypeClose) {
+                    // 添加提示框
+                    UIAlertView * alertViewNOVersion = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请前往设置->隐私->相册授权应用访问相册权限" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+                    [alertViewNOVersion show];
+                } else if (authorization == AlbumAuthorizationTypeAllow) {
+                    
+                    // 只有先退出编辑状态，才能点击拍照按钮
+                    if (self.isEditState) {
+                        [self cancelItemEditState];
+                        return;
+                    }
+                    NSLog(@"拍照状态");
+                    CustomPhotoAlbum *customPhotoAlbum = [[CustomPhotoAlbum alloc] init];
+                    customPhotoAlbum.modelArray = self.modelArray;
+                    [self presentViewController:customPhotoAlbum animated:YES completion:nil];
+                }
+            }];
+            
             break;
         }
             

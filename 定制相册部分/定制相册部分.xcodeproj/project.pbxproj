@@ -824,6 +824,7 @@
 				DEVELOPMENT_TEAM = GM2EX5ALF4;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/定制相册部分/PrefixHeader.pch";
 				INFOPLIST_FILE = "定制相册部分/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lvyouquan.dingzhi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -839,6 +840,7 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = "$(SRCROOT)/定制相册部分/PrefixHeader.pch";
 				INFOPLIST_FILE = "定制相册部分/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lvyouquan.dingzhi;
 				PRODUCT_NAME = "$(TARGET_NAME)";

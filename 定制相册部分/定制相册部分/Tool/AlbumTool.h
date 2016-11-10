@@ -10,12 +10,32 @@
 #import <Photos/Photos.h>
 #import "CertificateCellModel.h" // 自定义部分
 
+// 照相机个点击事件的相关枚举
+typedef NS_ENUM(NSInteger, AlbumAuthorizationType) {
+    AlbumAuthorizationTypeDefault, // 默认还没做出选择
+    AlbumAuthorizationTypeClose, // 此应用程序没有被授权访问的照片数据
+    AlbumAuthorizationTypeAllow // 用户已经授权应用访问照片数据
+};
+
+// 相机权限枚举
+typedef NS_ENUM(NSInteger, CameraAuthorizationType) {
+    CameraAuthorizationTypeDefault, // 默认还没做出选择
+    CameraAuthorizationTypeClose, // 此应用程序没有被授权访问的照片数据
+    CameraAuthorizationTypeAllow // 用户已经授权应用访问照片数据
+};
+
 /**
  * 此工具主要用于处理从系统相册中获取相册及其照片的部分
  */
 
 #define PageNumber 66   // 每次返回的张数是66
 @interface AlbumTool : NSObject
+
+#pragma mark 获取相册权限
++ (void)albumAuthorizationWithAuthorization:(void(^)(AlbumAuthorizationType authorization))authorization;
+
+#pragma mark 获取相册权限
++ (void)cameraAuthorizationWithAuthorization:(void(^)(CameraAuthorizationType authorization))authorization;
 
 #pragma mark 获取所有的胶卷的名字
 + (NSMutableArray *)getAlbumObjects;
