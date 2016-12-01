@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="customCameraCVCell" id="gTV-IL-0wX" customClass="CustomCameraCVCell">
+            <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="54" height="54"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lbk-h2-haB">
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="NOr-Ib-PvH"/>
+                            <constraint firstAttribute="height" constant="44" id="uYQ-nT-2gW"/>
+                        </constraints>
+                    </imageView>
+                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CustomCameraCVCell_delete" translatesAutoresizingMaskIntoConstraints="NO" id="XAF-Ac-yHV">
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="14" id="eAg-6L-m0X"/>
+                            <constraint firstAttribute="height" constant="14" id="sTJ-Wz-CKW"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="7pd-BA-Hcv" appends="YES" id="CqQ-RP-YC2"/>
+                        </connections>
+                    </imageView>
+                </subviews>
+            </view>
+            <gestureRecognizers/>
+            <constraints>
+                <constraint firstItem="Lbk-h2-haB" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="1aQ-qP-lv0"/>
+                <constraint firstAttribute="trailing" secondItem="XAF-Ac-yHV" secondAttribute="trailing" id="8oT-u0-j4b"/>
+                <constraint firstItem="Lbk-h2-haB" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Uhl-b6-w98"/>
+                <constraint firstItem="XAF-Ac-yHV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ffi-rq-uBX"/>
+            </constraints>
+            <size key="customSize" width="97" height="86"/>
+            <connections>
+                <outlet property="contentImageView" destination="Lbk-h2-haB" id="5nY-OY-xVw"/>
+                <outletCollection property="gestureRecognizers" destination="On0-ha-af0" appends="YES" id="MfK-bR-XKb"/>
+            </connections>
+            <point key="canvasLocation" x="57" y="121"/>
+        </collectionViewCell>
+        <tapGestureRecognizer id="On0-ha-af0">
+            <connections>
+                <action selector="bigImageClick:" destination="gTV-IL-0wX" id="C8h-8I-YJZ"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="7pd-BA-Hcv">
+            <connections>
+                <action selector="smallImageClick:" destination="gTV-IL-0wX" id="RqP-Hs-p2I"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="CustomCameraCVCell_delete" width="15" height="15"/>
+    </resources>
+</document>

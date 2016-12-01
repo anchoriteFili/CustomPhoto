@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CustomPhotoAlbum">
+            <connections>
+                <outlet property="ensuerButton" destination="Nfq-wd-BAK" id="Ez4-4z-5aF"/>
+                <outlet property="ensureLabel" destination="fqS-W0-EWz" id="z0l-2Z-LQ9"/>
+                <outlet property="headerArrowImageView" destination="h1T-Ej-aRa" id="kXl-vN-ayY"/>
+                <outlet property="middleHeaderButton" destination="LSK-lY-YQD" id="d7Y-pT-xYO"/>
+                <outlet property="middleHeaderLabel" destination="Ltk-aG-4NH" id="pxi-jM-hDv"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lrr-Wu-5bT">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="取消" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fe-Vl-FR1">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="Pka-Xf-Ofj"/>
+                                <constraint firstAttribute="width" constant="37" id="cAw-kx-jn8"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="96l-1x-MFf">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="55" id="58b-1o-SGk"/>
+                                <constraint firstAttribute="height" constant="30" id="DFX-Ad-9BS"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="cancalButtonClick:" destination="-1" eventType="touchUpInside" id="IOf-BK-aFI"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相机胶卷" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ltk-aG-4NH">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="lEA-yC-T7r"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LSK-lY-YQD">
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="84P-8K-edj"/>
+                                <constraint firstAttribute="height" constant="18" id="SOW-Wi-tSC"/>
+                            </constraints>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="photoAlbumTypeClick:" destination="-1" eventType="touchUpInside" id="gID-Cy-74p"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确定(0)" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqS-W0-EWz">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="DH3-qh-C3r"/>
+                                <constraint firstAttribute="width" constant="86" id="uPt-bV-XiY"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nfq-wd-BAK">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="35" id="6zH-hb-V4i"/>
+                                <constraint firstAttribute="width" constant="86" id="HbD-gX-T38"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="ensureButtonClick:" destination="-1" eventType="touchUpInside" id="zhg-HF-the"/>
+                            </connections>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="CustomPhotoAlbum_expandImage" translatesAutoresizingMaskIntoConstraints="NO" id="h1T-Ej-aRa">
+                            <constraints>
+                                <constraint firstAttribute="height" constant="7" id="wnN-Dh-NzW"/>
+                                <constraint firstAttribute="width" constant="12" id="xAy-32-5bF"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.6588235294117647" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="h1T-Ej-aRa" firstAttribute="leading" secondItem="Ltk-aG-4NH" secondAttribute="trailing" constant="5" id="2E3-m1-8Tt"/>
+                        <constraint firstAttribute="bottom" secondItem="Nfq-wd-BAK" secondAttribute="bottom" id="AIf-Va-plf"/>
+                        <constraint firstItem="1fe-Vl-FR1" firstAttribute="top" secondItem="lrr-Wu-5bT" secondAttribute="top" constant="38" id="FzD-Xj-dLg"/>
+                        <constraint firstItem="Ltk-aG-4NH" firstAttribute="centerX" secondItem="lrr-Wu-5bT" secondAttribute="centerX" constant="-8.5" id="KSP-vf-ig5"/>
+                        <constraint firstItem="Ltk-aG-4NH" firstAttribute="top" secondItem="lrr-Wu-5bT" secondAttribute="top" constant="35" id="N4Z-TZ-yba"/>
+                        <constraint firstItem="1fe-Vl-FR1" firstAttribute="leading" secondItem="lrr-Wu-5bT" secondAttribute="leading" constant="15" id="RWD-fq-vHw"/>
+                        <constraint firstItem="LSK-lY-YQD" firstAttribute="centerX" secondItem="lrr-Wu-5bT" secondAttribute="centerX" id="TGS-q1-hCB"/>
+                        <constraint firstItem="96l-1x-MFf" firstAttribute="leading" secondItem="lrr-Wu-5bT" secondAttribute="leading" id="TWX-an-2Wv"/>
+                        <constraint firstAttribute="bottom" secondItem="LSK-lY-YQD" secondAttribute="bottom" constant="9" id="Uv7-DN-iHb"/>
+                        <constraint firstItem="h1T-Ej-aRa" firstAttribute="top" secondItem="lrr-Wu-5bT" secondAttribute="top" constant="42" id="as8-5T-cqQ"/>
+                        <constraint firstAttribute="bottom" secondItem="96l-1x-MFf" secondAttribute="bottom" id="gNR-w8-Qvv"/>
+                        <constraint firstAttribute="height" constant="64" id="oEP-tk-zj5"/>
+                        <constraint firstAttribute="trailing" secondItem="fqS-W0-EWz" secondAttribute="trailing" constant="15" id="sbd-YV-u55"/>
+                        <constraint firstAttribute="trailing" secondItem="Nfq-wd-BAK" secondAttribute="trailing" id="vuM-YS-Lob"/>
+                        <constraint firstAttribute="bottom" secondItem="fqS-W0-EWz" secondAttribute="bottom" constant="10.5" id="xLN-h4-XQb"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4V6-Oc-efI">
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8UX-JM-F9u">
+                            <color key="backgroundColor" red="0.0" green="0.6588235294" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="Vqr-X1-Ibh"/>
+                                <constraint firstAttribute="width" constant="61" id="pYp-D2-F6M"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <state key="normal" title="预览">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="previewButtonClick:" destination="-1" eventType="touchUpInside" id="XQR-6p-L4T"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="8UX-JM-F9u" firstAttribute="top" secondItem="4V6-Oc-efI" secondAttribute="top" constant="8.5" id="7Vq-uq-elM"/>
+                        <constraint firstAttribute="height" constant="45" id="tdW-3S-dVJ"/>
+                        <constraint firstItem="8UX-JM-F9u" firstAttribute="leading" secondItem="4V6-Oc-efI" secondAttribute="leading" constant="10" id="yBI-h0-scD"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="4V6-Oc-efI" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="0ik-7q-VDq"/>
+                <constraint firstAttribute="trailing" secondItem="lrr-Wu-5bT" secondAttribute="trailing" id="UGQ-Rp-wX7"/>
+                <constraint firstItem="lrr-Wu-5bT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Uga-cT-Ww8"/>
+                <constraint firstAttribute="bottom" secondItem="4V6-Oc-efI" secondAttribute="bottom" id="fhw-jZ-r4v"/>
+                <constraint firstItem="lrr-Wu-5bT" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="j1h-Ps-XTZ"/>
+                <constraint firstAttribute="trailing" secondItem="4V6-Oc-efI" secondAttribute="trailing" id="rwd-hb-ueN"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="33.5" y="124.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="CustomPhotoAlbum_expandImage" width="12" height="7"/>
+    </resources>
+</document>
